@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-//Font awesome icon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faComment } from "@fortawesome/free-solid-svg-icons"
-
 export default function Navbar(props) {
     function getActive(val, curr){
         if(val == curr){

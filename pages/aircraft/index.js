@@ -8,31 +8,9 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllAircraft from "../../components/table/allAircraft"
+import TotalAircraftByRole from "../../components/pieChart/totalAircraftByRole"
 
 export default function Aircraft() {
-    //Initial variable
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
-
-    //Converter
-    const data = Object.values(items);
-
-    useEffect(() => {
-        fetch("")
-        .then(res => res.json())
-        .then(
-        (result) => {
-            setIsLoaded(true);
-            setItems(result.data);
-        },
-        (error) => {
-            setIsLoaded(true);
-            setError(error);
-        }
-        )
-    },[])
-
     return (
         <div style={{background:"#F2F8FF"}} >
             <Head>
@@ -46,13 +24,13 @@ export default function Aircraft() {
                 
                 <div className="content">
                     <div className="row">
-                        <div className="col-lg-6 col-md-8 col-sm-12">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
                             <AllAircraft/>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
-                        
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <TotalAircraftByRole/>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
                         
                         </div>
                     </div>
