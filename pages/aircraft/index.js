@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllAircraft from "../../components/table/allAircraft"
 import TotalAircraftByRole from "../../components/pieChart/totalAircraftByRole"
+import TotalAircraftByCountry from "../../components/pieChart/totalAircraftByCountry"
 
 export default function Aircraft() {
     return (
@@ -31,7 +32,7 @@ export default function Aircraft() {
                             <TotalAircraftByRole/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                        
+                            <TotalAircraftByCountry/>                            
                         </div>
                     </div>
                 </div>
