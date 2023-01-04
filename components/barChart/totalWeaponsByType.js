@@ -10,7 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { } from "@fortawesome/free-solid-svg-icons"
 
-export default function TotalShipsByCountry() {
+export default function TotalWeaponsByType() {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +21,7 @@ export default function TotalShipsByCountry() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/ships/total/bycountry")
+        fetch("http://127.0.0.1:8000/api/weapons/total/bytype")
         .then(res => res.json())
             .then(
             (result) => {
@@ -38,28 +38,24 @@ export default function TotalShipsByCountry() {
     function getSeries(val){
         let catSeries = [];
         val.forEach(e => { 
-            catSeries.push(parseInt(e.total));
+            catSeries.push({
+                x: e.type,
+                y: parseInt(e.total)
+            });
         });
         return catSeries;
     }
 
-    function getCategory(val){
-        let catData = [];
-        val.forEach(e => { 
-            catData.push(e.country);
-        });
-        return catData;
-    }
-
     chart = {
-        series: getSeries(data),
+        //series: getSeries(data),
+        series: [{
+            data: getSeries(data)}],
         options: {
-            labels: getCategory(data),
             plotOptions: {
-                donut: {
-                  size: 200
+                bar: {
+                  horizontal: true
                 }
-            }
+            },
         }
     };
 
@@ -81,13 +77,14 @@ export default function TotalShipsByCountry() {
         );
     } else {
         return (
-            <div className='custom-tbody' style={{padding:"6px"}}>
-                <h6 className='text-white'>Total Ships By Country</h6>
+            <div className='custom-tbody' style={{padding:"6px"}}> {/*Fix the max height*/}
+                <h6 className='text-white'>Total Weapons By Type</h6>
                 <div className="BalanceChart me-4">
                     <Chart
                         options={chart.options}
                         series={chart.series}
-                        type="pie"
+                        type="bar"
+                        height="800"
                     />
                 </div>
             </div>

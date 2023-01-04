@@ -8,7 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllShips from "../../components/table/allShips"
-import TotalShipsByCountry from "../../components/pieChart/totalShipsByCountry"
+import TotalShipsByCountry from "../../components/barChart/totalShipsByCountry"
 
 export default function Ships() {
     return (
@@ -28,7 +28,7 @@ export default function Ships() {
                             <AllShips/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                            <TotalShipsByCountry/>
+                           <TotalShipsByCountry/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                                                      
