@@ -8,6 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import TotalFacilitiesByType from "../../components/barChart/totalFacilitiesByType"
+import TotalFacilitiesByCountry from "../../components/barChart/totalFacilitiesByCountry"
 
 export default function Aircraft() {
     return (
@@ -30,7 +31,7 @@ export default function Aircraft() {
                             <TotalFacilitiesByType/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-
+                            <TotalFacilitiesByCountry/>
                         </div>
                     </div>
                 </div>
