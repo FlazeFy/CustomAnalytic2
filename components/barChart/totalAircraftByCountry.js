@@ -78,7 +78,7 @@ export default function TotalAircraftByCountry() {
     } else {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}> {/*Fix the max height*/}
-                <h6 className='text-white'>Total Aircraft By Country</h6>
+                <h6>Total Aircraft By Country</h6>
                 <div className="BalanceChart me-4">
                     <Chart
                         options={chart.options}

@@ -82,7 +82,7 @@ export default function TotalVehiclesByRole() {
     } else {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}>
-                <h6 className='text-white'>Total Vehicles By Role</h6>
+                <h6>Total Vehicles By Role</h6>
                 <div className="BalanceChart me-4">
                     <Chart
                         options={chart.options}

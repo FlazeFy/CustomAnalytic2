@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import TotalFacilitiesByType from "../../components/barChart/totalFacilitiesByType"
 import TotalFacilitiesByCountry from "../../components/barChart/totalFacilitiesByCountry"
+import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
 
 export default function Aircraft() {
     return (
@@ -23,10 +24,15 @@ export default function Aircraft() {
                 <Navbar active={"facilities"}/>
                 
                 <div className="content">
-                    <div className="row">
-                        <div className="col-lg-4 col-md-6 col-sm-12">
-                            
+                    <div className="row mb-2">
+                        <div className="col-lg-8 col-md-6 col-sm-12">
+                            <MapChart/>
                         </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <TotalFacilitiesByType/>
                         </div>

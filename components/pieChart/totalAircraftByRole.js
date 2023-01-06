@@ -82,7 +82,7 @@ export default function TotalAircraftByRole() {
     } else {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}>
-                <h6 className='text-white'>Total Aircraft By Role</h6>
+                <h6>Total Aircraft By Role</h6>
                 <div className="BalanceChart me-4">
                     <Chart
                         options={chart.options}

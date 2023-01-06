@@ -78,7 +78,7 @@ export default function TotalFacilitiesByType() {
     } else {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}> {/*Fix the max height*/}
-                <h6 className='text-white'>Total Facilities By Type</h6>
+                <h6>Total Facilities By Type</h6>
                 <div className="BalanceChart me-4">
                     <Chart
                         options={chart.options}

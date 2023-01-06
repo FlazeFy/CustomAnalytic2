@@ -9,7 +9,7 @@ a {
   text-decoration: none;
 }
 table th{
-  color: whitesmoke;
+  color: #414141;
 }
 table td{
   color: #808080;
@@ -52,7 +52,7 @@ table td{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #212121; 
+  background: #808080; 
 }
  
 /* Handle */
