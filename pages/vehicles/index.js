@@ -10,7 +10,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllVehicles from "../../components/table/allVehicles"
 import TotalVehiclesByRole from "../../components/pieChart/totalVehiclesByRole"
 
-export default function Aircraft() {
+export default function Vehicles() {
     return (
         <div style={{background:"#F2F8FF"}} >
             <Head>

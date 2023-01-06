@@ -10,7 +10,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllWeapons from "../../components/table/allWeapons"
 import TotalWeaponsByType from "../../components/barChart/totalWeaponsByType"
 
-export default function Ships() {
+export default function Weapons() {
     return (
         <div style={{background:"#F2F8FF"}} >
             <Head>
