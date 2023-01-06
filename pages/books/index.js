@@ -8,7 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllBooks from "../../components/table/allBooks"
-
+import TotalBooksByReviewer from "../../components/barChart/totalBooksByReviewer"
 
 export default function Books() {
     return (
@@ -24,11 +24,11 @@ export default function Books() {
                 
                 <div className="content">
                     <div className="row mb-2">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
+                        <div className="col-lg-4 col-md-6 col-sm-12">
                             <AllBooks/>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                           <TotalBooksByReviewer/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             
