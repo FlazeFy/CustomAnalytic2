@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllWeapons from "../../components/table/allWeapons"
 import TotalWeaponsByType from "../../components/barChart/totalWeaponsByType"
+import TotalWeaponsByCountry from "../../components/barChart/totalWeaponsByCountry"
 
 export default function Weapons() {
     return (
@@ -31,7 +32,7 @@ export default function Weapons() {
                             <TotalWeaponsByType/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                                                     
+                            <TotalWeaponsByCountry/>                  
                         </div>
                     </div>
                 </div>
