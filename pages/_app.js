@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import '../styles/navbar.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
 import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {

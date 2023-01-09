@@ -45,6 +45,11 @@ table td{
   right: 10px;
   top: 10px;
 }
+.label-max{
+  font-size: 11px !important;
+  font-weight: 500;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

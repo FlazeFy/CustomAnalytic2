@@ -19,14 +19,14 @@ export default function Casualities() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={styles.main}>
-                <Navbar active={"events"}/>
+                <Navbar active={"casualities"}/>
                 
                 <div className="content">
                     <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12">
+                        <div className="col-lg-7 col-md-8 col-sm-12">
                             <TotalDeathByCountry/>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-sm-12">
+                        <div className="col-lg-5 col-md-4 col-sm-12">
                             
                         </div>
                     </div>
