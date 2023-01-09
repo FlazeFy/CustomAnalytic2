@@ -60,7 +60,6 @@ export default function TotalShipsByLaunchYear() {
         for(var i = 0; i < 7; i++){
             let period = (start+(diff*i)).toString()+'-'+(start+(diff*(i+1))).toString()
             catData.push(period)
-            console.log(period)
         }
         return catData
     }

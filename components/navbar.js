@@ -51,6 +51,11 @@ export default function Navbar(props) {
                                 <span className="nav-link" href="#">Casualities</span>
                             </li>
                         </Link>
+                        <Link href="/events">
+                            <li className={getActive(props.active, "events")}>
+                                <span className="nav-link" href="#">Events</span>
+                            </li>
+                        </Link>
                         <Link href="/books">
                             <li className={getActive(props.active, "books")}>
                                 <span className="nav-link" href="#">Books</span>
