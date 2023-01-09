@@ -42,10 +42,16 @@ export default function TotalDeathByCountry() {
         )
     },[])
 
-    function getSeries(val){
+    function getSeries(val, type){
         let catSeries = [];
         val.forEach(e => { 
-            catSeries.push(parseInt(e.total));
+            if(type == "Military"){
+                catSeries.push(parseInt(e.military_death));
+            } else if(type == "Civilian"){
+                catSeries.push(parseInt(e.civilian_death));
+            } else if(type == "Total"){
+                catSeries.push(parseInt(e.total));
+            }
         });
         return catSeries;
     }
@@ -59,10 +65,20 @@ export default function TotalDeathByCountry() {
     }
 
     chart = {
-        series: [{
-            name: 'Total Death',
-            data: getSeries(data)
-        }],
+        series: [
+            {
+                name: 'Military Death',
+                data: getSeries(data, "Military")
+            },
+            {
+                name: 'Civilian Death',
+                data: getSeries(data, "Civilian")
+            },
+            {
+                name: 'Total Death',
+                data: getSeries(data, "Total")
+            },
+        ],
         options: {
             chart: {
                 height: 350,
@@ -77,15 +93,7 @@ export default function TotalDeathByCountry() {
                 }
             },
             dataLabels: {
-                enabled: true,
-                formatter: function (val) {
-                    return val;
-            },
-            offsetY: -20,
-                style: {
-                    fontSize: '12px',
-                    colors: ["#304758"]
-                }
+                enabled: false,
             },
             
             xaxis: {
@@ -155,8 +163,8 @@ export default function TotalDeathByCountry() {
         );
     } else {
         return (
-            <div className='custom-tbody' style={{padding:"6px"}}> {/*Fix the max height*/}
-                <h6>Total Weapons By Type</h6>
+            <div className='custom-tbody'>
+                <h6>Total Death By Country</h6>
                 <p>Page : {sessionStorage.getItem("ChartPage_DeathByCountry")} / {maxPage}</p>
                 <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

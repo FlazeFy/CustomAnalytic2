@@ -8,6 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import TotalDeathByCountry from "../../components/columnChart/totalDeathByCountry"
+import TotalDeathBySides from "../../components/pieChart/totalDeathBySides"
 
 export default function Casualities() {
     return (
@@ -23,11 +24,14 @@ export default function Casualities() {
                 
                 <div className="content">
                     <div className="row">
-                        <div className="col-lg-7 col-md-8 col-sm-12">
+                        <div className="col-lg-6 col-md-8 col-sm-12">
                             <TotalDeathByCountry/>
                         </div>
-                        <div className="col-lg-5 col-md-4 col-sm-12">
-                            
+                        <div className="col-lg-3 col-md-4 col-sm-12">
+                            <TotalDeathBySides source={"Military"}/>
+                        </div>
+                        <div className="col-lg-3 col-md-4 col-sm-12">
+                            <TotalDeathBySides source={"Civilian"}/>
                         </div>
                     </div>
                 </div>
