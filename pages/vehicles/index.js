@@ -10,6 +10,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllVehicles from "../../components/table/allVehicles"
 import TotalVehiclesByRole from "../../components/pieChart/totalVehiclesByRole"
 import TotalVehiclesByCountry from "../../components/pieChart/totalVehiclesByCountry"
+import TotalVehiclesBySides from "../../components/pieChart/totalVehiclesBySides"
 
 export default function Vehicles() {
     return (
@@ -32,7 +33,10 @@ export default function Vehicles() {
                             <TotalVehiclesByRole/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                           <TotalVehiclesByCountry/>
+                            <TotalVehiclesByCountry/>
+                            <div className="mt-3">
+                                <TotalVehiclesBySides/>
+                            </div>  
                         </div>
                     </div>
                 </div>
