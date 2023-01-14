@@ -8,8 +8,8 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllVehicles from "../../components/table/allVehicles"
-import TotalVehiclesByRole from "../../components/pieChart/totalVehiclesByRole"
-import TotalVehiclesByCountry from "../../components/pieChart/totalVehiclesByCountry"
+import TotalVehiclesByRole from "../../components/barChart/totalVehiclesByRole"
+import TotalVehiclesByCountry from "../../components/barChart/totalVehiclesByCountry"
 import TotalVehiclesBySides from "../../components/pieChart/totalVehiclesBySides"
 
 export default function Vehicles() {
