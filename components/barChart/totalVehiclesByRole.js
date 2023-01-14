@@ -53,7 +53,8 @@ export default function TotalVehiclesByRole() {
         options: {
             plotOptions: {
                 bar: {
-                  horizontal: true
+                  horizontal: true,
+                  borderRadius: 8,
                 }
             },
         }

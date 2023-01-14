@@ -53,7 +53,8 @@ export default function TotalFacilitiesByType() {
         options: {
             plotOptions: {
                 bar: {
-                  horizontal: true
+                  horizontal: true,
+                  borderRadius: 8,
                 }
             },
         }

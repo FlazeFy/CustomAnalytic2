@@ -2,21 +2,33 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import Image from 'next/image'
 
+//Font awesome classicon
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
+
 const AllWeapons = () => {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [maxPage, setMaxPage] = useState([]);
 
     //Converter
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page=1")
+        //Default config
+        if(sessionStorage.getItem("ChartPage_WeaponsByCountry") == null){
+            sessionStorage.setItem("ChartPage_WeaponsByCountry", "1");
+        }
+
+        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("ChartPage_WeaponsByCountry"))
         .then(res => res.json())
             .then(
             (result) => {
                 setIsLoaded(true);
+                setMaxPage(result.data.last_page);
                 setItems(result.data.data);
             },
             (error) => {
@@ -25,6 +37,12 @@ const AllWeapons = () => {
             }
         )
     },[])
+
+    //Chart filter and config
+    function setLimit(page){
+        sessionStorage.setItem("ChartPage_WeaponsByCountry", page);
+        location.reload();
+    }
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -45,6 +63,19 @@ const AllWeapons = () => {
     } else {
         return (
             <div className='custom-tbody'>
+                <p>Page : {sessionStorage.getItem("ChartPage_WeaponsByCountry")} / {maxPage}</p>
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <FontAwesomeIcon icon={faEllipsisVertical}/></button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a className="dropdown-item">
+                                <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
+                                <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("ChartPage_WeaponsByCountry")} onBlur={(e)=> setLimit(e.target.value)}></input>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <table className="table">
                     <thead>
                         <tr>

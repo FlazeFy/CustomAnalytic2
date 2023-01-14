@@ -53,7 +53,8 @@ export default function TotalVehiclesByCountry() {
         options: {
             plotOptions: {
                 bar: {
-                  horizontal: true
+                  horizontal: true,
+                  borderRadius: 8,
                 }
             },
         }

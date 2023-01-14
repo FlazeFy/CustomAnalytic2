@@ -53,8 +53,9 @@ export default function TotalWeaponsByType() {
         options: {
             plotOptions: {
                 bar: {
-                  horizontal: true
-                }
+                  horizontal: true,
+                  borderRadius: 8,
+                },
             },
         }
     };
