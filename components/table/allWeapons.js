@@ -19,11 +19,11 @@ const AllWeapons = () => {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("ChartPage_WeaponsByCountry") == null){
-            sessionStorage.setItem("ChartPage_WeaponsByCountry", "1");
+        if(sessionStorage.getItem("Table_Weapons") == null){
+            sessionStorage.setItem("Table_Weapons", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("ChartPage_WeaponsByCountry"))
+        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Weapons"))
         .then(res => res.json())
             .then(
             (result) => {
@@ -40,7 +40,7 @@ const AllWeapons = () => {
 
     //Chart filter and config
     function setLimit(page){
-        sessionStorage.setItem("ChartPage_WeaponsByCountry", page);
+        sessionStorage.setItem("Table_Weapons", page);
         location.reload();
     }
 
@@ -63,7 +63,7 @@ const AllWeapons = () => {
     } else {
         return (
             <div className='custom-tbody'>
-                <p>Page : {sessionStorage.getItem("ChartPage_WeaponsByCountry")} / {maxPage}</p>
+                <p>Page : {sessionStorage.getItem("Table_Weapons")} / {maxPage}</p>
                 <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <FontAwesomeIcon icon={faEllipsisVertical}/></button>
@@ -71,7 +71,7 @@ const AllWeapons = () => {
                         <li>
                             <a className="dropdown-item">
                                 <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                                <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("ChartPage_WeaponsByCountry")} onBlur={(e)=> setLimit(e.target.value)}></input>
+                                <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("Table_Weapons")} onBlur={(e)=> setLimit(e.target.value)}></input>
                             </a>
                         </li>
                     </ul>

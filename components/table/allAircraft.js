@@ -19,11 +19,11 @@ const AllAircraft = () => {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("ChartPage_AircraftByCountry") == null){
-            sessionStorage.setItem("ChartPage_AircraftByCountry", "1");
+        if(sessionStorage.getItem("Table_Aircraft") == null){
+            sessionStorage.setItem("Table_Aircraft", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/aircraft/limit/15/order/ASC?page="+sessionStorage.getItem("ChartPage_AircraftByCountry"))
+        fetch("http://127.0.0.1:8000/api/aircraft/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Aircraft"))
         .then(res => res.json())
             .then(
             (result) => {
@@ -40,7 +40,7 @@ const AllAircraft = () => {
 
     //Chart filter and config
     function setLimit(page){
-        sessionStorage.setItem("ChartPage_AircraftByCountry", page);
+        sessionStorage.setItem("Table_Aircraft", page);
         location.reload();
     }
 
@@ -63,7 +63,7 @@ const AllAircraft = () => {
     } else {
         return (
             <div className='custom-tbody'>
-                <p>Page : {sessionStorage.getItem("ChartPage_AircraftByCountry")} / {maxPage}</p>
+                <p>Page : {sessionStorage.getItem("Table_Aircraft")} / {maxPage}</p>
                 <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <FontAwesomeIcon icon={faEllipsisVertical}/></button>
@@ -71,7 +71,7 @@ const AllAircraft = () => {
                         <li>
                             <a className="dropdown-item">
                                 <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                                <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("ChartPage_AircraftByCountry")} onBlur={(e)=> setLimit(e.target.value)}></input>
+                                <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("Table_Aircraft")} onBlur={(e)=> setLimit(e.target.value)}></input>
                             </a>
                         </li>
                     </ul>
