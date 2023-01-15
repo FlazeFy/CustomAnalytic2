@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllBooks from "../../components/table/allBooks"
 import TotalBooksByReviewer from "../../components/barChart/totalBooksByReviewer"
+import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
 
 export default function Books() {
     return (
@@ -31,7 +32,7 @@ export default function Books() {
                            <TotalBooksByReviewer/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-                            
+                            <TotalBooksByYearReview/>
                         </div>
                     </div>
                 </div>

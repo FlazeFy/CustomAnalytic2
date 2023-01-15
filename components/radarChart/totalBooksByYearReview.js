@@ -10,7 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { } from "@fortawesome/free-solid-svg-icons"
 
-export default function TotalShipsByLaunchYear() {
+export default function TotalBooksByYearReview() {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +21,7 @@ export default function TotalShipsByLaunchYear() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/ships/total/bylaunchyear")
+        fetch("http://127.0.0.1:8000/api/books/total/byyearreview")
         .then(res => res.json())
             .then(
             (result) => {
@@ -37,13 +37,13 @@ export default function TotalShipsByLaunchYear() {
 
     function getSeries(val, diff){
         let catSeries = [];
-        let start = 1892
+        let start = 2000
 
         for(var i = 0; i < 7; i++){
             let total_period = 0
 
             val.forEach(e => { 
-                if(parseInt(e.launch_year) > start+(diff*i)+1 && parseInt(e.launch_year) < start+(diff*(i+1))){
+                if(parseInt(e.year_review) >= start+(diff*i)+1 && parseInt(e.year_review) <= start+(diff*(i+1))){
                     total_period += e.total
                 }
             });
@@ -55,7 +55,7 @@ export default function TotalShipsByLaunchYear() {
 
     function getCategory(diff){
         let catData = []
-        let start = 1892
+        let start = 2000
 
         for(var i = 0; i < 7; i++){
             let period = (start+(diff*i)+1).toString()+'-'+(start+(diff*(i+1))).toString()
@@ -67,7 +67,7 @@ export default function TotalShipsByLaunchYear() {
     chart = {
         series: [{
             name: 'Series 1',
-            data: getSeries(data, 8),
+            data: getSeries(data, 3),
         }],
         options: {
             chart: {
@@ -92,7 +92,7 @@ export default function TotalShipsByLaunchYear() {
               }
             },
             xaxis: {
-              categories: getCategory(8)
+              categories: getCategory(3)
             },
             yaxis: {
               tickAmount: 7,
@@ -128,15 +128,13 @@ export default function TotalShipsByLaunchYear() {
     } else {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}>
-                <h6>Total Ships By Launch Year</h6>
-                <div className="BalanceChart me-4">
-                    <Chart
-                        options={chart.options}
-                        series={chart.series}
-                        type="radar"
-                        height="400"
-                    />
-                </div>
+                <h6>Total Books By Year Review</h6>
+                <Chart
+                    options={chart.options}
+                    series={chart.series}
+                    type="radar"
+                    height="400"
+                />
             </div>
         );
     }
