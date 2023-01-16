@@ -10,6 +10,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import TotalFacilitiesByType from "../../components/barChart/totalFacilitiesByType"
 import TotalFacilitiesByCountry from "../../components/barChart/totalFacilitiesByCountry"
 import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
+import TotalFacilitiesBySides from "../../components/pieChart/totalFacilitiesBySides"
 
 export default function Facilities() {
     return (
@@ -29,7 +30,7 @@ export default function Facilities() {
                             <MapChart/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
-
+                            <TotalFacilitiesBySides/>
                         </div>
                     </div>
                     <div className="row">
