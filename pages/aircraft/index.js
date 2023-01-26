@@ -8,7 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import AllAircraft from "../../components/table/allAircraft"
-import TotalAircraftByRole from "../../components/pieChart/totalAircraftByRole"
+import TotalAircraftByRole from "../../components/barChart/totalAircraftByRole"
 import TotalAircraftByCountry from "../../components/barChart/totalAircraftByCountry"
 import TotalAircraftBySides from "../../components/pieChart/totalAircraftBySides"
 
