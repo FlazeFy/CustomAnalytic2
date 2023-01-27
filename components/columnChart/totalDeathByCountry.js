@@ -64,6 +64,10 @@ export default function TotalDeathByCountry() {
         return catData;
     }
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     chart = {
         series: [
             {
@@ -131,7 +135,7 @@ export default function TotalDeathByCountry() {
             labels: {
                 show: false,
                 formatter: function (val) {
-                return val;
+                return numberWithCommas(val);
                 }
             }
             
@@ -163,7 +167,7 @@ export default function TotalDeathByCountry() {
         );
     } else {
         return (
-            <div className='custom-tbody'>
+            <div className='custom-tbody' style={{overflowY:"hidden"}}>
                 <h6>Total Death By Country</h6>
                 <p>Page : {sessionStorage.getItem("ChartPage_DeathByCountry")} / {maxPage}</p>
                 <div className="dropdown">

@@ -7,7 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { } from "@fortawesome/free-solid-svg-icons"
 
-export default function CasualitiesSummary(props) {
+export default function WeaponsSummary(props) {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -17,7 +17,7 @@ export default function CasualitiesSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/casualities/summary")
+        fetch("http://127.0.0.1:8000/api/weapons/summary")
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,10 +48,6 @@ export default function CasualitiesSummary(props) {
             </div>
         );
     } else {
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
         return (
             <div className='container' style={{padding:"6px"}}>
                 <h6>Summary</h6>
@@ -59,9 +55,8 @@ export default function CasualitiesSummary(props) {
                     items.map((val, i, index) => {
                         return (
                             <div key={i} className='summary-box'>
-                                Overall in this war, average death per country is <b className='text-primary'>{numberWithCommas(val.average_death)}</b>. 
-                                Country with the most death toll is <b className='text-primary'>{numberWithCommas(val.highest_death_country)}</b> with <b className='text-primary'>{numberWithCommas(val.highest_death)}</b> military and civilian death.<br></br>
-                                This total as much as <b className='text-primary'>{numberWithCommas(val.highest_death_country_percent)}%</b> of all total death combined, which is about <b className='text-primary'>{numberWithCommas(val.total_death_all)}</b> death.
+                                Overall in this war, The most produced weapons by type is {val.most_produced} Which have been produced about {val.total} variant. This weapon is mainly produced by {val.most_produced_by_country}.
+                                Average country has produced about {val.average_by_country} variant of weapon. And some country like {val.country_above_average} produce more weapons than the overall average.
                             </div>
                         );
                     })
