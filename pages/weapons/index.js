@@ -11,6 +11,7 @@ import AllWeapons from "../../components/table/allWeapons"
 import TotalWeaponsByType from "../../components/barChart/totalWeaponsByType"
 import TotalWeaponsByCountry from "../../components/barChart/totalWeaponsByCountry"
 import TotalWeaponsBySides from "../../components/pieChart/totalWeaponsBySides"
+import WeaponsSummary from "../../components/summary/weapons"
 
 export default function Weapons() {
     return (
@@ -31,12 +32,13 @@ export default function Weapons() {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <TotalWeaponsByType/>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12">
-                            <TotalWeaponsByCountry/>     
                             <div className="mt-3">
                                 <TotalWeaponsBySides/>
-                            </div>               
+                            </div>  
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <WeaponsSummary/>
+                            <TotalWeaponsByCountry/>
                         </div>
                     </div>
                 </div>

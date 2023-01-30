@@ -11,6 +11,7 @@ import AllVehicles from "../../components/table/allVehicles"
 import TotalVehiclesByRole from "../../components/barChart/totalVehiclesByRole"
 import TotalVehiclesByCountry from "../../components/barChart/totalVehiclesByCountry"
 import TotalVehiclesBySides from "../../components/pieChart/totalVehiclesBySides"
+import VehiclesSummary from "../../components/summary/vehicles"
 
 export default function Vehicles() {
     return (
@@ -31,12 +32,13 @@ export default function Vehicles() {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <TotalVehiclesByRole/>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12">
-                            <TotalVehiclesByCountry/>
                             <div className="mt-3">
                                 <TotalVehiclesBySides/>
                             </div>  
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <VehiclesSummary/>
+                            <TotalVehiclesByCountry/>
                         </div>
                     </div>
                 </div>
