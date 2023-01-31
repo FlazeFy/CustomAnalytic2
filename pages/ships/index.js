@@ -11,6 +11,7 @@ import AllShips from "../../components/table/allShips"
 import TotalShipsByCountry from "../../components/barChart/totalShipsByCountry"
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
 import TotalShipsBySides from "../../components/pieChart/totalShipsBySides"
+import ShipsSummary from "../../components/summary/ships"
 
 export default function Ships() {
     return (
@@ -31,12 +32,13 @@ export default function Ships() {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                            <TotalShipsByCountry/>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12">
-                            <TotalShipsByLaunchYear/> 
                             <div className="mt-3">
                                 <TotalShipsBySides/>
-                            </div>                 
+                            </div>   
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-12">
+                            <ShipsSummary/>
+                            <TotalShipsByLaunchYear/> 
                         </div>
                     </div>
                 </div>

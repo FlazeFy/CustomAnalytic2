@@ -11,6 +11,7 @@ import TotalFacilitiesByType from "../../components/barChart/totalFacilitiesByTy
 import TotalFacilitiesByCountry from "../../components/barChart/totalFacilitiesByCountry"
 import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
 import TotalFacilitiesBySides from "../../components/pieChart/totalFacilitiesBySides"
+import FacilitiesSummary from "../../components/summary/facilities"
 
 export default function Facilities() {
     return (
@@ -30,6 +31,7 @@ export default function Facilities() {
                             <MapChart/>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
+                            <FacilitiesSummary/>
                             <TotalFacilitiesBySides/>
                         </div>
                     </div>
