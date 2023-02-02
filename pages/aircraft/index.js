@@ -12,6 +12,7 @@ import TotalAircraftByRole from "../../components/barChart/totalAircraftByRole"
 import TotalAircraftByCountry from "../../components/barChart/totalAircraftByCountry"
 import TotalAircraftBySides from "../../components/pieChart/totalAircraftBySides"
 import AircraftSummary from "../../components/summary/aircraft"
+import TotalAircraftByManufacturer from "../../components/pieChart/totalAircraftByManufacturer"
 
 export default function Aircraft() {
     return (
@@ -29,6 +30,9 @@ export default function Aircraft() {
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <AllAircraft/>
+                            <div className="mt-3">
+                                <TotalAircraftByManufacturer/>
+                            </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12">
                             <TotalAircraftByCountry/>
