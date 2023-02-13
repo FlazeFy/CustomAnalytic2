@@ -5,6 +5,6 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  max-width: 1260px !important;
   margin: auto;
-  background: #F9F9F9 !important;
 }
