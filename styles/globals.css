@@ -7,10 +7,10 @@
 }
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 table th{
-  color: #414141;
+  color: whitesmoke;
 }
 table td{
   color: #808080;
@@ -31,6 +31,7 @@ table td{
 }
 .summary-box{
   font-size:18px !important;
+  color: whitesmoke;
 }
 .form-control{
   border-radius: 20px !important;
@@ -74,6 +75,10 @@ table td{
   background: #555; 
 }
 
+/*Typography*/
+h6 {
+  color:whitesmoke;
+}
 
 
 
