@@ -17,6 +17,21 @@ export default function Navbar(props) {
 
     return (
         <div className="nav-new-holder">
+            <Link href="/intro">
+                <li className={getActive(props.active, "intro")} style={{listStyleType: "none"}}>
+                    <div className="nav-link">
+                        <div className='row'>
+                            <div className='col-3'>
+
+                            </div>
+                            <div className='col-9'>
+                                <h5>Introduction</h5>
+                                <h6>lorem ipsum</h6>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </Link>
             <Link href="/aircraft">
                 <li className={getActive(props.active, "aircraft")} style={{listStyleType: "none"}}>
                     <div className="nav-link">
@@ -131,6 +146,22 @@ export default function Navbar(props) {
                             </div>
                             <div className='col-9'>
                                 <h5>Books</h5>
+                                <h6>lorem ipsum</h6>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </Link>
+            <hr className='navbar-divider-line'></hr>
+            <Link href="/about">
+                <li className={getActive(props.active, "about")} style={{listStyleType: "none"}}>
+                    <div className="nav-link">
+                        <div className='row'>
+                            <div className='col-3'>
+
+                            </div>
+                            <div className='col-9'>
+                                <h5>About Me</h5>
                                 <h6>lorem ipsum</h6>
                             </div>
                         </div>
