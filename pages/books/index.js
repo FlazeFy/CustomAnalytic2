@@ -6,6 +6,7 @@ import Navbar from "../../components/navbar/new_navbar"
 import AllBooks from "../../components/table/allBooks"
 import TotalBooksByReviewer from "../../components/barChart/totalBooksByReviewer"
 import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
+import BooksSummary from "../../components/summary/books"
 
 export default function Books() {
     return (
@@ -36,6 +37,7 @@ export default function Books() {
                                     <div className="mb-3">
                                         <TotalBooksByYearReview/>
                                     </div>
+                                    <BooksSummary/>
                                 </div>
                             </div>    
                         </div>
