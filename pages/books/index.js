@@ -7,6 +7,7 @@ import AllBooks from "../../components/table/allBooks"
 import TotalBooksByReviewer from "../../components/barChart/totalBooksByReviewer"
 import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
 import BooksSummary from "../../components/summary/books"
+import MostAuthorPublished from "../../components/barChart/mostAuthorPublished"
 
 export default function Books() {
     return (
@@ -32,6 +33,7 @@ export default function Books() {
                                     <div className="mb-3">
                                         <TotalBooksByReviewer/>
                                     </div>
+                                    <MostAuthorPublished/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
