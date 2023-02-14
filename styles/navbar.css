@@ -40,6 +40,7 @@
     padding: 10px;
     top: 15px !important;
     position: sticky !important;
+    margin-bottom: 10px;
 }
 .nav-new-holder .nav-link{
     width: 100%;
@@ -65,4 +66,11 @@
 }
 .nav-new-holder .nav-item.active{
     border-left: 5px solid #28b374 !important;
+}
+.navbar-divider-line{
+    position: relative;
+    border: none;
+    background: #555555;
+    height: 5px;
+    border-radius: 10px;
 }
