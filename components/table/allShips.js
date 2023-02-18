@@ -23,7 +23,7 @@ const AllShips = () => {
             sessionStorage.setItem("Table_Ships", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/ships/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Ships"))
+        fetch("https://ww2.leonardhors.site/api/v1/ships/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Ships"))
         .then(res => res.json())
             .then(
             (result) => {

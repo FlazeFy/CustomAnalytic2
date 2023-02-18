@@ -21,7 +21,7 @@ export default function TotalAircraftByCountry() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/aircraft/total/bycountry")
+        fetch("https://ww2.leonardhors.site/api/v1/aircraft/total/bycountry")
         .then(res => res.json())
             .then(
             (result) => {

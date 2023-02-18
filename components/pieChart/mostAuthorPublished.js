@@ -27,7 +27,7 @@ export default function MostAuthorPublished() {
             sessionStorage.setItem("ChartFilter_MostAuthor", "authoronly");
         }
         
-        fetch("http://127.0.0.1:8000/api/books/most/byauthor/"+sessionStorage.getItem("ChartFilter_MostAuthor"))
+        fetch("https://ww2.leonardhors.site/api/v1/books/most/byauthor/"+sessionStorage.getItem("ChartFilter_MostAuthor"))
         .then(res => res.json())
             .then(
             (result) => {

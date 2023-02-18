@@ -26,7 +26,7 @@ export default function TotalAircraftByManufacturer() {
             sessionStorage.setItem("ChartLimit_AircraftManufacturer", "5");
         }
 
-        fetch("http://127.0.0.1:8000/api/aircraft/total/bymanufacturer/"+sessionStorage.getItem("ChartLimit_AircraftManufacturer"))
+        fetch("https://ww2.leonardhors.site/api/v1/aircraft/total/bymanufacturer/"+sessionStorage.getItem("ChartLimit_AircraftManufacturer"))
         .then(res => res.json())
             .then(
             (result) => {

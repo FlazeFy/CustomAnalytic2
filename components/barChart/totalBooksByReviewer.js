@@ -21,7 +21,7 @@ export default function TotalBooksByReviewer() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/books/total/byreviewer")
+        fetch("https://ww2.leonardhors.site/api/v1/books/total/byreviewer")
         .then(res => res.json())
             .then(
             (result) => {

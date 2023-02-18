@@ -21,7 +21,7 @@ export default function TotalFacilitiesByType() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/total/bytype")
+        fetch("https://ww2.leonardhors.site/api/v1/facilities/total/bytype")
         .then(res => res.json())
             .then(
             (result) => {

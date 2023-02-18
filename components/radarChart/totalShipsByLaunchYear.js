@@ -21,7 +21,7 @@ export default function TotalShipsByLaunchYear() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/ships/total/bylaunchyear")
+        fetch("https://ww2.leonardhors.site/api/v1/ships/total/bylaunchyear")
         .then(res => res.json())
             .then(
             (result) => {
@@ -44,7 +44,7 @@ export default function TotalShipsByLaunchYear() {
 
             val.forEach(e => { 
                 if(parseInt(e.launch_year) > start+(diff*i)+1 && parseInt(e.launch_year) < start+(diff*(i+1))){
-                    total_period += e.total
+                    total_period += parseInt(e.total)
                 }
             });
             catSeries.push(parseInt(total_period));

@@ -23,7 +23,7 @@ const AllEvents = () => {
             sessionStorage.setItem("Table_Events", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/events/limit/10/order/ASC?page="+sessionStorage.getItem("Table_Events"))
+        fetch("https://ww2.leonardhors.site/api/v1/events/limit/10/order/ASC?page="+sessionStorage.getItem("Table_Events"))
         .then(res => res.json())
             .then(
             (result) => {

@@ -17,7 +17,7 @@ export default function WeaponsSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/weapons/summary")
+        fetch("https://ww2.leonardhors.site/api/v1/weapons/summary")
         .then(res => res.json())
             .then(
             (result) => {

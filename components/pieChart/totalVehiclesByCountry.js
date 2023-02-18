@@ -21,7 +21,7 @@ export default function TotalVehiclesByCountry() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/vehicles/total/bycountry")
+        fetch("https://ww2.leonardhors.site/api/v1/vehicles/total/bycountry")
         .then(res => res.json())
             .then(
             (result) => {

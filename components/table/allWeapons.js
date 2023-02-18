@@ -23,7 +23,7 @@ const AllWeapons = () => {
             sessionStorage.setItem("Table_Weapons", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Weapons"))
+        fetch("https://ww2.leonardhors.site/api/v1/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Weapons"))
         .then(res => res.json())
             .then(
             (result) => {

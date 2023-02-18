@@ -21,7 +21,7 @@ export default function TotalVehiclesBySides(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/vehicles/total/bysides")
+        fetch("https://ww2.leonardhors.site/api/v1/vehicles/total/bysides")
         .then(res => res.json())
             .then(
             (result) => {

@@ -21,7 +21,7 @@ export default function TotalBooksByYearReview() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/books/total/byyearreview")
+        fetch("https://ww2.leonardhors.site/api/v1/books/total/byyearreview")
         .then(res => res.json())
             .then(
             (result) => {
@@ -44,7 +44,7 @@ export default function TotalBooksByYearReview() {
 
             val.forEach(e => { 
                 if(parseInt(e.year_review) >= start+(diff*i)+1 && parseInt(e.year_review) <= start+(diff*(i+1))){
-                    total_period += e.total
+                    total_period += parseInt(e.total)
                 }
             });
             catSeries.push(parseInt(total_period));

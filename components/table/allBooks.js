@@ -23,7 +23,7 @@ const AllBooks = () => {
             sessionStorage.setItem("Table_Books", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/books/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Books"))
+        fetch("https://ww2.leonardhors.site/api/v1/books/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Books"))
         .then(res => res.json())
             .then(
             (result) => {

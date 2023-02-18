@@ -21,7 +21,7 @@ export default function TotalAircraftByRole() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/aircraft/total/byrole")
+        fetch("https://ww2.leonardhors.site/api/v1/aircraft/total/byrole")
         .then(res => res.json())
             .then(
             (result) => {

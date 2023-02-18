@@ -21,7 +21,7 @@ export default function TotalFacilitiesBySides() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/total/bysides")
+        fetch("https://ww2.leonardhors.site/api/v1/facilities/total/bysides")
         .then(res => res.json())
             .then(
             (result) => {

@@ -27,7 +27,7 @@ export default function TotalDeathByCountry() {
             sessionStorage.setItem("ChartPage_DeathByCountry", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/DESC/limit/10?page="+sessionStorage.getItem("ChartPage_DeathByCountry"))
+        fetch("https://ww2.leonardhors.site/api/v1/casualities/totaldeath/bycountry/DESC/limit/10?page="+sessionStorage.getItem("ChartPage_DeathByCountry"))
         .then(res => res.json())
             .then(
             (result) => {

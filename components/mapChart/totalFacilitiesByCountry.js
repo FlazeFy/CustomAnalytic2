@@ -26,7 +26,7 @@ export default function MapChart() {
       sessionStorage.setItem("ChartType_FacilitiesType", "NULL");
     }
 
-    fetch("http://127.0.0.1:8000/api/facilities/bylocation/"+sessionStorage.getItem("ChartType_FacilitiesType"))
+    fetch("https://ww2.leonardhors.site/api/v1/facilities/bylocation/"+sessionStorage.getItem("ChartType_FacilitiesType"))
     .then(res => res.json())
       .then(
       (result) => {
@@ -41,7 +41,7 @@ export default function MapChart() {
   },[])
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/facilities/type")
+    fetch("https://ww2.leonardhors.site/api/v1/facilities/type")
     .then(res => res.json())
         .then(
         (result) => {

@@ -21,7 +21,7 @@ export default function TotalFacilitiesByCountry() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/total/bycountry")
+        fetch("https://ww2.leonardhors.site/api/v1/facilities/total/bycountry")
         .then(res => res.json())
             .then(
             (result) => {

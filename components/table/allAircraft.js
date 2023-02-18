@@ -23,7 +23,7 @@ const AllAircraft = () => {
             sessionStorage.setItem("Table_Aircraft", "1");
         }
 
-        fetch("http://127.0.0.1:8000/api/aircraft/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Aircraft"))
+        fetch("https://ww2.leonardhors.site/api/v1/aircraft/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Aircraft"))
         .then(res => res.json())
             .then(
             (result) => {
