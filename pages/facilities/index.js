@@ -3,11 +3,11 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
-import TotalFacilitiesByType from "../../components/barChart/totalFacilitiesByType"
-import TotalFacilitiesByCountry from "../../components/barChart/totalFacilitiesByCountry"
 import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
 import TotalFacilitiesBySides from "../../components/pieChart/totalFacilitiesBySides"
 import FacilitiesSummary from "../../components/summary/facilities"
+import GetTotalFacilityByCountry from "./usecases/getTotalFacilityByCountry"
+import GetTotalFacilityByType from "./usecases/getTotalFacilityByType"
 
 export default function Facilities() {
     return (
@@ -31,13 +31,13 @@ export default function Facilities() {
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalFacilitiesByType/>
+                                        <GetTotalFacilityByType ctx="total_facility_by_type"/>
                                     </div>
                                     <FacilitiesSummary/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalFacilitiesByCountry/>
+                                        <GetTotalFacilityByCountry ctx="total_facility_by_country"/>
                                     </div>
                                     <TotalFacilitiesBySides/>
                                 </div>

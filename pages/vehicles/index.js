@@ -4,10 +4,10 @@ import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
 import AllVehicles from "../../components/table/allVehicles"
-import TotalVehiclesByRole from "../../components/barChart/totalVehiclesByRole"
-import TotalVehiclesByCountry from "../../components/barChart/totalVehiclesByCountry"
 import TotalVehiclesBySides from "../../components/pieChart/totalVehiclesBySides"
 import VehiclesSummary from "../../components/summary/vehicles"
+import GetTotalVehicleByCountry from "./usecases/getTotalVehicleByCountry"
+import GetTotalVehicleByRole from "./usecases/getTotalVehicleByRole"
 
 export default function Vehicles() {
     return (
@@ -31,13 +31,13 @@ export default function Vehicles() {
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalVehiclesByRole/>
+                                       <GetTotalVehicleByRole ctx="total_vehicle_by_role"/>
                                     </div>
                                     <VehiclesSummary/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalVehiclesByCountry/>
+                                        <GetTotalVehicleByCountry ctx="total_vehicle_by_country"/>
                                     </div>
                                     <TotalVehiclesBySides/>
                                 </div>

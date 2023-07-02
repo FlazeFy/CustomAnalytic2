@@ -4,10 +4,10 @@ import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
 import AllShips from "../../components/table/allShips"
-import TotalShipsByCountry from "../../components/barChart/totalShipsByCountry"
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
 import TotalShipsBySides from "../../components/pieChart/totalShipsBySides"
 import ShipsSummary from "../../components/summary/ships"
+import GetTotalShipByCountry from "./usecases/getTotalShipByCountry"
 
 export default function Ships() {
     return (
@@ -30,7 +30,7 @@ export default function Ships() {
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalShipsByCountry/>
+                                    <GetTotalShipByCountry ctx="total_ship_by_country"/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <TotalShipsBySides/>

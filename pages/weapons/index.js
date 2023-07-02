@@ -4,10 +4,10 @@ import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
 import AllWeapons from "../../components/table/allWeapons"
-import TotalWeaponsByType from "../../components/barChart/totalWeaponsByType"
-import TotalWeaponsByCountry from "../../components/barChart/totalWeaponsByCountry"
 import TotalWeaponsBySides from "../../components/pieChart/totalWeaponsBySides"
 import WeaponsSummary from "../../components/summary/weapons"
+import GetTotalWeaponByCountry from "./usecases/getTotalWeaponByCountry"
+import GetTotalWeaponByType from "./usecases/getTotalWeaponByType"
 
 export default function Weapons() {
     return (
@@ -31,13 +31,13 @@ export default function Weapons() {
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalWeaponsByType/>
+                                        <GetTotalWeaponByType ctx="total_weapon_by_type"/>
                                     </div>
                                     <WeaponsSummary/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">
-                                        <TotalWeaponsByCountry/>
+                                        <GetTotalWeaponByCountry ctx="total_weapon_by_country"/>
                                     </div>
                                     <TotalWeaponsBySides/>
                                 </div>

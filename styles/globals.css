@@ -5,6 +5,25 @@
   margin: 0;
   font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif
 }
+:root {
+  /* Typography */
+  --textXJumbo : 32px;
+  --textXMD : 18px;
+  --textMD : 15px;
+  --textSM : 14px;
+  --textXSM : 12.5px;
+
+  /* Rounded */
+  --roundedLG : 60px;
+  --roundedMD : 20px;
+
+  /* Color Pallete */
+  --primaryBG : #28b374;
+  --greyBG : #c0c0c0;
+  --blackBG : #181818;
+  --successBG : #00C363;
+}
+
 a {
   color: inherit;
   text-decoration: none !important;
@@ -15,7 +34,7 @@ table th{
 table td{
   color: #808080;
 }
-.text-title{
+.text-title, h2{
   color:#28b374 !important;
 }
 
@@ -25,6 +44,9 @@ table td{
   }
 }
 /*All Pages*/
+body {
+  background-color: var(--blackBG) !important;
+}
 .content {
   padding-top: 10vh;
   padding-bottom: 10vh;

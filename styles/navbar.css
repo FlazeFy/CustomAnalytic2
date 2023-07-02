@@ -1,6 +1,6 @@
 /* Old navbar */
 .navbar.navbar-expand-lg.w-100{
-    background: #212121 !important;
+    background: var(--blackBG) !important;
     position: fixed;
     top: 0 !important;
     z-index: 999;
@@ -62,7 +62,7 @@
     background:#28b374 !important;
 }
 .nav-new-holder .nav-link:hover h6{
-    color: #212121;
+    color: var(--blackBG);
 }
 .nav-new-holder .nav-item.active{
     border-left: 5px solid #28b374 !important;
