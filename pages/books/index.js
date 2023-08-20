@@ -6,7 +6,6 @@ import Navbar from "../../components/navbar/new_navbar"
 import AllBooks from "../../components/table/allBooks"
 import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
 import BooksSummary from "../../components/summary/books"
-import MostAuthorPublished from "../../components/pieChart/mostAuthorPublished"
 import GetTotalBookByReviewer from "./usecases/getTotalBookByReviewer"
 
 export default function Books() {
@@ -33,7 +32,6 @@ export default function Books() {
                                     <div className="mb-3">
                                         <GetTotalBookByReviewer ctx="total_book_by_reviewer"/>
                                     </div>
-                                    <MostAuthorPublished/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <div className="mb-3">

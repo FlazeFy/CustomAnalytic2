@@ -15,7 +15,7 @@ export default function GetTotalVehicleByRole({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("https://ww2.leonardhors.site/api/v1/vehicles/total/byrole")
+        fetch("http://127.0.0.1:8000/api/vehicles/total/byrole")
         .then(res => res.json())
             .then(
             (result) => {

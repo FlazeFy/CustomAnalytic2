@@ -15,7 +15,7 @@ export default function GetTotalBookByReviewer({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("https://ww2.leonardhors.site/api/v1/books/total/byreviewer")
+        fetch("http://127.0.0.1:8000/api/books/total/byreviewer")
         .then(res => res.json())
             .then(
             (result) => {

@@ -4,10 +4,10 @@ import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
 import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
-import TotalFacilitiesBySides from "../../components/pieChart/totalFacilitiesBySides"
 import FacilitiesSummary from "../../components/summary/facilities"
 import GetTotalFacilityByCountry from "./usecases/getTotalFacilityByCountry"
 import GetTotalFacilityByType from "./usecases/getTotalFacilityByType"
+import GetTotalFacilityBySide from "./usecases/getTotalFacilityBySide"
 
 export default function Facilities() {
     return (
@@ -39,7 +39,7 @@ export default function Facilities() {
                                     <div className="mb-3">
                                         <GetTotalFacilityByCountry ctx="total_facility_by_country"/>
                                     </div>
-                                    <TotalFacilitiesBySides/>
+                                    <GetTotalFacilityBySide ctx="total_facility_by_side"/>
                                 </div>
                             </div>    
                         </div>

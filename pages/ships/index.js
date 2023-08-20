@@ -5,9 +5,9 @@ import Navbar from "../../components/navbar/new_navbar"
 
 import AllShips from "../../components/table/allShips"
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
-import TotalShipsBySides from "../../components/pieChart/totalShipsBySides"
 import ShipsSummary from "../../components/summary/ships"
 import GetTotalShipByCountry from "./usecases/getTotalShipByCountry"
+import GetTotalShipBySide from "./usecases/getTotalShipBySide"
 
 export default function Ships() {
     return (
@@ -33,7 +33,7 @@ export default function Ships() {
                                     <GetTotalShipByCountry ctx="total_ship_by_country"/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalShipsBySides/>
+                                    <GetTotalShipBySide ctx="total_ship_by_side"/>
                                     <ShipsSummary/>
                                     <TotalShipsByLaunchYear/> 
                                 </div>

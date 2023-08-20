@@ -2,20 +2,20 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetBarChart from '../../../components/charts/bar_chart'
+import GetPieChart from '../../../components/charts/pie_chart'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
-export default function GetTotalShipByCountry({ctx}) {
+export default function GetTotalFacilityBySide({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/ships/total/bycountry")
+        fetch("http://127.0.0.1:8000/api/facilities/total/bysides")
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,7 +48,7 @@ export default function GetTotalShipByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetBarChart items={items}/>  
+                <GetPieChart items={items} is_filtered={false} filter_name={null}/>  
             </>
         )
     }

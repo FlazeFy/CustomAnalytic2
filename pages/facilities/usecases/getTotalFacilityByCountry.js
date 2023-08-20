@@ -15,7 +15,7 @@ export default function GetTotalFacilityByCountry({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("https://ww2.leonardhors.site/api/v1/facilities/total/bycountry")
+        fetch("http://127.0.0.1:8000/api/facilities/total/bycountry")
         .then(res => res.json())
             .then(
             (result) => {

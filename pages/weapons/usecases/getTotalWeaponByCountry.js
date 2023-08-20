@@ -15,7 +15,7 @@ export default function GetTotalWeaponByCountry({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("https://ww2.leonardhors.site/api/v1/weapons/total/bycountry")
+        fetch("http://127.0.0.1:8000/api/weapons/total/bycountry")
         .then(res => res.json())
             .then(
             (result) => {
