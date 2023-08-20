@@ -4,11 +4,11 @@ import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
 import AllAircraft from "../../components/table/allAircraft"
-import TotalAircraftByRole from "../../components/barChart/totalAircraftByRole"
-import TotalAircraftByCountry from "../../components/barChart/totalAircraftByCountry"
-import TotalAircraftBySides from "../../components/pieChart/totalAircraftBySides"
 import AircraftSummary from "../../components/summary/aircraft"
-import TotalAircraftByManufacturer from "../../components/pieChart/totalAircraftByManufacturer"
+import GetTotalAircraftByCountry from "./usecases/getTotalAircraftByCountry"
+import GetTotalAircraftByRole from "./usecases/getTotalAircraftByRole"
+import GetTotalAircraftBySide from "./usecases/getTotalAircraftBySide"
+import GetTotalAircraftByManufacturer from "./usecases/getTotalAircraftByManufacturer"
 
 export default function Aircraft() {
     return (
@@ -32,18 +32,18 @@ export default function Aircraft() {
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
                                     <AircraftSummary/>
-                                    <TotalAircraftByManufacturer/>
+                                    <GetTotalAircraftByManufacturer ctx="total_aircraft_by_manufacturer"/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalAircraftBySides/>
+                                    <GetTotalAircraftBySide ctx="total_aircraft_by_side"/>
                                 </div>
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalAircraftByCountry/>
+                                    <GetTotalAircraftByCountry ctx="total_aircraft_by_country"/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalAircraftByRole/>
+                                    <GetTotalAircraftByRole ctx="total_aircraft_by_role"/>
                                 </div>
                             </div>
                         </div>
