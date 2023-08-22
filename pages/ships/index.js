@@ -3,11 +3,11 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
-import AllShips from "../../components/table/allShips"
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
 import ShipsSummary from "../../components/summary/ships"
 import GetTotalShipByCountry from "./usecases/getTotalShipByCountry"
 import GetTotalShipBySide from "./usecases/getTotalShipBySide"
+import GetAllShip from "./usecases/getAllShip"
 
 export default function Ships() {
     return (
@@ -26,7 +26,7 @@ export default function Ships() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <AllShips/>
+                                <GetAllShip ctx="all_ship"/>
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">

@@ -3,12 +3,12 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
-import AllAircraft from "../../components/table/allAircraft"
 import AircraftSummary from "../../components/summary/aircraft"
 import GetTotalAircraftByCountry from "./usecases/getTotalAircraftByCountry"
 import GetTotalAircraftByRole from "./usecases/getTotalAircraftByRole"
 import GetTotalAircraftBySide from "./usecases/getTotalAircraftBySide"
 import GetTotalAircraftByManufacturer from "./usecases/getTotalAircraftByManufacturer"
+import GetAllAircraft from "./usecases/getAllAircraft"
 
 export default function Aircraft() {
     return (
@@ -27,7 +27,7 @@ export default function Aircraft() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <AllAircraft/>
+                                <GetAllAircraft ctx="all_aircraft"/>
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">

@@ -3,10 +3,10 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/navbar/new_navbar"
 
-import AllBooks from "../../components/table/allBooks"
 import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
 import BooksSummary from "../../components/summary/books"
 import GetTotalBookByReviewer from "./usecases/getTotalBookByReviewer"
+import GetAllBook from "./usecases/getAllBook"
 
 export default function Books() {
     return (
@@ -25,7 +25,7 @@ export default function Books() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <AllBooks/>
+                                <GetAllBook ctx="all_book"/>
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
