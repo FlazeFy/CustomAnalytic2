@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
 import ShipsSummary from "../../components/summary/ships"
@@ -28,15 +28,17 @@ export default function Ships() {
                             <div className="mb-3">
                                 <GetAllShip ctx="all_ship"/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <GetTotalShipByCountry ctx="total_ship_by_country"/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <GetTotalShipBySide ctx="total_ship_by_side"/>
-                                    <ShipsSummary/>
-                                    <TotalShipsByLaunchYear/> 
-                                </div>
+                            <div className="mb-3">
+                                <GetTotalShipByCountry ctx="total_ship_by_country"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalShipBySide ctx="total_ship_by_side"/>
+                            </div>
+                            <div className="mb-3">
+                                <TotalShipsByLaunchYear/> 
+                            </div>
+                            <div className="mb-3">
+                                <ShipsSummary/>
                             </div>
                         </div>
                     </div>

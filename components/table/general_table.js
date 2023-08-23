@@ -9,19 +9,19 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
 
-export default function GetGeneralTable({builder, items, maxPage}) {
+export default function GetGeneralTable({builder, items, maxPage, ctx}) {
     //Converter
     const data = Object.values(items);
 
     //Chart filter and config
     function setLimit(page){
-        sessionStorage.setItem("Table_Aircraft", page);
+        sessionStorage.setItem(`Table_${ctx}`, page);
         location.reload();
     }
 
     return (
         <div className='custom-tbody'>
-            <p>Page : {sessionStorage.getItem("Table_Aircraft")} / {maxPage}</p>
+            <p>Page : {sessionStorage.getItem(`Table_${ctx}`)} / {maxPage}</p>
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <FontAwesomeIcon icon={faEllipsisVertical}/></button>
@@ -29,7 +29,7 @@ export default function GetGeneralTable({builder, items, maxPage}) {
                     <li>
                         <a className="dropdown-item">
                             <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                            <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem("Table_Aircraft")} onBlur={(e)=> setLimit(e.target.value)}></input>
+                            <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem(`Table_${ctx}`)} onBlur={(e)=> setLimit(e.target.value)}></input>
                         </a>
                     </li>
                 </ul>

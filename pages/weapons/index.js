@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
 import WeaponsSummary from "../../components/summary/weapons"
 import GetTotalWeaponByCountry from "./usecases/getTotalWeaponByCountry"
@@ -28,19 +28,17 @@ export default function Weapons() {
                             <div className="mb-3">
                                 <GetAllWeapon ctx="all_weapon"/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                        <GetTotalWeaponByType ctx="total_weapon_by_type"/>
-                                    </div>
-                                    <WeaponsSummary/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                        <GetTotalWeaponByCountry ctx="total_weapon_by_country"/>
-                                    </div>
-                                    <GetTotalWeaponBySide ctx="total_weapon_by_side"/>
-                                </div>
+                            <div className="mb-3">
+                                <GetTotalWeaponByType ctx="total_weapon_by_type"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalWeaponByCountry ctx="total_weapon_by_country"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalWeaponBySide ctx="total_weapon_by_side"/>
+                            </div>
+                            <div className="mb-3">
+                                <WeaponsSummary/>
                             </div>
                         </div>
                     </div>

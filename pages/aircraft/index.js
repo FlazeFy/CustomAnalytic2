@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
 import AircraftSummary from "../../components/summary/aircraft"
 import GetTotalAircraftByCountry from "./usecases/getTotalAircraftByCountry"
@@ -29,22 +29,20 @@ export default function Aircraft() {
                             <div className="mb-3">
                                 <GetAllAircraft ctx="all_aircraft"/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <AircraftSummary/>
-                                    <GetTotalAircraftByManufacturer ctx="total_aircraft_by_manufacturer"/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <GetTotalAircraftBySide ctx="total_aircraft_by_side"/>
-                                </div>
+                            <div className="mb-3">
+                                <GetTotalAircraftByManufacturer ctx="total_aircraft_by_manufacturer"/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <GetTotalAircraftByCountry ctx="total_aircraft_by_country"/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <GetTotalAircraftByRole ctx="total_aircraft_by_role"/>
-                                </div>
+                            <div className="mb-3">
+                                <GetTotalAircraftBySide ctx="total_aircraft_by_side"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalAircraftByCountry ctx="total_aircraft_by_country"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalAircraftByRole ctx="total_aircraft_by_role"/>
+                            </div>
+                            <div className="mb-3">
+                                <AircraftSummary/>
                             </div>
                         </div>
                     </div>

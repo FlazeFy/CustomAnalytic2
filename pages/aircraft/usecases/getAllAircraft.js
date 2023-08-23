@@ -73,7 +73,7 @@ export default function GetAllAircraft({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items}/>  
+                <GetGeneralTable builder={builder} items={items} ctx={ctx}/>  
             </>
         )
     }
