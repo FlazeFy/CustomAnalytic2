@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
 import TotalDeathByCountry from "../../components/columnChart/totalDeathByCountry"
-import TotalDeathBySides from "../../components/pieChart/totalDeathBySides"
 import CasualitiesSummary from "../../components/summary/casualities"
+import GetTotalDeathBySide from "./usecases/getTotalDeathBySide"
 
 export default function Casualities() {
     return (
@@ -28,10 +28,10 @@ export default function Casualities() {
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <TotalDeathBySides source={"Military"}/>     
+                                    <GetTotalDeathBySide ctx="total_death_by_side_military" view="Military"/>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12">  
-                                    <TotalDeathBySides source={"Civilian"}/>
+                                    <GetTotalDeathBySide ctx="total_death_by_side_civilian" view="Civilian"/>
                                 </div>
                             </div>
                             <CasualitiesSummary/>    

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
 import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
 import FacilitiesSummary from "../../components/summary/facilities"
@@ -28,20 +28,18 @@ export default function Facilities() {
                             <div className="mb-3">
                                 <MapChart/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                        <GetTotalFacilityByType ctx="total_facility_by_type"/>
-                                    </div>
-                                    <FacilitiesSummary/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                        <GetTotalFacilityByCountry ctx="total_facility_by_country"/>
-                                    </div>
-                                    <GetTotalFacilityBySide ctx="total_facility_by_side"/>
-                                </div>
-                            </div>    
+                            <div className="mb-3">
+                                <GetTotalFacilityByType ctx="total_facility_by_type"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalFacilityByCountry ctx="total_facility_by_country"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalFacilityBySide ctx="total_facility_by_side"/>
+                            </div>
+                            <div className="mb-3">
+                                <FacilitiesSummary/>
+                            </div>  
                         </div>
                     </div>
                 </div>

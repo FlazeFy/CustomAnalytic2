@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
-import AllEvents from "../../components/table/allEvents"
+import GetAllEvent from "./usecases/getAllEvent"
 
 export default function Events() {
     return (
@@ -20,7 +20,7 @@ export default function Events() {
                         <Navbar active={"events"}/>
                     </div>
                     <div className="col-9">
-                        <AllEvents/>
+                        <GetAllEvent ctx="all_event"/>
                     </div>
                 </div>
             </main>

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/navbar/new_navbar"
+import Navbar from "../../components/navbar/left_bar"
 
-import AllVehicles from "../../components/table/allVehicles"
 import VehiclesSummary from "../../components/summary/vehicles"
 import GetTotalVehicleByCountry from "./usecases/getTotalVehicleByCountry"
 import GetTotalVehicleByRole from "./usecases/getTotalVehicleByRole"
 import GetTotalVehicleBySide from "./usecases/getTotalVehicleBySide"
+import GetAllVehicle from "./usecases/getAllVehicle"
 
 export default function Vehicles() {
     return (
@@ -26,22 +26,20 @@ export default function Vehicles() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <AllVehicles/>
+                                <GetAllVehicle ctx="all_vehicle"/>
                             </div>
-                            <div className="row mb-3">
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                       <GetTotalVehicleByRole ctx="total_vehicle_by_role"/>
-                                    </div>
-                                    <VehiclesSummary/>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-12">
-                                    <div className="mb-3">
-                                        <GetTotalVehicleByCountry ctx="total_vehicle_by_country"/>
-                                    </div>
-                                    <GetTotalVehicleBySide ctx="total_vehicle_by_side"/>
-                                </div>
-                            </div>    
+                            <div className="mb-3">
+                                <GetTotalVehicleByRole ctx="total_vehicle_by_role"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalVehicleByCountry ctx="total_vehicle_by_country"/>
+                            </div>
+                            <div className="mb-3">
+                                <GetTotalVehicleBySide ctx="total_vehicle_by_side"/>
+                            </div>
+                            <div className="mb-3">
+                                <VehiclesSummary/>
+                            </div>
                         </div>
                     </div>
                 </div>
