@@ -52,7 +52,7 @@ export default function GetPieChart({items, is_filtered, filter_name}) {
 
     return (
         <div className='custom-tbody' style={{padding:"6px"}}>
-            <div className="BalanceChart me-4">
+            <div className="me-4">
                 {is_filtered ? (
                     <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

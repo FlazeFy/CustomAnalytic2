@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import styles from '../../modules/styles/Home.module.css'
 import Navbar from "../../components/navbar/left_bar"
 
 import TotalDeathByCountry from "../../components/columnChart/totalDeathByCountry"
