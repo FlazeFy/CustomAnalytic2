@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Head from 'next/head'
 import styles from '../../modules/styles/Home.module.css'
+import about from './about.module.css'
 import Navbar from "../../components/navbar/left_bar"
 
 //Font awesome classicon
@@ -65,7 +66,7 @@ export default function AboutMe() {
                             <h3 className="text-title">About Me</h3>
                             <div className="row mt-4">
                                 <div className="col-lg-3 text-center">
-                                    <img className="img img-fluid rounded-circle" src="" width="125" height="125" />
+                                    <img className={about.profile_image} src="/images/me/leo.JPG" width="125" height="125" />
                                 </div>
                                 <div className="col-lg-9 text-start pt-2">
                                     {

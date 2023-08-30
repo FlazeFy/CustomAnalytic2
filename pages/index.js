@@ -15,7 +15,7 @@ export default function Home() {
         <div className="content">
           <div className="row">
             <div className="col-3">
-              <Navbar active={"aircraft"}/>
+              <Navbar active={""}/>
             </div>
             <div className="col-9">
 

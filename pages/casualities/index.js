@@ -3,9 +3,9 @@ import Head from 'next/head'
 import styles from '../../modules/styles/Home.module.css'
 import Navbar from "../../components/navbar/left_bar"
 
-import TotalDeathByCountry from "../../components/columnChart/totalDeathByCountry"
 import CasualitiesSummary from "../../components/summary/casualities"
 import GetTotalDeathBySide from "./usecases/getTotalDeathBySide"
+import GetTotalDeathByCountry from "./usecases/getTotalDeathByCountry"
 
 export default function Casualities() {
     return (
@@ -24,7 +24,7 @@ export default function Casualities() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <TotalDeathByCountry/>
+                                <GetTotalDeathByCountry ctx="total_death_by_country"/>
                             </div>
                             <div className="row mb-3">
                                 <div className="col-lg-6 col-md-6 col-sm-12">

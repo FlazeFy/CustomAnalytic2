@@ -3,11 +3,11 @@ import Head from 'next/head'
 import styles from '../../modules/styles/Home.module.css'
 import Navbar from "../../components/navbar/left_bar"
 
-import MapChart from "../../components/mapChart/totalFacilitiesByCountry"
 import FacilitiesSummary from "../../components/summary/facilities"
 import GetTotalFacilityByCountry from "./usecases/getTotalFacilityByCountry"
 import GetTotalFacilityByType from "./usecases/getTotalFacilityByType"
 import GetTotalFacilityBySide from "./usecases/getTotalFacilityBySide"
+import GetFacilityLocation from "./usecases/getFacilityLocation"
 
 export default function Facilities() {
     return (
@@ -26,7 +26,7 @@ export default function Facilities() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <MapChart/>
+                                <GetFacilityLocation ctx="facility_location"/>
                             </div>
                             <div className="mb-3">
                                 <GetTotalFacilityByType ctx="total_facility_by_type"/>
