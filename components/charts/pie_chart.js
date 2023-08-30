@@ -52,7 +52,7 @@ export default function GetPieChart({items, is_filtered, filter_name}) {
 
     return (
         <div className='custom-tbody' style={{padding:"6px"}}>
-            <div className="BalanceChart me-4">
+            <div className="me-4">
                 {is_filtered ? (
                     <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +61,7 @@ export default function GetPieChart({items, is_filtered, filter_name}) {
                         {
                             //Category type filter
                             chartFilter.map((val, i, index) => {
-                            if(val == sessionStorage.getItem("ChartFilter_MostAuthor")){
+                            if(val == sessionStorage.getItem(`chart_filter_${filter_name}_sess`)){
                                 return (
                                     <li key={i}><a className="dropdown-item" onClick={(e)=> setCategory(val)}><FontAwesomeIcon icon={faCheck}/> {val}</a></li>
                                 );

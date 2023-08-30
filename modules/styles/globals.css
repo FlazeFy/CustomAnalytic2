@@ -8,14 +8,20 @@
 :root {
   /* Typography */
   --textXJumbo : 32px;
+  --textXL : 24px;
   --textXMD : 18px;
   --textMD : 15px;
   --textSM : 14px;
   --textXSM : 12.5px;
 
+  /* Margin & Padding */
+  --spaceMD : 10px;
+  --spaceSM : 6px;
+
   /* Rounded */
   --roundedLG : 60px;
   --roundedMD : 20px;
+  --roundedSM : 10px;
 
   /* Color Pallete */
   --primaryBG : #28b374;

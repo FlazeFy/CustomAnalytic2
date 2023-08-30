@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import styles from '../../modules/styles/Home.module.css'
 import Navbar from '../../components/navbar/left_bar'
+import GetStoryContainer from '../../components/containers/story_container'
 
 export default function Story() {
   return (
@@ -18,7 +19,13 @@ export default function Story() {
               <Navbar active={"story"}/>
             </div>
             <div className="col-9">
-
+              <div className="row">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div className="col-4" key={index}>
+                    <GetStoryContainer />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

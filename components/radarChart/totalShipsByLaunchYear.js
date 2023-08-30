@@ -129,7 +129,7 @@ export default function TotalShipsByLaunchYear() {
         return (
             <div className='custom-tbody' style={{padding:"6px"}}>
                 <h6>Total Ships By Launch Year</h6>
-                <div className="BalanceChart me-4">
+                <div className="me-4">
                     <Chart
                         options={chart.options}
                         series={chart.series}

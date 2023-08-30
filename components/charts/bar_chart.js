@@ -39,7 +39,7 @@ export default function GetBarChart({items}) {
 
     return (
         <div className='custom-tbody' style={{padding:"6px"}}>
-            <div className="BalanceChart me-4">
+            <div className="me-4">
                 <Chart
                     options={chart.options}
                     series={chart.series}

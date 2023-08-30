@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import '../styles/navbar.css'
+import '../modules/styles/globals.css'
+import '../modules/styles/navbar.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 

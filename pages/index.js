@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../modules/styles/Home.module.css'
 import Navbar from '../components/navbar/left_bar'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
         <div className="content">
           <div className="row">
             <div className="col-3">
-              <Navbar active={"aircraft"}/>
+              <Navbar active={""}/>
             </div>
             <div className="col-9">
 
