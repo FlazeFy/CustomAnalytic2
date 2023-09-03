@@ -1,10 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
-
-//Font awesome icon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  } from "@fortawesome/free-solid-svg-icons"
+import { ucEachWord } from '../../modules/helpers/typography';
 
 export default function Navbar(props) {
     function getActive(val, curr){
@@ -105,7 +100,7 @@ export default function Navbar(props) {
                             {/* ... */}
                         </div>
                         <div className='col-9'>
-                            <h5>{title}</h5>
+                            <h5>{ucEachWord(title)}</h5>
                             <h6>{desc}</h6>
                         </div>
                     </div>

@@ -25,15 +25,14 @@
 
   /* Color Pallete */
   --primaryBG : #28b374;
+  --secondaryBG : #245ad0;
   --greyBG : #c0c0c0;
+  --whiteColor: #f4f4f4;
   --blackBG : #181818;
   --successBG : #00C363;
+  --warningBG : #FF6E58;
 }
 
-a {
-  color: inherit;
-  text-decoration: none !important;
-}
 table th{
   color: whitesmoke;
 }
@@ -49,6 +48,7 @@ table td{
     color-scheme: dark;
   }
 }
+
 /*All Pages*/
 body {
   background-color: var(--blackBG) !important;
@@ -98,7 +98,7 @@ body {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #245ad0; 
+  background: var(--secondaryBG); 
 }
 
 /* Handle on hover */
@@ -133,4 +133,16 @@ h6 {
   border-radius:100% !important;
 }
 
+.section-line {
+  color: var(--primaryBG);
+}
 
+.tag-box {
+  color: var(--whiteColor) !important;
+  background: var(--secondaryBG);
+  padding: var(--spaceSM);
+  font-size: var(--textXMD) !important;
+  border-radius: var(--roundedSM);
+  margin-right: var(--spaceSM);
+  cursor: pointer;
+}
