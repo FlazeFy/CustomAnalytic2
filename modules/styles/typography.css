@@ -1,0 +1,18 @@
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+h1 {
+    color: var(--primaryBG);
+    font-size: var(--textXJumbo);
+}
+
+p, li {
+    color: var(--whiteColor);
+}
+
+.section-title {
+    font-size: var(--textXL);
+    color: var(--primaryBG);
+}

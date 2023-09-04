@@ -1,0 +1,21 @@
+.story_status {
+    font-size: var(--textXMD);
+    color: var(--warningBG);
+}
+
+/* getFeedback */
+.feedback_box {
+    width: 100%;
+    padding: var(--spaceLG);
+    margin: var(--spaceLG) var(--spaceMD);
+    border-radius: var(--roundedMD);
+    border: 1.5px solid var(--greyBG);
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    position: relative;
+}
+.feedback_box:hover {
+    box-shadow: rgba(40, 179, 116, 1) 0px 4.5px 9px;
+}
