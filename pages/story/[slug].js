@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 import StoryBar from '../../components/navbar/story_bar'
 import GetDetail from './usecases/detail/getDetail'
 import GetInfo from './usecases/detail/getInfo'
+import GetReference from './usecases/detail/getReference'
+import GetFeedback from './usecases/detail/getFeedback'
+import GetDiscussion from './usecases/detail/getDiscussion'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -50,6 +53,12 @@ export default function StoryDetail() {
             title: "Reference",
             desc: "wikipedia, ...",
             section: "reference"
+        },
+        {
+            link: null,
+            title: "Simmiliar Stories",
+            desc: "...",
+            section: "others"
         }
     ]
 
@@ -81,16 +90,65 @@ export default function StoryDetail() {
                 body: "Lorem ipsum dolor sit almet"
             }
         ], 
-        reference: [
+        feedback: [
             {
-                type: "url",
-                name: "Battle of the somme",
-                context: "wikipedia.com"
+                rate: 5,
+                username: "FlazeFy",
+                profile_img: null,
+                body: "One of the most iconic battle in whole war",
+                created_at: "20-08-2020"
             },
             {
-                type: "url",
+                rate: 4,
+                username: "Flazen",
+                profile_img: null,
+                body: "Great content",
+                created_at: "22-08-2020"
+            }
+        ], 
+        discussion: [
+            {
+                role: "creator",
+                username: "FlazeFy",
+                profile_img: null,
+                body: "Lorem ipsum",
+                created_at: "20-08-2020"
+            },
+            {
+                rate: "editor",
+                username: "Flazen",
+                profile_img: null,
+                body: "Lorem ipsum",
+                created_at: "22-08-2020"
+            },
+            {
+                rate: "visitor",
+                username: "Flazen",
+                profile_img: null,
+                body: "Lorem ipsum",
+                created_at: "22-08-2020"
+            }
+        ], 
+        reference: [
+            {
+                type: "website",
                 name: "Battle of the somme",
-                context: "wikipedia.com"
+                url: "wikipedia.com"
+            },
+            {
+                type: "website",
+                name: "Battle of the somme",
+                url: "wikipedia.com"
+            },
+            {
+                type: "book",
+                name: "Battle of the somme",
+                url: "wikipedia.com"
+            },
+            {
+                type: "journal",
+                name: "Battle of the somme",
+                url: "wikipedia.com"
             }
         ], 
     }
@@ -111,7 +169,10 @@ export default function StoryDetail() {
                         </div>
                         <div className="col-9">
                             <GetInfo props={dummy.info}/>
-                            <GetDetail/>
+                            <GetDetail props={dummy.detail}/>
+                            <GetReference props={dummy.reference}/>
+                            <GetDiscussion props={dummy.discussion}/>
+                            <GetFeedback props={dummy.feedback}/>
                         </div>
                     </div>
                 </div>

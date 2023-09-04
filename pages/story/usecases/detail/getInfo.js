@@ -25,7 +25,7 @@ export default function GetInfo({props}) {
             <br></br>
             <div className='row'>
                 <div className='col'>
-                    <h4 className='section-title'>Result</h4>
+                    <h4 className='section-title'>Result <span style={{fontSize:"var(--textXMD)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>{props.result}</span></h4>
                     {
                         props.result_detail.map((val, i, index) => {
                             return (
@@ -45,7 +45,7 @@ export default function GetInfo({props}) {
                     }
                 </div>
             </div>
-            <hr className="section-line"></hr>  
+            <br></br><hr className="section-line"></hr><br></br>
         </div>
     )
 }

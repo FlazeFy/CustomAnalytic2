@@ -15,6 +15,7 @@
   --textXSM : 12.5px;
 
   /* Margin & Padding */
+  --spaceLG : 16px;
   --spaceMD : 10px;
   --spaceSM : 6px;
 
@@ -30,6 +31,7 @@
   --whiteColor: #f4f4f4;
   --blackBG : #181818;
   --successBG : #00C363;
+  --yellowBG : #F4E482;
   --warningBG : #FF6E58;
 }
 
@@ -145,4 +147,8 @@ h6 {
   border-radius: var(--roundedSM);
   margin-right: var(--spaceSM);
   cursor: pointer;
+}
+
+.reference-item {
+  font-size: var(--textXMD);
 }
