@@ -1,11 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import Image from 'next/image'
-
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { } from "@fortawesome/free-solid-svg-icons"
 
 export default function ShipsSummary(props) {
     //Initial variable
@@ -36,14 +30,6 @@ export default function ShipsSummary(props) {
     } else if (!isLoaded) {
         return (
             <div>
-                {/* <Image
-                    src="/loading.gif"
-                    alt="Vercel Logo"
-                    className='loading-logo'
-                    width={100}
-                    height={100}
-                    priority
-                /> */}
                 <h5 className='text-center text-white mt-2 fst-italic'>Loading...</h5>
             </div>
         );

@@ -7,6 +7,7 @@ import GetInfo from './usecases/detail/getInfo'
 import GetReference from './usecases/detail/getReference'
 import GetFeedback from './usecases/detail/getFeedback'
 import GetDiscussion from './usecases/detail/getDiscussion'
+import GetStats from './usecases/detail/getStats'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -106,27 +107,48 @@ export default function StoryDetail() {
                 created_at: "22-08-2020"
             }
         ], 
+        stats: [
+            {
+                name: "casualities",
+                data: [
+                    {
+                        context: "allies",
+                        total: 620000
+                    },
+                    {
+                        context: "axis",
+                        total: 440000
+                    }
+                ],
+                recommended: [
+                    "pie_chart"
+                ]
+            },
+        ],
         discussion: [
             {
                 role: "creator",
                 username: "FlazeFy",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "20-08-2020"
+                created_at: "20-08-2020",
+                is_you: true
             },
             {
-                rate: "editor",
+                role: "editor",
                 username: "Flazen",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "22-08-2020"
+                created_at: "22-08-2020",
+                is_you: false
             },
             {
-                rate: "visitor",
+                role: "visitor",
                 username: "Flazen",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "22-08-2020"
+                created_at: "22-08-2020",
+                is_you: false
             }
         ], 
         reference: [
@@ -170,6 +192,7 @@ export default function StoryDetail() {
                         <div className="col-9">
                             <GetInfo props={dummy.info}/>
                             <GetDetail props={dummy.detail}/>
+                            <GetStats props={dummy.stats}/>
                             <GetReference props={dummy.reference}/>
                             <GetDiscussion props={dummy.discussion}/>
                             <GetFeedback props={dummy.feedback}/>

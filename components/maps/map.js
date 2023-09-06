@@ -1,5 +1,4 @@
 import React from "react"
-import { useState, useEffect } from "react"
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps"
 
 //Font awesome classicon

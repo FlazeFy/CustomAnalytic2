@@ -8,8 +8,8 @@ h1 {
     font-size: var(--textXJumbo);
 }
 
-p, li {
-    color: var(--whiteColor);
+p, li, tspan {
+    color: var(--whiteColor) !important;
 }
 
 .section-title {

@@ -1,6 +1,3 @@
-import detail from './detail.module.css'
-
-import container from '../../../../components/containers/containers.module.css'
 import GetDiscussionContainer from '../../../../components/containers/discussion_container'
 
 export default function GetDiscussion({props}) {

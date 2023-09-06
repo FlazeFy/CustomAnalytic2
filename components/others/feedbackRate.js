@@ -1,8 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
-
-import dynamic from 'next/dynamic'
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"

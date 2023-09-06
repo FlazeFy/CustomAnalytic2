@@ -1,12 +1,18 @@
-.story_box {
+/* Story Container */
+.story_box, .discussion_box {
     margin: var(--spaceMD) 0 var(--spaceMD) 0;
     border-radius: var(--roundedMD);
     border: 1.5px solid var(--greyBG);
-    cursor: pointer;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     transition: all 0.4s;
     position: relative;
+}
+.story_box {
+    cursor: pointer;
+}
+.discussion_box {
+    padding: var(--spaceLG);
 }
 .story_type {
     position: absolute;
@@ -17,7 +23,7 @@
     padding: var(--spaceSM) calc(var(--spaceSM) + var(--spaceSM));
     border-radius: var(--roundedSM);
 }
-.story_box:hover {
+.story_box:hover, .discussion_box:hover {
     box-shadow: rgba(40, 179, 116, 1) 0px 4.5px 9px;
 }
 .story_creator_image {
@@ -45,4 +51,10 @@
     line-clamp: 4; 
     -webkit-box-orient: vertical;
     margin-bottom: var(--spaceSM);
+}
+
+/* Discussion Container */
+.discussion_box {
+    width: 75%;
+    min-width: 480px;
 }
