@@ -11,7 +11,6 @@ export default function GetDiscussion({props}) {
                     )
                 })
             }
-            <br></br><hr className="section-line"></hr><br></br>
         </div>
     )
 }

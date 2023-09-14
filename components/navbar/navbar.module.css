@@ -1,0 +1,16 @@
+.profile_box {
+    padding: var(--spaceMD);
+    margin: var(--spaceSM);
+    background: var(--primaryBG);
+    border-radius: var(--roundedSM);
+    cursor: pointer;
+}
+.profile_box:hover {
+    background: var(--successBG);
+}
+.page_bar {
+    background: var(--secondaryBG);
+    border-radius: var(--roundedMD);
+    padding: var(--spaceMD);
+    margin-right: var(--spaceMD);
+}

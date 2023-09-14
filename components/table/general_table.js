@@ -8,32 +8,15 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
+import PageBar from '../navbar/page_bar'
 
-export default function GetGeneralTable({builder, items, maxPage, ctx}) {
+export default function GetGeneralTable({builder, items, maxPage, currentPage}) {
     //Converter
     const data = Object.values(items);
 
-    //Chart filter and config
-    function setLimit(page){
-        sessionStorage.setItem(`Table_${ctx}`, page);
-        location.reload();
-    }
-
     return (
         <div className='custom-tbody'>
-            <p>Page : {sessionStorage.getItem(`Table_${ctx}`)} / {maxPage}</p>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <FontAwesomeIcon icon={faEllipsisVertical}/></button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
-                        <a className="dropdown-item">
-                            <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                            <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem(`Table_${ctx}`)} onBlur={(e)=> setLimit(e.target.value)}></input>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <PageBar curr={currentPage} max={maxPage}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>

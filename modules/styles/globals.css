@@ -20,6 +20,7 @@
   --spaceSM : 6px;
 
   /* Rounded */
+  --roundedCircle : 100%;
   --roundedLG : 60px;
   --roundedMD : 20px;
   --roundedSM : 10px;
@@ -54,6 +55,16 @@ table td{
 /*All Pages*/
 body {
   background-color: var(--blackBG) !important;
+}
+.main {
+  display: block;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 1260px !important;
+  margin: auto;
 }
 .content {
   padding-top: 10vh;

@@ -2,17 +2,20 @@ a {
     color: inherit;
     text-decoration: none !important;
 }
-
 h1 {
     color: var(--primaryBG);
     font-size: var(--textXJumbo);
 }
-
-p, li, tspan {
+p, li, .apexcharts-legend-text {
     color: var(--whiteColor) !important;
 }
 
 .section-title {
     font-size: var(--textXL);
     color: var(--primaryBG);
+}
+
+/* Others */
+.apexcharts-legend-text, g .apexcharts-yaxis {
+    font-size: var(--textMD) !important;
 }

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from '../../modules/styles/Home.module.css'
 import { useRouter } from 'next/router'
 import StoryBar from '../../components/navbar/story_bar'
 import GetDetail from './usecases/detail/getDetail'
@@ -8,6 +7,7 @@ import GetReference from './usecases/detail/getReference'
 import GetFeedback from './usecases/detail/getFeedback'
 import GetDiscussion from './usecases/detail/getDiscussion'
 import GetStats from './usecases/detail/getStats'
+import PostDiscussion from './usecases/detail/postDiscussion'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -124,6 +124,26 @@ export default function StoryDetail() {
                     "pie_chart"
                 ]
             },
+            {
+                name: "casualities per country",
+                data: [
+                    {
+                        context: "british empire",
+                        total: 420000
+                    },
+                    {
+                        context: "germany",
+                        total: 440000
+                    },
+                    {
+                        context: "france",
+                        total: 200000
+                    }
+                ],
+                recommended: [
+                    "pie_chart"
+                ]
+            },
         ],
         discussion: [
             {
@@ -183,7 +203,7 @@ export default function StoryDetail() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
+            <main className="main">
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
@@ -195,6 +215,7 @@ export default function StoryDetail() {
                             <GetStats props={dummy.stats}/>
                             <GetReference props={dummy.reference}/>
                             <GetDiscussion props={dummy.discussion}/>
+                            <PostDiscussion/>
                             <GetFeedback props={dummy.feedback}/>
                         </div>
                     </div>

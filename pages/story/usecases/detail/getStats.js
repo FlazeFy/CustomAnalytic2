@@ -8,7 +8,8 @@ export default function GetStats({props}) {
             <h4 className='section-title'>Stats</h4>
             {
                 props.map((val, i, index) => {
-                    if(val.data.length == 2){
+                    const len = val.data.length
+                    if(len >= 2 && len <= 8){
                         return (
                             <>
                                 <h5 style={{color:"var(--whiteColor)"}}>{getCleanTitleFromCtx(val.name)}</h5>
@@ -21,7 +22,7 @@ export default function GetStats({props}) {
                                         <h6>Bar Chart</h6>
                                         <GetBarChart items={val.data}/>
                                     </div>
-                                </div>
+                                </div><br></br>
                             </>
                         )
                     } else {
