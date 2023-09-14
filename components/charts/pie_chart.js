@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
@@ -35,12 +34,7 @@ export default function GetPieChart({items, is_filtered, filter_name}) {
     chart = {
         series: getSeries(data),
         options: {
-            labels: getCategory(data),
-            plotOptions: {
-                donut: {
-                  size: 200
-                }
-            }
+            labels: getCategory(data)
         }
     };
 

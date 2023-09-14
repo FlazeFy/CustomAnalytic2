@@ -12,7 +12,8 @@ export default function GetAllBook({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
-    const [maxPage, setMaxPage] = useState([])
+    const [maxPage, setMaxPage] = useState(0)
+    const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -33,6 +34,7 @@ export default function GetAllBook({ctx}) {
                 if(getLocal(ctx + "_sess") !== undefined){
                     setIsLoaded(true)
                     setMaxPage(result.data.last_page)
+                    setCurrPage(result.data.current_page)
                     setItems(JSON.parse(getLocal(ctx + "_sess")))
                 } else {
                     setIsLoaded(true)
@@ -73,7 +75,7 @@ export default function GetAllBook({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} ctx={ctx}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
             </>
         )
     }

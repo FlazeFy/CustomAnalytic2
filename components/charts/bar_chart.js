@@ -1,6 +1,4 @@
 import React from 'react'
-import { useEffect } from "react"
-import Image from 'next/image'
 
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
@@ -44,7 +42,7 @@ export default function GetBarChart({items}) {
                     options={chart.options}
                     series={chart.series}
                     type="bar"
-                    height="800"
+                    // height="800"
                 />
             </div>
         </div>

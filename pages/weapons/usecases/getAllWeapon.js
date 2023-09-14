@@ -12,7 +12,8 @@ export default function GetAllWeapon({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
-    const [maxPage, setMaxPage] = useState([])
+    const [maxPage, setMaxPage] = useState(0)
+    const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -27,6 +28,7 @@ export default function GetAllWeapon({ctx}) {
             (result) => {
                 setIsLoaded(true)
                 setMaxPage(result.data.last_page)
+                setCurrPage(result.data.current_page)
                 setItems(result.data.data)        
             },
             (error) => {
@@ -69,7 +71,7 @@ export default function GetAllWeapon({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} ctx={ctx}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
             </>
         )
     }
