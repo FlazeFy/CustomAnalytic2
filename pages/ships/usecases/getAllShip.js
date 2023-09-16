@@ -18,11 +18,14 @@ export default function GetAllShip({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Ship") == null){
-            sessionStorage.setItem("Table_Ship", "1");
+        if(sessionStorage.getItem("Table_Ships") == null){
+            sessionStorage.setItem("Table_Ships", "1");
+        }
+        if(sessionStorage.getItem("Table_order_Ships") == null){
+            sessionStorage.setItem("Table_order_Ships", "asc");
         }
 
-        fetch("http://127.0.0.1:8000/api/ships/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Ships"))
+        fetch(`http://127.0.0.1:8000/api/ships/limit/15/order/${sessionStorage.getItem("Table_order_Ships")}?page="${sessionStorage.getItem("Table_Ships")}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -75,7 +78,7 @@ export default function GetAllShip({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Ships"}/>  
             </>
         )
     }

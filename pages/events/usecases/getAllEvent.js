@@ -18,11 +18,14 @@ export default function GetAllEvent({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Event") == null){
-            sessionStorage.setItem("Table_Event", "1");
+        if(sessionStorage.getItem("Table_Events") == null){
+            sessionStorage.setItem("Table_Events", "1");
+        }
+        if(sessionStorage.getItem("Table_order_Events") == null){
+            sessionStorage.setItem("Table_order_Events", "asc");
         }
 
-        fetch("http://127.0.0.1:8000/api/events/limit/10/order/ASC?page="+sessionStorage.getItem("Table_Events"))
+        fetch(`http://127.0.0.1:8000/api/events/limit/10/order/${sessionStorage.getItem("Table_order_Events")}?page="${sessionStorage.getItem("Table_Events")}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -68,7 +71,7 @@ export default function GetAllEvent({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Events"}/>  
             </>
         )
     }

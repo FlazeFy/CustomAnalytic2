@@ -8,9 +8,17 @@
 .profile_box:hover {
     background: var(--successBG);
 }
-.page_bar {
+.page_bar, .page_bar_active {
+    border: 1.5px solid var(--secondaryBG);
+    border-radius: var(--roundedSM);
+    padding: var(--spaceSM) var(--spaceMD);
+    margin-right: var(--spaceSM);
+    margin-top: var(--spaceSM);
+    display: inline-block;
+    cursor: pointer;
+    color: var(--whiteColor);
+    background: none;
+}
+.page_bar_active, .page_bar:hover {
     background: var(--secondaryBG);
-    border-radius: var(--roundedMD);
-    padding: var(--spaceMD);
-    margin-right: var(--spaceMD);
 }

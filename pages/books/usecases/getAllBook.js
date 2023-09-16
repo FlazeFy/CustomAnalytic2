@@ -18,11 +18,14 @@ export default function GetAllBook({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Book") == null){
-            sessionStorage.setItem("Table_Book", "1");
+        if(sessionStorage.getItem("Table_Books") == null){
+            sessionStorage.setItem("Table_Books", "1");
+        }
+        if(sessionStorage.getItem("Table_order_Books") == null){
+            sessionStorage.setItem("Table_order_Books", "asc");
         }
 
-        fetch("http://127.0.0.1:8000/api/books/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Books"))
+        fetch(`http://127.0.0.1:8000/api/books/limit/15/order/${sessionStorage.getItem("Table_order_Books")}?page=${sessionStorage.getItem("Table_Books")}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -75,7 +78,7 @@ export default function GetAllBook({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Books"}/>  
             </>
         )
     }

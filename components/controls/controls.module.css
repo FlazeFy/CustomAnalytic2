@@ -1,0 +1,6 @@
+.control_box {
+    background: var(--secondaryBG);
+    padding: var(--spaceSM);
+    border-radius: var(--roundedSM);
+    border: none;
+}

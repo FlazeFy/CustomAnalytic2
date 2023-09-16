@@ -21,8 +21,11 @@ export default function GetAllVehicle({ctx}) {
         if(sessionStorage.getItem("Table_Vehicle") == null){
             sessionStorage.setItem("Table_Vehicle", "1");
         }
+        if(sessionStorage.getItem("Table_order_Vehicle") == null){
+            sessionStorage.setItem("Table_order_Vehicle", "asc");
+        }
 
-        fetch("http://127.0.0.1:8000/api/vehicles/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Ships"))
+        fetch(`http://127.0.0.1:8000/api/vehicles/limit/15/order/${sessionStorage.getItem("Table_order_Vehicle")}?page=${sessionStorage.getItem("Table_Vehicle")}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -75,7 +78,7 @@ export default function GetAllVehicle({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Vehicle"}/>  
             </>
         )
     }

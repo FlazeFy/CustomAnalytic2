@@ -1,22 +1,12 @@
 import React from 'react'
-import Image from 'next/image'
 
-import dynamic from 'next/dynamic'
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
-
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
 import PageBar from '../navbar/page_bar'
+import GetOrdering from '../controls/ordering'
 
-export default function GetGeneralTable({builder, items, maxPage, currentPage}) {
-    //Converter
-    const data = Object.values(items);
-
+export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
     return (
         <div className='custom-tbody'>
-            <PageBar curr={currentPage} max={maxPage}/>
+            <GetOrdering ctx={ctx}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
@@ -59,6 +49,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage}) 
                     }
                 </tbody>
             </table>
+            <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }
