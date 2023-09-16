@@ -9,3 +9,21 @@ export const getCleanTitleFromCtx = (val) => {
         throw error
     }
 };
+
+export const convertSignedNumber = (num, ctx) => {
+    if(ctx == "+"){
+        if(num < 0){
+            return num * -1
+        } else {
+            return num
+        }
+    } else if (ctx == "-"){
+        if(num > 0){
+            return num * -1
+        } else {
+            return num
+        }
+    } else {
+        return false
+    }
+}

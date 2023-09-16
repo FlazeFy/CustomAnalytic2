@@ -21,8 +21,11 @@ export default function GetAllWeapon({ctx}) {
         if(sessionStorage.getItem("Table_Weapon") == null){
             sessionStorage.setItem("Table_Weapon", "1");
         }
+        if(sessionStorage.getItem("Table_order_Weapon") == null){
+            sessionStorage.setItem("Table_order_Weapon", "asc");
+        }
 
-        fetch("http://127.0.0.1:8000/api/weapons/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Ships"))
+        fetch(`http://127.0.0.1:8000/api/weapons/limit/15/order/${sessionStorage.getItem("Table_order_Weapon")}?page=${sessionStorage.getItem("Table_Weapon")}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -71,7 +74,7 @@ export default function GetAllWeapon({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Weapon"}/>  
             </>
         )
     }
