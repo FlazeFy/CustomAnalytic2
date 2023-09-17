@@ -2,11 +2,13 @@ import React from 'react'
 
 import PageBar from '../navbar/page_bar'
 import GetOrdering from '../controls/ordering'
+import GetLimit from '../controls/limit';
 
 export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
     return (
         <div className='custom-tbody'>
             <GetOrdering ctx={ctx}/>
+            <GetLimit ctx={ctx}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>

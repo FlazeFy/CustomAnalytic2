@@ -18,14 +18,21 @@ export default function GetAllWeapon({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Weapon") == null){
+        const keyPage = sessionStorage.getItem("Table_Weapon")
+        const keyOrder = sessionStorage.getItem("Table_order_Weapon")
+        const keyLimit = sessionStorage.getItem("Table_limit_Weapon")
+
+        if(keyPage == null){
             sessionStorage.setItem("Table_Weapon", "1");
         }
-        if(sessionStorage.getItem("Table_order_Weapon") == null){
+        if(keyOrder == null){
             sessionStorage.setItem("Table_order_Weapon", "asc");
         }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Weapon", 15);
+        }
 
-        fetch(`http://127.0.0.1:8000/api/weapons/limit/15/order/${sessionStorage.getItem("Table_order_Weapon")}?page=${sessionStorage.getItem("Table_Weapon")}`)
+        fetch(`http://127.0.0.1:8000/api/weapons/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

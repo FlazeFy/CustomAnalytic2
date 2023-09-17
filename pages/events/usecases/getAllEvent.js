@@ -18,14 +18,21 @@ export default function GetAllEvent({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Events") == null){
+        const keyPage = sessionStorage.getItem("Table_Events")
+        const keyOrder = sessionStorage.getItem("Table_order_Events")
+        const keyLimit = sessionStorage.getItem("Table_limit_Events")
+        
+        if(keyPage == null){
             sessionStorage.setItem("Table_Events", "1");
         }
-        if(sessionStorage.getItem("Table_order_Events") == null){
+        if(keyOrder == null){
             sessionStorage.setItem("Table_order_Events", "asc");
         }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Events", 15);
+        }
 
-        fetch(`http://127.0.0.1:8000/api/events/limit/10/order/${sessionStorage.getItem("Table_order_Events")}?page="${sessionStorage.getItem("Table_Events")}`)
+        fetch(`http://127.0.0.1:8000/api/events/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
