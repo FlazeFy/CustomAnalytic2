@@ -70,6 +70,10 @@ export default function GetAllShip({ctx}) {
         {
             column_name: "Launch Year",
             object_name: "launch_year"
+        },
+        {
+            column_name: "Manage",
+            object_name: null
         }
     ]
 

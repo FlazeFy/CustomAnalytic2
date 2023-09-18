@@ -1,0 +1,13 @@
+.form-control {
+    border-radius: var(--roundedSM) !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: var(--blackBG) !important;
+    color: var(--whiteBG) !important;
+    margin-top: var(--spaceSM);
+}
+.btn-close-modal {
+    color: var(--warningBG);
+    border: none;
+    background: none;
+    font-size: var(--textXL) !important;
+}

@@ -63,6 +63,10 @@ export default function GetAllEvent({ctx}) {
         {
             column_name: "Date",
             object_name: "date"
+        },
+        {
+            column_name: "Manage",
+            object_name: null
         }
     ]
 

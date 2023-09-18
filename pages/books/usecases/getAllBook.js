@@ -71,6 +71,10 @@ export default function GetAllBook({ctx}) {
             column_name: "Review Date",
             object_name: "review_date"
         },
+        {
+            column_name: "Manage",
+            object_name: null
+        }
     ]
 
     if (error) {

@@ -66,6 +66,10 @@ export default function GetAllWeapon({ctx}) {
         {
             column_name: "Country",
             object_name: "country"
+        },
+        {
+            column_name: "Manage",
+            object_name: null
         }
     ]
 
