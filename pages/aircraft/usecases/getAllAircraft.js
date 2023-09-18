@@ -18,14 +18,21 @@ export default function GetAllAircraft({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Aircraft") == null){
+        const keyPage = sessionStorage.getItem("Table_Aircraft")
+        const keyOrder = sessionStorage.getItem("Table_order_Aircraft")
+        const keyLimit = sessionStorage.getItem("Table_limit_Aircraft")
+
+        if(keyPage == null){
             sessionStorage.setItem("Table_Aircraft", "1");
         }
-        if(sessionStorage.getItem("Table_order_Aircraft") == null){
+        if(keyOrder == null){
             sessionStorage.setItem("Table_order_Aircraft", "asc");
         }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Aircraft", 15);
+        }
 
-        fetch(`http://127.0.0.1:8000/api/aircraft/limit/15/order/${sessionStorage.getItem("Table_order_Aircraft")}?page=${sessionStorage.getItem("Table_Aircraft")}`)
+        fetch(`http://127.0.0.1:8000/api/aircraft/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -63,6 +70,10 @@ export default function GetAllAircraft({ctx}) {
         {
             column_name: "Country",
             object_name: "country"
+        },
+        {
+            column_name: "Manage",
+            object_name: null
         }
     ]
 

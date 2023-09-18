@@ -1,0 +1,18 @@
+.dropdown .btn-secondary, .dropdown .btn-secondary:hover {
+    background: var(--secondaryBG) !important;
+    border: none;
+    border-radius: var(--roundedSM);
+}
+.dropdown-menu {
+    margin-top: var(--spaceSM) !important;
+    background: var(--blackBG) !important;
+    border: 2px solid var(--secondaryBG) !important;
+    box-shadow: rgba(36, 90, 208, 1) 0px 4.5px 9px;
+}
+.dropdown-menu li button {
+    color: var(--whiteColor) !important;
+}
+.dropdown-menu li button:hover {
+    color: var(--primaryBG) !important;
+    background: var(--blackBG) !important;
+}

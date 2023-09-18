@@ -18,14 +18,21 @@ export default function GetAllShip({ctx}) {
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Ships") == null){
+        const keyPage = sessionStorage.getItem("Table_Ships")
+        const keyOrder = sessionStorage.getItem("Table_order_Ships")
+        const keyLimit = sessionStorage.getItem("Table_limit_Ships")
+        
+        if(keyPage == null){
             sessionStorage.setItem("Table_Ships", "1");
         }
-        if(sessionStorage.getItem("Table_order_Ships") == null){
+        if(keyOrder == null){
             sessionStorage.setItem("Table_order_Ships", "asc");
         }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Ships", 15);
+        }
 
-        fetch(`http://127.0.0.1:8000/api/ships/limit/15/order/${sessionStorage.getItem("Table_order_Ships")}?page="${sessionStorage.getItem("Table_Ships")}`)
+        fetch(`http://127.0.0.1:8000/api/ships/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -63,6 +70,10 @@ export default function GetAllShip({ctx}) {
         {
             column_name: "Launch Year",
             object_name: "launch_year"
+        },
+        {
+            column_name: "Manage",
+            object_name: null
         }
     ]
 

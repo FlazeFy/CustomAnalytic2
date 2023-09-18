@@ -77,10 +77,6 @@ body {
   font-size:18px !important;
   color: whitesmoke;
 }
-.form-control{
-  border-radius: 20px !important;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
 .custom-tbody{
   max-height: 100% !important; 
   overflow-y: auto;
