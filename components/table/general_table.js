@@ -1,39 +1,21 @@
 import React from 'react'
-import Image from 'next/image'
 
-import dynamic from 'next/dynamic'
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
+import PageBar from '../navbar/page_bar'
+import GetOrdering from '../controls/ordering'
+import GetLimit from '../controls/limit'
+import GetManageModal from '../modals/manage'
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
 
-export default function GetGeneralTable({builder, items, maxPage, ctx}) {
-    //Converter
-    const data = Object.values(items);
 
-    //Chart filter and config
-    function setLimit(page){
-        sessionStorage.setItem(`Table_${ctx}`, page);
-        location.reload();
-    }
-
+export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
     return (
         <div className='custom-tbody'>
-            <p>Page : {sessionStorage.getItem(`Table_${ctx}`)} / {maxPage}</p>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <FontAwesomeIcon icon={faEllipsisVertical}/></button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
-                        <a className="dropdown-item">
-                            <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                            <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem(`Table_${ctx}`)} onBlur={(e)=> setLimit(e.target.value)}></input>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <GetOrdering ctx={ctx}/>
+            <GetLimit ctx={ctx}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
@@ -59,13 +41,19 @@ export default function GetGeneralTable({builder, items, maxPage, ctx}) {
                                 <tr key={i}>
                                 {
                                     builder.map((build, j, ins) => {
-                                        if(i == 0){
-                                            return (
-                                                <th scope="row">{item[build['object_name']]}</th>
-                                            );
+                                        if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
+                                            if(i == 0){
+                                                return (
+                                                    <th scope="row">{item[build['object_name']]}</th>
+                                                );
+                                            } else {
+                                                return (
+                                                    <th>{item[build['object_name']]}</th>
+                                                );
+                                            }
                                         } else {
                                             return (
-                                                <th>{item[build['object_name']]}</th>
+                                                <th><GetManageModal builder={builder} items={item} id={i}/></th>
                                             );
                                         }
                                     })
@@ -76,6 +64,7 @@ export default function GetGeneralTable({builder, items, maxPage, ctx}) {
                     }
                 </tbody>
             </table>
+            <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }

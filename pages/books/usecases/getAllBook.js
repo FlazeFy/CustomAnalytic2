@@ -12,16 +12,27 @@ export default function GetAllBook({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
-    const [maxPage, setMaxPage] = useState([])
+    const [maxPage, setMaxPage] = useState(0)
+    const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
 
     useEffect(() => {
         //Default config
-        if(sessionStorage.getItem("Table_Book") == null){
-            sessionStorage.setItem("Table_Book", "1");
+        const keyPage = sessionStorage.getItem("Table_Books")
+        const keyOrder = sessionStorage.getItem("Table_order_Books")
+        const keyLimit = sessionStorage.getItem("Table_limit_Books")
+
+        if(keyPage == null){
+            sessionStorage.setItem("Table_Books", "1");
+        }
+        if(keyOrder == null){
+            sessionStorage.setItem("Table_order_Books", "asc");
+        }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Books", 15);
         }
 
-        fetch("http://127.0.0.1:8000/api/books/limit/15/order/ASC?page="+sessionStorage.getItem("Table_Books"))
+        fetch(`http://127.0.0.1:8000/api/books/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -33,6 +44,7 @@ export default function GetAllBook({ctx}) {
                 if(getLocal(ctx + "_sess") !== undefined){
                     setIsLoaded(true)
                     setMaxPage(result.data.last_page)
+                    setCurrPage(result.data.current_page)
                     setItems(JSON.parse(getLocal(ctx + "_sess")))
                 } else {
                     setIsLoaded(true)
@@ -59,6 +71,10 @@ export default function GetAllBook({ctx}) {
             column_name: "Review Date",
             object_name: "review_date"
         },
+        {
+            column_name: "Manage",
+            object_name: null
+        }
     ]
 
     if (error) {
@@ -73,7 +89,7 @@ export default function GetAllBook({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} ctx={ctx}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Books"}/>  
             </>
         )
     }

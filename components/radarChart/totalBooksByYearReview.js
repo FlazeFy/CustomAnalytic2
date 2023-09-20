@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import Image from 'next/image'
 
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });

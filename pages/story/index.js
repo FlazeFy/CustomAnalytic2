@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from '../../modules/styles/Home.module.css'
 import Navbar from '../../components/navbar/left_bar'
 import GetStoryContainer from '../../components/containers/story_container'
 
@@ -12,7 +11,7 @@ export default function Story() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className="main">
         <div className="content">
           <div className="row">
             <div className="col-3">

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from '../../modules/styles/Home.module.css'
 import { useRouter } from 'next/router'
 import StoryBar from '../../components/navbar/story_bar'
 import GetDetail from './usecases/detail/getDetail'
@@ -7,6 +6,8 @@ import GetInfo from './usecases/detail/getInfo'
 import GetReference from './usecases/detail/getReference'
 import GetFeedback from './usecases/detail/getFeedback'
 import GetDiscussion from './usecases/detail/getDiscussion'
+import GetStats from './usecases/detail/getStats'
+import PostDiscussion from './usecases/detail/postDiscussion'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -106,27 +107,68 @@ export default function StoryDetail() {
                 created_at: "22-08-2020"
             }
         ], 
+        stats: [
+            {
+                name: "casualities",
+                data: [
+                    {
+                        context: "allies",
+                        total: 620000
+                    },
+                    {
+                        context: "axis",
+                        total: 440000
+                    }
+                ],
+                recommended: [
+                    "pie_chart"
+                ]
+            },
+            {
+                name: "casualities per country",
+                data: [
+                    {
+                        context: "british empire",
+                        total: 420000
+                    },
+                    {
+                        context: "germany",
+                        total: 440000
+                    },
+                    {
+                        context: "france",
+                        total: 200000
+                    }
+                ],
+                recommended: [
+                    "pie_chart"
+                ]
+            },
+        ],
         discussion: [
             {
                 role: "creator",
                 username: "FlazeFy",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "20-08-2020"
+                created_at: "20-08-2020",
+                is_you: true
             },
             {
-                rate: "editor",
+                role: "editor",
                 username: "Flazen",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "22-08-2020"
+                created_at: "22-08-2020",
+                is_you: false
             },
             {
-                rate: "visitor",
+                role: "visitor",
                 username: "Flazen",
                 profile_img: null,
                 body: "Lorem ipsum",
-                created_at: "22-08-2020"
+                created_at: "22-08-2020",
+                is_you: false
             }
         ], 
         reference: [
@@ -161,7 +203,7 @@ export default function StoryDetail() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
+            <main className="main">
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
@@ -170,8 +212,10 @@ export default function StoryDetail() {
                         <div className="col-9">
                             <GetInfo props={dummy.info}/>
                             <GetDetail props={dummy.detail}/>
+                            <GetStats props={dummy.stats}/>
                             <GetReference props={dummy.reference}/>
                             <GetDiscussion props={dummy.discussion}/>
+                            <PostDiscussion/>
                             <GetFeedback props={dummy.feedback}/>
                         </div>
                     </div>

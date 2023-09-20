@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { ucEachWord } from '../../modules/helpers/typography';
 
+import container from '../containers/containers.module.css'
+import navbar from './navbar.module.css'
+
 export default function Navbar(props) {
     function getActive(val, curr){
         if(val == curr){
@@ -113,8 +116,23 @@ export default function Navbar(props) {
         <div className="nav-new-holder">
             {
                 collection.map((val, i, index) => {
-                    if(val.section != null || i == 0){
-                        return getNavButtonTemplate(val.link, val.title, val.desc)
+                    if(val.section == null && i == 0){
+                        return <>
+                            <div className={navbar.profile_box}>
+                                <div className="d-inline-block position-relative me-2">
+                                    <img className={container.story_creator_image} src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
+                                </div>
+                                <div className="d-inline-block position-relative">
+                                    <h6 className="event-title">@Flazefy</h6>
+                                    <h6 className="event-subtitle">Admin</h6>
+                                </div>
+                            </div>
+                            { getNavButtonTemplate(val.link, val.title, val.desc) }
+                        </>
+                    } else if (val.section != null) {
+                        return <>
+                            { getNavButtonTemplate(val.link, val.title, val.desc) }
+                        </>
                     } else {
                         return <>
                             <hr className='navbar-divider-line'></hr>

@@ -20,6 +20,7 @@
   --spaceSM : 6px;
 
   /* Rounded */
+  --roundedCircle : 100%;
   --roundedLG : 60px;
   --roundedMD : 20px;
   --roundedSM : 10px;
@@ -31,7 +32,7 @@
   --whiteColor: #f4f4f4;
   --blackBG : #181818;
   --successBG : #00C363;
-  --yellowBG : #F4E482;
+  --yellowBG : #f5df54;
   --warningBG : #FF6E58;
 }
 
@@ -55,6 +56,16 @@ table td{
 body {
   background-color: var(--blackBG) !important;
 }
+.main {
+  display: block;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 1260px !important;
+  margin: auto;
+}
 .content {
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -65,10 +76,6 @@ body {
 .summary-box{
   font-size:18px !important;
   color: whitesmoke;
-}
-.form-control{
-  border-radius: 20px !important;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .custom-tbody{
   max-height: 100% !important; 
