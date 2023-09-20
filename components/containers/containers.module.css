@@ -1,5 +1,5 @@
 /* Story Container */
-.story_box, .discussion_box {
+.story_box, .discussion_box, .about_box {
     margin: var(--spaceMD) 0 var(--spaceMD) 0;
     border-radius: var(--roundedMD);
     border: 1.5px solid var(--greyBG);
@@ -57,4 +57,59 @@
 .discussion_box {
     width: 75%;
     min-width: 480px;
+}
+
+/* About Container */
+.about_box {
+    height: 400px;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s;
+    position: relative;
+    border: none;
+    margin-bottom: var(--roundedLG);
+}
+.about_box img {
+    width: 400px;
+    height: 100%;
+    z-index: 100;
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    position: absolute;
+    border-radius: var(--roundedLG);
+}
+.about_box img:hover {
+    box-shadow: rgba(40, 179, 116, 1) 2px 7.5px 14px;
+    border: none;
+    transform: rotate(-7.5deg);
+}
+.about_box img:hover + .body_box {
+    left: 500px !important;
+}
+
+.about_box .body_box {
+    right: 30px;
+    position: absolute;
+    left: 10px;
+    width: 400px;
+    top: 30px;
+    z-index: 99;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.body_box label {
+    color: var(--whiteColor);
+    font-size: var(--textXL);
+    background: var(--secondaryBG);
+    font-weight: 500;
+    padding: var(--spaceSM) var(--spaceMD);
+    border-radius: var(--roundedSM);
+}
+.body_role {
+    color: var(--whiteColor) !important;
+    font-weight:600;
+
 }
