@@ -5,17 +5,11 @@ import GetOrdering from '../controls/ordering'
 import GetLimit from '../controls/limit'
 import GetManageModal from '../modals/manage'
 
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from "@fortawesome/free-solid-svg-icons"
-
-
 export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
     return (
         <div className='custom-tbody'>
             <GetOrdering ctx={ctx}/>
-            <GetLimit ctx={ctx}/>
+            <GetLimit ctx={ctx} type={"table"}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>

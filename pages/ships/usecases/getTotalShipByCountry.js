@@ -13,9 +13,16 @@ export default function GetTotalShipByCountry({ctx}) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
+    const filter_name = "Ship_Country"
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/ships/total/bycountry")
+        //Default config
+        const keyLimit = sessionStorage.getItem(`Bar_limit_${filter_name}`)
+        if(keyLimit == null){
+            sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
+        }
+
+        fetch(`http://127.0.0.1:8000/api/ships/total/bycountry/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,7 +55,7 @@ export default function GetTotalShipByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetBarChart items={items}/>  
+                <GetBarChart items={items} filter_name={filter_name}/>  
             </>
         )
     }

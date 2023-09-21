@@ -16,7 +16,13 @@ export default function GetFacilityLocation({ctx}) {
     const [items2, setItems2] = useState([])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/bylocation/"+sessionStorage.getItem(`chart_filter_${ctx}_sess`))
+        //Default config
+        const keyword = sessionStorage.getItem(`chart_filter_${ctx}_sess`)
+        if(keyword == null){
+            sessionStorage.setItem(`chart_filter_${ctx}_sess`, 'NULL');
+        }
+
+        fetch(`http://127.0.0.1:8000/api/facilities/bylocation/${keyword}`)
         .then(res => res.json())
             .then(
             (result) => {
