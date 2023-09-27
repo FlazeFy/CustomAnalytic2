@@ -43,11 +43,11 @@ export default function GetMap({items, category_filter, filter_name}) {
                     category_filter.map((val, i, index) => {
                     if(val.type == sessionStorage.getItem(`chart_filter_${filter_name}_sess`)){
                         return (
-                            <li key={i}><a className="dropdown-item" onClick={(e)=> setCategory(val.type)}><FontAwesomeIcon icon={faCheck}/> {val.type}</a></li>
+                            <li key={i}><button className="dropdown-item" onClick={(e)=> setCategory(val.type)}><FontAwesomeIcon icon={faCheck}/> {val.type}</button></li>
                         );
                     } else {
                         return (
-                            <li key={i}><a className="dropdown-item" onClick={(e)=> setCategory(val.type)}>{val.type}</a></li>
+                            <li key={i}><button className="dropdown-item" onClick={(e)=> setCategory(val.type)}>{val.type}</button></li>
                         );
                     }
                     })

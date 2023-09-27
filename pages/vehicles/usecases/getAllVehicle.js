@@ -57,23 +57,28 @@ export default function GetAllVehicle({ctx}) {
     const builder = [
         {
             column_name: "Name",
-            object_name: "name"
+            object_name: "name",
+            extra_desc: null
         },
         {
             column_name: "Primary Role",
-            object_name: "primary_role"
+            object_name: "primary_role",
+            extra_desc: null
         },
         {
             column_name: "Manufacturer",
-            object_name: "manufacturer"
+            object_name: "manufacturer",
+            extra_desc: null
         },
         {
             column_name: "Country",
-            object_name: "country"
+            object_name: "country",
+            extra_desc: null
         },
         {
             column_name: "Manage",
-            object_name: null
+            object_name: null,
+            extra_desc: null
         }
     ]
 

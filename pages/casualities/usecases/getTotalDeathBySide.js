@@ -15,7 +15,7 @@ export default function GetTotalDeathBySide({ctx, view}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/casualities/totaldeath/bysides/"+view.toLowerCase())
+        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bysides/${view.toLowerCase()}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,7 +48,7 @@ export default function GetTotalDeathBySide({ctx, view}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetPieChart items={items} is_filtered={false} filter_name={null}/>  
+                <GetPieChart items={items} filter_name={null}/>  
             </>
         )
     }

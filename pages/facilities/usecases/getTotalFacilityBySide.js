@@ -14,8 +14,8 @@ export default function GetTotalFacilityBySide({ctx}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
 
-    useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/total/bysides")
+    useEffect(() => {        
+        fetch(`http://127.0.0.1:8000/api/facilities/total/bysides`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,7 +48,7 @@ export default function GetTotalFacilityBySide({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetPieChart items={items} is_filtered={false} filter_name={null}/>  
+                <GetPieChart items={items} filter_name={null}/>  
             </>
         )
     }

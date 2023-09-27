@@ -38,7 +38,6 @@ export default function GetAllEvent({ctx}) {
             (result) => {
                 setIsLoaded(true)
                 setMaxPage(result.data.last_page)
-                setMaxPage(result.data.last_page)
                 setCurrPage(result.data.current_page)
                 setItems(result.data.data)        
             },
@@ -58,15 +57,31 @@ export default function GetAllEvent({ctx}) {
     const builder = [
         {
             column_name: "Event",
-            object_name: "event"
+            object_name: "event",
+            extra_desc: null
         },
         {
-            column_name: "Date",
-            object_name: "date"
+            column_name: "Date Start",
+            object_name: "date_start",
+            extra_desc: null
+        },
+        {
+            column_name: "Date End",
+            object_name: "date_end",
+            extra_desc: null
+        },
+        {
+            column_name: "Period",
+            object_name: "period",
+            extra_desc: {
+                desc: "days",
+                pos: "end"
+            }
         },
         {
             column_name: "Manage",
-            object_name: null
+            object_name: null,
+            extra_desc: null
         }
     ]
 

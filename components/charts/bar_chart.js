@@ -3,7 +3,9 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-export default function GetBarChart({items}) {
+import GetLimit from '../controls/limit'
+
+export default function GetBarChart({items, filter_name}) {
     //Initial variable
     var chart = [];
 
@@ -38,6 +40,14 @@ export default function GetBarChart({items}) {
     return (
         <div className='custom-tbody' style={{padding:"6px"}}>
             <div className="me-4">
+                {
+                    filter_name ? 
+                        <>
+                            <GetLimit ctx={filter_name} type={"bar"}/><br></br><br></br>
+                        </>
+                    :
+                        <></>
+                }
                 <Chart
                     options={chart.options}
                     series={chart.series}

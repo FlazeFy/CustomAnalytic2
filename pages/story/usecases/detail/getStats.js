@@ -1,8 +1,20 @@
+import { useState, useEffect } from "react"
+
+// Component
 import GetBarChart from "../../../../components/charts/bar_chart";
 import GetPieChart from "../../../../components/charts/pie_chart";
 import { getCleanTitleFromCtx } from "../../../../modules/helpers/converter";
 
 export default function GetStats({props}) {
+    const filter_name = "Story_stats"
+    useEffect(() => {
+        //Default config
+        const keyLimit = sessionStorage.getItem(`Pie_limit_${filter_name}`)
+        if(keyLimit == null){
+            sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
+        }
+    })
+
     return (
         <div>
             <h4 className='section-title'>Stats</h4>
@@ -16,7 +28,7 @@ export default function GetStats({props}) {
                                 <div className="row">
                                     <div className="col-6">
                                         <h6>Pie Chart</h6>
-                                        <GetPieChart items={val.data} is_filtered={false} filter_name={null}/>  
+                                        <GetPieChart items={val.data} filter_name={filter_name}/>  
                                     </div>
                                     <div className="col-6">
                                         <h6>Bar Chart</h6>

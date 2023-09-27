@@ -13,9 +13,16 @@ export default function GetTotalAircraftByManufacturer({ctx}) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
+    const filter_name = "Aircraft_Manufacturer"
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/aircraft/total/bymanufacturer/7")
+        //Default config
+        const keyLimit = sessionStorage.getItem(`Pie_limit_${filter_name}`)
+        if(keyLimit == null){
+            sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
+        }
+
+        fetch(`http://127.0.0.1:8000/api/aircraft/total/bymanufacturer/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -48,7 +55,7 @@ export default function GetTotalAircraftByManufacturer({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetPieChart items={items} is_filtered={false} filter_name={null}/>  
+                <GetPieChart items={items} filter_name={filter_name}/>  
             </>
         )
     }

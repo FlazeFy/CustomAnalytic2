@@ -87,11 +87,14 @@
 }
 .about_box img:hover + .body_box {
     left: 500px !important;
+    box-shadow: rgba(40, 179, 116, 1) 0px 4.5px 9px;
 }
 
 .about_box .body_box {
     right: 30px;
+    padding: var(--spaceLG);
     position: absolute;
+    border-radius: calc(var(--roundedMD) + var(--roundedSM));
     left: 10px;
     width: 400px;
     top: 30px;
@@ -99,6 +102,7 @@
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     transition: all 0.4s;
+    transform: rotate(3deg);
 }
 .body_box label {
     color: var(--whiteColor);
@@ -111,5 +115,4 @@
 .body_role {
     color: var(--whiteColor) !important;
     font-weight:600;
-
 }

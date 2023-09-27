@@ -1,5 +1,24 @@
-.role_box{
+.role_box {
     border-radius: var(--roundedSM);
     padding: var(--spaceSM);
     margin-right: var(--spaceSM);
+}
+
+/* GetSearchBox */
+.search_bar {
+    color: var(--whiteColor) !important;
+    padding: var(--spaceSM) calc(var(--spaceLG) * 2.5) var(--spaceSM) var(--spaceMD) !important;
+    border: 2px solid var(--secondaryBG) !important;
+}
+.search_holder {
+    width: 75%;
+    margin-right: var(--spaceMD);
+    max-width: 400px;
+    position: relative;
+    display: inline-block !important;
+}
+.search_icon {
+    position: absolute;
+    top: 17.5px;
+    right: 17.5px;
 }

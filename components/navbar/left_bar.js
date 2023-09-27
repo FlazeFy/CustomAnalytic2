@@ -87,12 +87,19 @@ export default function Navbar(props) {
             section: "manage"
         },
         {
+            link: "help",
+            title: "Help",
+            desc: "Lorem ipsum",
+            section: null
+        },
+        {
             link: "about",
-            title: "About Me",
+            title: "About Us",
             desc: "Lorem ipsum",
             section: null
         }
     ]
+    let dividerBefore = false
 
     function getNavButtonTemplate(link, title, desc){
         return <Link href={`/${link}`}>
@@ -117,6 +124,7 @@ export default function Navbar(props) {
             {
                 collection.map((val, i, index) => {
                     if(val.section == null && i == 0){
+                        dividerBefore = false
                         return <>
                             <div className={navbar.profile_box}>
                                 <div className="d-inline-block position-relative me-2">
@@ -130,10 +138,17 @@ export default function Navbar(props) {
                             { getNavButtonTemplate(val.link, val.title, val.desc) }
                         </>
                     } else if (val.section != null) {
+                        dividerBefore = false
+                        return <>
+                            { getNavButtonTemplate(val.link, val.title, val.desc) }
+                        </>
+                     } else if (val.section == null && dividerBefore) {
+                        dividerBefore = false
                         return <>
                             { getNavButtonTemplate(val.link, val.title, val.desc) }
                         </>
                     } else {
+                        dividerBefore = true
                         return <>
                             <hr className='navbar-divider-line'></hr>
                             { getNavButtonTemplate(val.link, val.title, val.desc) }

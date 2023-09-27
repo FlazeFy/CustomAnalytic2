@@ -57,23 +57,28 @@ export default function GetAllShip({ctx}) {
     const builder = [
         {
             column_name: "Name",
-            object_name: "name"
+            object_name: "name",
+            extra_desc: null
         },
         {
             column_name: "Class",
-            object_name: "class"
+            object_name: "class",
+            extra_desc: null
         },
         {
             column_name: "Country",
-            object_name: "country"
+            object_name: "country",
+            extra_desc: null
         },
         {
             column_name: "Launch Year",
-            object_name: "launch_year"
+            object_name: "launch_year",
+            extra_desc: null
         },
         {
             column_name: "Manage",
-            object_name: null
+            object_name: null,
+            extra_desc: null
         }
     ]
 

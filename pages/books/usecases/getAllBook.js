@@ -57,23 +57,28 @@ export default function GetAllBook({ctx}) {
     const builder = [
         {
             column_name: "Title",
-            object_name: "title"
+            object_name: "title",
+            extra_desc: null
         },
         {
             column_name: "Author",
-            object_name: "author"
+            object_name: "author",
+            extra_desc: null
         },
         {
             column_name: "Reviewer",
-            object_name: "reviewer"
+            object_name: "reviewer",
+            extra_desc: null
         },
         {
             column_name: "Review Date",
-            object_name: "review_date"
+            object_name: "review_date",
+            extra_desc: null
         },
         {
             column_name: "Manage",
-            object_name: null
+            object_name: null,
+            extra_desc: null
         }
     ]
 

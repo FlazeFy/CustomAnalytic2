@@ -57,15 +57,18 @@ export default function GetAllWeapon({ctx}) {
     const builder = [
         {
             column_name: "Name",
-            object_name: "name"
+            object_name: "name",
+            extra_desc: null
         },
         {
             column_name: "Type",
-            object_name: "type"
+            object_name: "type",
+            extra_desc: null
         },
         {
             column_name: "Country",
-            object_name: "country"
+            object_name: "country",
+            extra_desc: null
         },
         {
             column_name: "Manage",
