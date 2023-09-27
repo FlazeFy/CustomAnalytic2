@@ -2,8 +2,8 @@ import controls from './controls.module.css'
 
 export default function GetOrdering({ctx}) {
     function navigate(ctx, ord){
-        sessionStorage.setItem(`Table_order_${ctx}`, ord);
-        location.reload();
+        sessionStorage.setItem(`Table_order_${ctx}`, ord)
+        location.reload()
     }
 
     return (

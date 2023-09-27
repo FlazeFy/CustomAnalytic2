@@ -3,7 +3,11 @@ export const storeLocal = (name,val) => {
         if (Array.isArray(val)) {
             val = JSON.stringify(val)
         } else {
-            val = val.trim()
+            if(val == null){
+                val = val
+            } else {
+                val = val.trim()
+            }
         }
         localStorage.setItem(name, val)
     } catch (error) {

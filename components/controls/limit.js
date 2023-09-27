@@ -2,8 +2,8 @@ import { ucFirst } from "../../modules/helpers/typography";
 
 export default function GetLimit({ctx, type}) {
     function navigate(ctx, ord){
-        sessionStorage.setItem(`${ucFirst(type)}_limit_${ctx}`, ord);
-        location.reload();
+        sessionStorage.setItem(`${ucFirst(type)}_limit_${ctx}`, ord)
+        location.reload()
     }
 
     function getCollection(type){ 

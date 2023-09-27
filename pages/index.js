@@ -17,7 +17,6 @@ export default function Home() {
               <Navbar active={""}/>
             </div>
             <div className="col-9">
-
             </div>
           </div>
         </div>

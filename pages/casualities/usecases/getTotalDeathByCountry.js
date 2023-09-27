@@ -41,15 +41,18 @@ export default function GetTotalDeathByCountry({ctx}) {
     const builder = [
         {
             column_name: "Total Death",
-            object_name: "total"
+            object_name: "total",
+            extra_desc: null
         },
         {
             column_name: "Military Death",
-            object_name: "military_death"
+            object_name: "military_death",
+            extra_desc: null
         },
         {
             column_name: "Civilian Death",
-            object_name: "civilian_death"
+            object_name: "civilian_death",
+            extra_desc: null
         },
     ]
 
