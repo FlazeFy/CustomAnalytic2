@@ -21,6 +21,7 @@ export default function GetAllWeapon({ctx}) {
         const keyPage = sessionStorage.getItem("Table_Weapon")
         const keyOrder = sessionStorage.getItem("Table_order_Weapon")
         const keyLimit = sessionStorage.getItem("Table_limit_Weapon")
+        const keySearch = sessionStorage.getItem("Table_search_Weapon")
 
         if(keyPage == null){
             sessionStorage.setItem("Table_Weapon", "1");
@@ -31,8 +32,11 @@ export default function GetAllWeapon({ctx}) {
         if(keyLimit == null){
             sessionStorage.setItem("Table_limit_Weapon", 15);
         }
+        if(keySearch == null || keySearch.trim() == ""){
+            sessionStorage.setItem("Table_search_Weapon", "%20");
+        }
 
-        fetch(`http://127.0.0.1:8000/api/weapons/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/weapons/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
