@@ -1,9 +1,13 @@
 import controls from './controls.module.css'
 
+// Toast
+import CustomToast from "../modals/toast"
+import { toast } from 'react-toastify'
+
 export default function GetOrdering({ctx}) {
     function navigate(ctx, ord){
         sessionStorage.setItem(`Table_order_${ctx}`, ord)
-        location.reload()
+        toast.success(<CustomToast msg={ctx + " filtered"} />)
     }
 
     return (

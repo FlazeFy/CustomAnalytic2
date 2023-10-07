@@ -3,6 +3,10 @@ import controls from './controls.module.css'
 import { ucFirst } from '../../modules/helpers/typography'
 import { getLocal, storeLocal } from '../../modules/storages/local'
 
+// Toast
+import CustomToast from "../modals/toast"
+import { toast } from 'react-toastify'
+
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,7 +15,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 export default function GetSearch({placeholder, ctx}) {
     function setSessionSearch(key, val){
         sessionStorage.setItem(`Table_search_${key}`,val)  
-        location.reload()
+        toast.success(<CustomToast msg={ctx + " filtered"} />)
     }
 
     function getValue(val){
