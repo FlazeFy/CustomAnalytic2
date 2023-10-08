@@ -1,6 +1,9 @@
 .modal-content {
     background: var(--blackBG) !important;
 }
+.modal-title {
+    color: var(--whiteColor);
+}
 
 /* Toast */
 .Toastify__toast{
