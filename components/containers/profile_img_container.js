@@ -6,6 +6,8 @@ import container from './containers.module.css'
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
+
+// Components
 import GetButtonIconTitle from '../buttons/button_icon_title'
 
 export default function GetProfileImgContainer({items}) {

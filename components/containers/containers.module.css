@@ -119,8 +119,8 @@
 
 /* Profile Img Container */
 .profile_img_box { 
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border-radius: var(--roundedLG);
 }
 .profile_img_box:hover { 
