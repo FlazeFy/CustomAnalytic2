@@ -11,7 +11,7 @@ export default function FacilitiesSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("https://ww2.leonardhors.site/api/v1/facilities/summary")
+        fetch("http://127.0.0.1:8000/api/v1/facilities/summary")
         .then(res => res.json())
             .then(
             (result) => {

@@ -21,6 +21,7 @@ export default function GetAllVehicle({ctx}) {
         const keyPage = sessionStorage.getItem("Table_Vehicle")
         const keyOrder = sessionStorage.getItem("Table_order_Vehicle")
         const keyLimit = sessionStorage.getItem("Table_limit_Vehicle")
+        const keySearch = sessionStorage.getItem("Table_search_Vehicle")
         
         if(keyPage == null){
             sessionStorage.setItem("Table_Vehicle", "1");
@@ -31,8 +32,11 @@ export default function GetAllVehicle({ctx}) {
         if(keyLimit == null){
             sessionStorage.setItem("Table_limit_Vehicle", 15);
         }
+        if(keySearch == null || keySearch.trim() == ""){
+            sessionStorage.setItem("Table_search_Vehicle", "%20");
+        }
 
-        fetch(`http://127.0.0.1:8000/api/vehicles/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/vehicles/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

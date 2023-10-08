@@ -21,6 +21,7 @@ export default function GetAllShip({ctx}) {
         const keyPage = sessionStorage.getItem("Table_Ships")
         const keyOrder = sessionStorage.getItem("Table_order_Ships")
         const keyLimit = sessionStorage.getItem("Table_limit_Ships")
+        const keySearch = sessionStorage.getItem("Table_search_Ships")
         
         if(keyPage == null){
             sessionStorage.setItem("Table_Ships", "1");
@@ -31,8 +32,11 @@ export default function GetAllShip({ctx}) {
         if(keyLimit == null){
             sessionStorage.setItem("Table_limit_Ships", 15);
         }
+        if(keySearch == null || keySearch.trim() == ""){
+            sessionStorage.setItem("Table_search_Ships", "%20");
+        }
 
-        fetch(`http://127.0.0.1:8000/api/ships/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/ships/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

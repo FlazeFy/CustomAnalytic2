@@ -12,16 +12,33 @@ export default function GetTotalDeathByCountry({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
-    const [maxPage, setMaxPage] = useState([])
+    const [maxPage, setMaxPage] = useState(0)
+    const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/DESC/limit/10?page="+sessionStorage.getItem(`Column_Chart_${ctx}`))
+        //Default config
+        const keyPage = sessionStorage.getItem("Table_Deaths")
+        const keyOrder = sessionStorage.getItem("Table_order_Deaths")
+        const keyLimit = sessionStorage.getItem("Table_limit_Deaths")
+        
+        if(keyPage == null){
+            sessionStorage.setItem("Table_Deaths", "1");
+        }
+        if(keyOrder == null){
+            sessionStorage.setItem("Table_order_Deaths", "asc");
+        }
+        if(keyLimit == null){
+            sessionStorage.setItem("Table_limit_Deaths", 7);
+        }
+
+        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/limit/${keyLimit}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
                 setIsLoaded(true)
                 setMaxPage(result.data.last_page)
+                setCurrPage(result.data.current_page)
                 setItems(result.data.data)
                 const item = result.data.data
                 storeLocal(ctx + "_sess",JSON.stringify(item))             
@@ -68,7 +85,7 @@ export default function GetTotalDeathByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetColumnChart items={items} builder={builder} ctx={ctx} maxPage={maxPage}/>
+                <GetColumnChart items={items} builder={builder} ctx={"Deaths"} maxPage={maxPage} currentPage={currPage}/>
             </>
         )
     }

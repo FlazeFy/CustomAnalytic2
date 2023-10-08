@@ -21,6 +21,7 @@ export default function GetAllBook({ctx}) {
         const keyPage = sessionStorage.getItem("Table_Books")
         const keyOrder = sessionStorage.getItem("Table_order_Books")
         const keyLimit = sessionStorage.getItem("Table_limit_Books")
+        const keySearch = sessionStorage.getItem("Table_search_Books")
 
         if(keyPage == null){
             sessionStorage.setItem("Table_Books", "1");
@@ -31,8 +32,11 @@ export default function GetAllBook({ctx}) {
         if(keyLimit == null){
             sessionStorage.setItem("Table_limit_Books", 15);
         }
+        if(keySearch == null || keySearch.trim() == ""){
+            sessionStorage.setItem("Table_search_Books", "%20");
+        }
 
-        fetch(`http://127.0.0.1:8000/api/books/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/books/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

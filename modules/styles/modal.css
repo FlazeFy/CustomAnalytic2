@@ -1,3 +1,31 @@
 .modal-content {
     background: var(--blackBG) !important;
 }
+.modal-title {
+    color: var(--whiteColor);
+}
+
+/* Toast */
+.Toastify__toast{
+    background: var(--blackBG) !important;
+    border-radius: var(--roundedSM) !important;
+    border: 2px solid var(--secondaryBG) !important;
+    box-shadow: rgba(36, 90, 208, 1) 0px 4.5px 9px !important;
+}
+.Toastify__close-button {
+    color: var(--whiteColor) !important;
+    opacity: 1 !important;
+    width: 26px;
+    height: 26px;
+    padding-bottom: var(--spaceSM) !important;
+    padding-left: 2.5px !important;
+    margin: var(--spaceSM);
+    border-radius: var(--roundedSM);
+    background: var(--warningBG) !important;
+}
+.Toastify__progress-bar {
+    background: var(--primaryBG) !important;
+}
+.Toastify__toast-icon {
+    color: var(--primaryBG) !important;
+}

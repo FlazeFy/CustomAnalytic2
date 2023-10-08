@@ -3,23 +3,23 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-//Font awesome classicon
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
+import PageBar from '../navbar/page_bar'
+import GetOrdering from '../controls/ordering'
+import GetLimit from '../controls/limit'
 
-export default function GetColumnChart({items, builder, maxPage, ctx}) {
+export default function GetColumnChart({items, builder, maxPage, currentPage, ctx}) {
     //Initial variable
     var chart = [];
 
     //Converter
-    const data = Object.values(items).reverse();
+    const data = Object.values(items).reverse()
 
     function getSeries(val, type){
         let catSeries = [];
         val.forEach(e => { 
-            catSeries.push(parseInt(e[type]));
-        });
-        return catSeries;
+            catSeries.push(parseInt(e[type]))
+        })
+        return catSeries
     }
 
     function buildSeries(builder){
@@ -31,21 +31,21 @@ export default function GetColumnChart({items, builder, maxPage, ctx}) {
                     data: getSeries(data, e['object_name'])
                 }
             )
-        });
+        })
 
         return series
     }
 
     function getCategory(val){
-        let catData = [];
+        let catData = []
         val.forEach(e => { 
-            catData.push(e.context);
-        });
-        return catData;
+            catData.push(e.context)
+        })
+        return catData
     }
 
     function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
 
     chart = {
@@ -110,27 +110,10 @@ export default function GetColumnChart({items, builder, maxPage, ctx}) {
         }
     };
 
-    //Chart filter and config
-    function setLimit(page){
-        sessionStorage.setItem(`Column_Chart_${ctx}`, page);
-        location.reload();
-    }
-
     return (
         <div className='custom-tbody' style={{overflowY:"hidden"}}>
-            <p>Page : {sessionStorage.getItem(`Column_Chart_${ctx}`)} / {maxPage}</p>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <FontAwesomeIcon icon={faEllipsisVertical}/></button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
-                        <a className="dropdown-item">
-                            <label className='input-number-label'>Chart Page <span className='label-max'>Max : {maxPage}</span></label>
-                            <input type="number" className='form-control' min="1" max={maxPage} defaultValue={sessionStorage.getItem(`Column_Chart_${ctx}`)} onBlur={(e)=> setLimit(e.target.value)}></input>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <GetOrdering ctx={ctx}/>
+            <GetLimit ctx={ctx} type={"table"}/>
             <div className="mt-4">
                 <Chart
                     options={chart.options}
@@ -139,6 +122,7 @@ export default function GetColumnChart({items, builder, maxPage, ctx}) {
                     height="550"
                 />
             </div>
+            <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
         </div>
     );
 }
