@@ -36,7 +36,7 @@ export default function GetAllAircraft({ctx}) {
             sessionStorage.setItem("Table_search_Aircraft", "%20");
         }
 
-        fetch(`http://127.0.0.1:8000/api/aircraft/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
+        fetch(`https://ww2.leonardhors.site/api/aircraft/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

@@ -20,7 +20,7 @@ export default function TotalShipsByLaunchYear() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/ships/total/bylaunchyear")
+        fetch("https://ww2.leonardhors.site/api/v1/ships/total/bylaunchyear")
         .then(res => res.json())
             .then(
             (result) => {

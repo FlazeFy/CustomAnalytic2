@@ -11,7 +11,7 @@ export default function ShipsSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/ships/summary")
+        fetch("https://ww2.leonardhors.site/api/v1/ships/summary")
         .then(res => res.json())
             .then(
             (result) => {

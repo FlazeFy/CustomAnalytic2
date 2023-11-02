@@ -22,7 +22,7 @@ export default function GetTotalVehicleByRole({ctx}) {
             sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
         }
 
-        fetch(`http://127.0.0.1:8000/api/vehicles/total/byrole/${keyLimit}`)
+        fetch(`https://ww2.leonardhors.site/api/vehicles/total/byrole/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {

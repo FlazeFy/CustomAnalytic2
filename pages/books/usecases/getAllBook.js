@@ -36,7 +36,7 @@ export default function GetAllBook({ctx}) {
             sessionStorage.setItem("Table_search_Books", "%20");
         }
 
-        fetch(`http://127.0.0.1:8000/api/books/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
+        fetch(`https://ww2.leonardhors.site/api/books/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

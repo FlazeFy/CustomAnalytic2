@@ -32,7 +32,7 @@ export default function GetTotalDeathByCountry({ctx}) {
             sessionStorage.setItem("Table_limit_Deaths", 7);
         }
 
-        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/limit/${keyLimit}?page=${keyPage}`)
+        fetch(`https://ww2.leonardhors.site/api/casualities/totaldeath/bycountry/${keyOrder}/limit/${keyLimit}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

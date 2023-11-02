@@ -22,7 +22,7 @@ export default function GetTotalWeaponByType({ctx}) {
             sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
         }
 
-        fetch(`http://127.0.0.1:8000/api/weapons/total/bytype/${keyLimit}`)
+        fetch(`https://ww2.leonardhors.site/api/weapons/total/bytype/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {

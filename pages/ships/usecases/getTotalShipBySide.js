@@ -15,7 +15,7 @@ export default function GetTotalShipBySide({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/ships/total/bysides`)
+        fetch(`https://ww2.leonardhors.site/api/ships/total/bysides`)
         .then(res => res.json())
             .then(
             (result) => {

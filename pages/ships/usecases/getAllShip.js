@@ -36,7 +36,7 @@ export default function GetAllShip({ctx}) {
             sessionStorage.setItem("Table_search_Ships", "%20");
         }
 
-        fetch(`http://127.0.0.1:8000/api/ships/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
+        fetch(`https://ww2.leonardhors.site/api/ships/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

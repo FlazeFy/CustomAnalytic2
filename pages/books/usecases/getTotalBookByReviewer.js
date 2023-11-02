@@ -22,7 +22,7 @@ export default function GetTotalBookByReviewer({ctx}) {
             sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
         }
 
-        fetch(`http://127.0.0.1:8000/api/books/total/byreviewer/${keyLimit}`)
+        fetch(`https://ww2.leonardhors.site/api/books/total/byreviewer/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {
