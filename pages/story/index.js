@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Navbar from '../../components/navbar/left_bar'
-import GetStoryContainer from '../../components/containers/story_container'
+import GetAllStories from './usecases/getAllStories'
 
 export default function Story() {
   return (
@@ -19,11 +19,7 @@ export default function Story() {
             </div>
             <div className="col-9">
               <div className="row">
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <div className="col-4" key={index}>
-                    <GetStoryContainer />
-                  </div>
-                ))}
+                <GetAllStories ctx={"All_Stories"}/>
               </div>
             </div>
           </div>
