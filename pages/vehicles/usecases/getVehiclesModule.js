@@ -14,7 +14,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
-export default function GetShipsModule({ctx}) {
+export default function GetVehiclesModule({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
     const [dataStatus, setDataStatus] = useState(null)
@@ -24,39 +24,39 @@ export default function GetShipsModule({ctx}) {
     const [currPage, setCurrPage] = useState(0)
     const [items, setItems] = useState([])
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
-    const [itemsStatsClass, setItemsStatsClass] = useState([])
+    const [itemsStatsRole, setItemsStatsRole] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
         //Default config
-        const keyPage = sessionStorage.getItem("Table_Ships")
-        const keyOrder = sessionStorage.getItem("Table_order_Ships")
-        const keyLimit = sessionStorage.getItem("Table_limit_Ships")
-        const keySearch = sessionStorage.getItem("Table_search_Ships")
+        const keyPage = sessionStorage.getItem("Table_Vehicles")
+        const keyOrder = sessionStorage.getItem("Table_order_Vehicles")
+        const keyLimit = sessionStorage.getItem("Table_limit_Vehicles")
+        const keySearch = sessionStorage.getItem("Table_search_Vehicles")
 
         if(keyPage == null){
-            sessionStorage.setItem("Table_Ships", "1");
+            sessionStorage.setItem("Table_Vehicles", "1");
         }
         if(keyOrder == null){
-            sessionStorage.setItem("Table_order_Ships", "asc");
+            sessionStorage.setItem("Table_order_Vehicles", "asc");
         }
         if(keyLimit == null){
-            sessionStorage.setItem("Table_limit_Ships", 15);
+            sessionStorage.setItem("Table_limit_Vehicles", 15);
         }
         if(keySearch == null || keySearch.trim() == ""){
-            sessionStorage.setItem("Table_search_Ships", "%20");
+            sessionStorage.setItem("Table_search_Vehicles", "%20");
         }
 
         const params = new URLSearchParams({
             limit_data_all: keyLimit,
             order_data_all: keyOrder,
             search_data_all: keySearch,
-            limit_stats_by_class: 7,
+            limit_stats_by_role: 7,
             limit_stats_by_country: 7
         })
         
-        fetch(`http://127.0.0.1:8000/api/ships?${params}`)
+        fetch(`http://127.0.0.1:8000/api/vehicles?${params}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -69,14 +69,14 @@ export default function GetShipsModule({ctx}) {
                 setItems(result.data_all.data)  
 
                 setItemsStatsCountry(result.stats.total_by_country)
-                setItemsStatsClass(result.stats.total_by_class)
+                setItemsStatsRole(result.stats.total_by_role)
                 setItemsStatsSide(result.stats.total_by_sides)
 
-                storeLocal('ships_module',JSON.stringify(result))
+                storeLocal('vehicles_module',JSON.stringify(result))
             },
             (error) => {
                 Swal.close()
-                if(getLocal('ships_module')){
+                if(getLocal('vehicles_module')){
                     setError(null)
                     setIsLoaded(true)
                     setDataStatus(<>This is a <b>local data</b> of <b>{getCleanTitleFromCtx(ctx)}</b>. We will fetch a new data when we success contact to server</>)
@@ -86,13 +86,13 @@ export default function GetShipsModule({ctx}) {
                         text: "Something went wrong! But we still have recovered data to show you",
                     })
 
-                    const res_backup = JSON.parse(getLocal('ships_module'))
+                    const res_backup = JSON.parse(getLocal('vehicles_module'))
                     setMaxPage(res_backup.data_all.last_page)
                     setCurrPage(res_backup.data_all.current_page)
                     setItems(res_backup.data_all.data)  
 
                     setItemsStatsCountry(res_backup.stats.total_by_country)
-                    setItemsStatsClass(res_backup.stats.total_by_class)
+                    setItemsStatsRole(res_backup.stats.total_by_role)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
                 } else {
                     Swal.fire({
@@ -113,18 +113,18 @@ export default function GetShipsModule({ctx}) {
             extra_desc: null
         },
         {
-            column_name: "Class",
-            object_name: "class",
+            column_name: "Primary Role",
+            object_name: "primary_role",
+            extra_desc: null
+        },
+        {
+            column_name: "Manufacturer",
+            object_name: "manufacturer",
             extra_desc: null
         },
         {
             column_name: "Country",
             object_name: "country",
-            extra_desc: null
-        },
-        {
-            column_name: "Launch Year",
-            object_name: "launch_year",
             extra_desc: null
         },
         {
@@ -162,20 +162,20 @@ export default function GetShipsModule({ctx}) {
                     )
                 }
                 <div className='mb-3'>
-                    <AtomsText body="All Ships" text_type="sub_heading"/>
-                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Ships"}/>  
+                    <AtomsText body="All Vehicles" text_type="sub_heading"/>
+                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Vehicles"}/>  
                 </div>
                 <div className='mb-3'>
-                    <AtomsText body="Total Ships By Country" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsCountry} filter_name="Ships_Country"/>  
+                    <AtomsText body="Total Vehicles By Country" text_type="sub_heading"/>
+                    <GetBarChart items={itemsStatsCountry} filter_name="Vehicles_Country"/>  
                 </div>
                 <div className='mb-3'>
-                    <AtomsText body="Total Ships By Sides" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsSide} filter_name="Ships_Sides"/>  
+                    <AtomsText body="Total Vehicles By Sides" text_type="sub_heading"/>
+                    <GetPieChart items={itemsStatsSide} filter_name="Vehicles_Sides"/>  
                 </div>
                 <div className='mb-3'>
-                    <AtomsText body="Total Ships By Class" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsClass} filter_name="Ships_Class"/>  
+                    <AtomsText body="Total Vehicles By Role" text_type="sub_heading"/>
+                    <GetPieChart items={itemsStatsRole} filter_name="Vehicles_Role"/>  
                 </div>
             </>
         )

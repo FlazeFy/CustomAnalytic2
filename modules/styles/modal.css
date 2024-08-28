@@ -5,6 +5,19 @@
     color: var(--whiteColor);
 }
 
+.swal2-popup {
+    border-radius: var(--roundedMD);
+    background: var(--blackBG);
+    border: var(--spaceMini) solid var(--primaryBG) !important;
+    color: var(--whiteColor);
+}
+.swal2-confirm {
+    background: var(--successBG) !important;
+}
+.swal2-confirm:hover {
+    background: var(--successBG) !important;
+}
+
 /* Toast */
 .Toastify__toast{
     background: var(--blackBG) !important;

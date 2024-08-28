@@ -6,6 +6,7 @@ import GetTotalWeaponByCountry from "./usecases/getTotalWeaponByCountry"
 import GetTotalWeaponByType from "./usecases/getTotalWeaponByType"
 import GetTotalWeaponBySide from "./usecases/getTotalWeaponBySide"
 import GetAllWeapon from "./usecases/getAllWeapon"
+import GetWeaponModule from './usecases/getWeaponModule'
 
 export default function Weapons() {
     return (
@@ -24,6 +25,9 @@ export default function Weapons() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
+                                <GetWeaponModule ctx={"weapons_module"}/>
+                            </div>
+                            {/* <div className="mb-3">
                                 <GetAllWeapon ctx="all_weapon"/>
                             </div>
                             <div className="mb-3">
@@ -37,7 +41,7 @@ export default function Weapons() {
                             </div>
                             <div className="mb-3">
                                 <WeaponsSummary/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

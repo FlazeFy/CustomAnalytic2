@@ -16,9 +16,11 @@
   --textXSM : 12.5px;
 
   /* Margin & Padding */
+  --spaceXLG : 20px;
   --spaceLG : 16px;
   --spaceMD : 10px;
   --spaceSM : 6px;
+  --spaceMini : 3px;
 
   /* Rounded */
   --roundedCircle : 100%;

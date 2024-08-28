@@ -6,6 +6,7 @@ import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYear
 import BooksSummary from "../../components/summary/books"
 import GetTotalBookByReviewer from "./usecases/getTotalBookByReviewer"
 import GetAllBook from "./usecases/getAllBook"
+import GetBooksModule from "./usecases/getBooksModule"
 
 export default function Books() {
     return (
@@ -24,6 +25,9 @@ export default function Books() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
+                                <GetBooksModule ctx="books_module"/>
+                            </div>
+                            {/* <div className="mb-3">
                                 <GetAllBook ctx="all_book"/>
                             </div>
                             <div className="mb-3">
@@ -34,7 +38,7 @@ export default function Books() {
                             </div>
                             <div className="mb-3">
                                 <BooksSummary/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

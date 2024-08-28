@@ -6,6 +6,7 @@ import GetTotalVehicleByCountry from "./usecases/getTotalVehicleByCountry"
 import GetTotalVehicleByRole from "./usecases/getTotalVehicleByRole"
 import GetTotalVehicleBySide from "./usecases/getTotalVehicleBySide"
 import GetAllVehicle from "./usecases/getAllVehicle"
+import GetVehiclesModule from './usecases/getVehiclesModule'
 
 export default function Vehicles() {
     return (
@@ -24,6 +25,9 @@ export default function Vehicles() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
+                                <GetVehiclesModule ctx="vehicles_module"/>
+                            </div>
+                            {/* <div className="mb-3">
                                 <GetAllVehicle ctx="all_vehicle"/>
                             </div>
                             <div className="mb-3">
@@ -37,7 +41,7 @@ export default function Vehicles() {
                             </div>
                             <div className="mb-3">
                                 <VehiclesSummary/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
