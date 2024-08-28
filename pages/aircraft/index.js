@@ -1,13 +1,6 @@
-import { useState, useEffect } from "react"
 import Head from 'next/head'
 import Navbar from "../../components/navbar/left_bar"
-
-import AircraftSummary from "../../components/summary/aircraft"
-import GetTotalAircraftByCountry from "./usecases/getTotalAircraftByCountry"
-import GetTotalAircraftByRole from "./usecases/getTotalAircraftByRole"
-import GetTotalAircraftBySide from "./usecases/getTotalAircraftBySide"
-import GetTotalAircraftByManufacturer from "./usecases/getTotalAircraftByManufacturer"
-import GetAllAircraft from "./usecases/getAllAircraft"
+import GetAircraftModule from "./usecases/getAllAircraftModule"
 
 export default function Aircraft() {
     return (
@@ -26,9 +19,9 @@ export default function Aircraft() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
-                                <GetAllAircraft ctx="all_aircraft"/>
+                                <GetAircraftModule ctx="aircraft"/>
                             </div>
-                            <div className="mb-3">
+                            {/* <div className="mb-3">
                                 <GetTotalAircraftByManufacturer ctx="total_aircraft_by_manufacturer"/>
                             </div>
                             <div className="mb-3">
@@ -39,10 +32,10 @@ export default function Aircraft() {
                             </div>
                             <div className="mb-3">
                                 <GetTotalAircraftByRole ctx="total_aircraft_by_role"/>
-                            </div>
-                            <div className="mb-3">
+                            </div> */}
+                            {/* <div className="mb-3">
                                 <AircraftSummary/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

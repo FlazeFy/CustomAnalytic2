@@ -6,6 +6,7 @@ import ShipsSummary from "../../components/summary/ships"
 import GetTotalShipByCountry from "./usecases/getTotalShipByCountry"
 import GetTotalShipBySide from "./usecases/getTotalShipBySide"
 import GetAllShip from "./usecases/getAllShip"
+import GetShipsModule from './usecases/getAllShipsModule'
 
 export default function Ships() {
     return (
@@ -24,6 +25,9 @@ export default function Ships() {
                         </div>
                         <div className="col-9">
                             <div className="mb-3">
+                                <GetShipsModule ctx="ships_module"/>
+                            </div>
+                            {/* <div className="mb-3">
                                 <GetAllShip ctx="all_ship"/>
                             </div>
                             <div className="mb-3">
@@ -37,7 +41,7 @@ export default function Ships() {
                             </div>
                             <div className="mb-3">
                                 <ShipsSummary/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

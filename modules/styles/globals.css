@@ -8,10 +8,11 @@
 :root {
   /* Typography */
   --textXJumbo : 32px;
-  --textXL : 24px;
+  --textXL : 26px;
+  --textLG : 22px;
   --textXMD : 18px;
   --textMD : 15px;
-  --textSM : 14px;
+  --textSM : 13px;
   --textXSM : 12.5px;
 
   /* Margin & Padding */
