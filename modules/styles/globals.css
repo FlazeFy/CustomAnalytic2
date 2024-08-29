@@ -175,3 +175,7 @@ tspan {
   fill: var(--whiteColor);
   font-size: var(--textSM);
 }
+
+button {
+  border: none;
+}

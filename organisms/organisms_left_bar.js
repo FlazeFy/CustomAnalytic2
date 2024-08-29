@@ -7,6 +7,7 @@ import { ucEachWord, ucFirst } from '../modules/helpers/typography'
 import { getLocal } from '../modules/storages/local';
 
 import style from './organisms.module.css'
+import OrganismsLogin from './organisms_login';
 
 export default function OrganismsLeftBar(props) {
     const getActive = (val, curr) => {
@@ -128,63 +129,64 @@ export default function OrganismsLeftBar(props) {
     const [role, setRole] = useState(null)
 
     useEffect(() => {
-        setUserToken(getLocal('user_token'))
+        setUserToken(getLocal('token_key'))
         setUsername(getLocal('username'))
         setRole(getLocal('role'))
     },[])
 
     return (
-        <div className="nav-new-holder">
-            {
-                collection.map((val, i, index) => {
-                    if(val.section == null && i == 0){
-                        dividerBefore = false
-                        return <>
-                            {
-                                userToken ?
-                                    <Link href={`profile`}>
-                                        <div className={style.profile_box}>
-                                            <div className='d-flex justify-content-start'>
-                                                <div className="d-inline-block position-relative me-2">
-                                                    <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
-                                                </div>
-                                                <div className="d-inline-block position-relative">
-                                                    <AtomsText body={username} text_type="mini_sub_heading"/>
-                                                    <AtomsText body={ucFirst(role)} text_type="mini_sub_heading"/>
+        <>
+            <div className="nav-new-holder">
+                {
+                    collection.map((val, i, index) => {
+                        if(val.section == null && i == 0){
+                            dividerBefore = false
+                            return <>
+                                {
+                                    userToken ?
+                                        <Link href={`profile`}>
+                                            <div className={style.profile_box}>
+                                                <div className='d-flex justify-content-start'>
+                                                    <div className="d-inline-block position-relative me-2">
+                                                        <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
+                                                    </div>
+                                                    <div className="d-inline-block position-relative">
+                                                        <AtomsText body={username} text_type="mini_sub_heading"/>
+                                                        <AtomsText body={ucFirst(role)} text_type="mini_sub_heading"/>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                :
-                                    <>  
-                                        <div className={style.profile_box}>
+                                        </Link>
+                                    :
+                                        <button className={style.profile_box} data-bs-target="#login-form-modal" data-bs-toggle="modal">
                                             <AtomsText body={<div className='text-white'><FontAwesomeIcon icon={faSignIn}/> Sign In</div>} text_type="sub_heading"/>
                                             <AtomsText body="To get access of manage data" text_type="mini_sub_heading"/>
-                                        </div>
-                                    </>
-                            }
-                            
-                            { getNavButtonTemplate(val.link, val.title, val.desc) }
-                        </>
-                    } else if (val.section != null) {
-                        dividerBefore = false
-                        return <>
-                            { getNavButtonTemplate(val.link, val.title, val.desc) }
-                        </>
-                     } else if (val.section == null && dividerBefore) {
-                        dividerBefore = false
-                        return <>
-                            { getNavButtonTemplate(val.link, val.title, val.desc) }
-                        </>
-                    } else {
-                        dividerBefore = true
-                        return <>
-                            <hr className='navbar-divider-line'></hr>
-                            { getNavButtonTemplate(val.link, val.title, val.desc) }
-                        </>
-                    }
-                })
-            }
-        </div>
+                                        </button>
+                                }
+                                
+                                { getNavButtonTemplate(val.link, val.title, val.desc) }
+                            </>
+                        } else if (val.section != null) {
+                            dividerBefore = false
+                            return <>
+                                { getNavButtonTemplate(val.link, val.title, val.desc) }
+                            </>
+                        } else if (val.section == null && dividerBefore) {
+                            dividerBefore = false
+                            return <>
+                                { getNavButtonTemplate(val.link, val.title, val.desc) }
+                            </>
+                        } else {
+                            dividerBefore = true
+                            return <>
+                                <hr className='navbar-divider-line'></hr>
+                                { getNavButtonTemplate(val.link, val.title, val.desc) }
+                            </>
+                        }
+                    })
+                }
+            </div>
+            <OrganismsLogin/>
+        </>
     )
 }

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from '../../components/navbar/left_bar'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Storylines() {
   return (
