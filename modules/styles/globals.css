@@ -37,6 +37,7 @@
   --successBG : #00C363;
   --yellowBG : #f5df54;
   --warningBG : #FF6E58;
+  /* #8cd61e */
 }
 
 table th{
@@ -159,6 +160,12 @@ h6 {
   cursor: pointer;
 }
 
+/* Image */
+.img-profile {
+  height: 50px !important;
+  width: 50px !important;
+}
+
 .reference-item {
   font-size: var(--textXMD);
 }
@@ -167,4 +174,8 @@ h6 {
 tspan {
   fill: var(--whiteColor);
   font-size: var(--textSM);
+}
+
+button {
+  border: none;
 }

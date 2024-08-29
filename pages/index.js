@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from '../components/navbar/left_bar'
+import OrganismsLeftBar from '../organisms/organisms_left_bar'
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <div className="content">
           <div className="row">
             <div className="col-3">
-              <Navbar active={""}/>
+              <OrganismsLeftBar active={""}/>
             </div>
             <div className="col-9">
             </div>

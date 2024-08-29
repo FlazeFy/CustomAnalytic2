@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 import GetAllEvent from "./usecases/getAllEvent"
 
@@ -15,7 +15,7 @@ export default function Events() {
             <main className="main">
                 <div className="row">
                     <div className="col-3">
-                        <Navbar active={"events"}/>
+                        <OrganismsLeftBar active={"events"}/>
                     </div>
                     <div className="col-9">
                         <GetAllEvent ctx="all_event"/>

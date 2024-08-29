@@ -10,11 +10,11 @@ import { faUpload, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 // Components
 import GetButtonIconTitle from '../buttons/button_icon_title'
 
-export default function GetProfileImgContainer({items}) {
+export default function GetProfileImgContainer(props) {
     return (
         <>
             <button className={container.profile_img_box} data-bs-toggle="modal" data-bs-target={"#editProfileImageModal"} title="Manage Profile Image">
-                <img src={items['profile_img']}></img>
+                <img src={props.image_url}></img>
             </button>
             <div className="modal fade" id={"editProfileImageModal"} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">

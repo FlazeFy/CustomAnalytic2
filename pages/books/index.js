@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react"
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import TotalBooksByYearReview from "../../components/radarChart/totalBooksByYearReview"
 import BooksSummary from "../../components/summary/books"
 import GetTotalBookByReviewer from "./usecases/getTotalBookByReviewer"
 import GetAllBook from "./usecases/getAllBook"
 import GetBooksModule from "./usecases/getBooksModule"
+import OrganismsLeftBar from "../../organisms/organisms_left_bar"
 
 export default function Books() {
     return (
@@ -21,7 +20,7 @@ export default function Books() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"books"}/>
+                            <OrganismsLeftBar active={"books"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

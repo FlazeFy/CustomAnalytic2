@@ -1,3 +1,6 @@
+.modal-dialog {
+    z-index: 101 !important;
+}
 .modal-content {
     background: var(--blackBG) !important;
 }

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import TotalShipsByLaunchYear from "../../components/radarChart/totalShipsByLaunchYear"
 import ShipsSummary from "../../components/summary/ships"
@@ -7,6 +6,7 @@ import GetTotalShipByCountry from "./usecases/getTotalShipByCountry"
 import GetTotalShipBySide from "./usecases/getTotalShipBySide"
 import GetAllShip from "./usecases/getAllShip"
 import GetShipsModule from './usecases/getAllShipsModule'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Ships() {
     return (
@@ -21,7 +21,7 @@ export default function Ships() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"ships"}/>
+                            <OrganismsLeftBar active={"ships"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

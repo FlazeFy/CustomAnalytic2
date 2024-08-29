@@ -3,7 +3,7 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-import PageBar from '../navbar/page_bar'
+import PageBar from '../../organisms/organisms_page_bar'
 import GetOrdering from '../controls/ordering'
 import GetLimit from '../controls/limit'
 

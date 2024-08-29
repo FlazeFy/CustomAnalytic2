@@ -23,7 +23,7 @@ export default function AboutUs() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"about"}/>
+                            <OrganismsLeftBar active={"about"}/>
                         </div>
                         <div className="col-9">
                             <GetAllContributor/>

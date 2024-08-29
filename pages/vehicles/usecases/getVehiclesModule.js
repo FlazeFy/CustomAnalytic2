@@ -19,6 +19,7 @@ export default function GetVehiclesModule({ctx}) {
     const [error, setError] = useState(null)
     const [dataStatus, setDataStatus] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
@@ -29,6 +30,8 @@ export default function GetVehiclesModule({ctx}) {
 
     useEffect(() => {
         Swal.showLoading()
+        setUserToken(getLocal('token_key'))
+
         //Default config
         const keyPage = sessionStorage.getItem("Table_Vehicles")
         const keyOrder = sessionStorage.getItem("Table_order_Vehicles")
@@ -127,11 +130,6 @@ export default function GetVehiclesModule({ctx}) {
             object_name: "country",
             extra_desc: null
         },
-        {
-            column_name: "Manage",
-            object_name: null,
-            extra_desc: null
-        }
     ]
 
     if (error) {
@@ -163,7 +161,14 @@ export default function GetVehiclesModule({ctx}) {
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Vehicles" text_type="sub_heading"/>
-                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Vehicles"}/>  
+                    <GetGeneralTable builder={
+                            userToken ?
+                            [...builder,{
+                                column_name: "Manage",
+                                object_name: null,
+                                extra_desc: null
+                            }] : builder
+                        } items={items} maxPage={maxPage} currentPage={currPage} ctx={"Vehicles"}/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Vehicles By Country" text_type="sub_heading"/>

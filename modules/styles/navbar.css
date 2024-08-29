@@ -40,6 +40,7 @@
     padding: 10px;
     top: 15px !important;
     position: sticky !important;
+    z-index: 99;
     margin-bottom: 10px;
 }
 .nav-new-holder .nav-link{

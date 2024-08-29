@@ -19,6 +19,7 @@ export default function GetShipsModule({ctx}) {
     const [error, setError] = useState(null)
     const [dataStatus, setDataStatus] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
@@ -29,6 +30,8 @@ export default function GetShipsModule({ctx}) {
 
     useEffect(() => {
         Swal.showLoading()
+        setUserToken(getLocal('token_key'))
+
         //Default config
         const keyPage = sessionStorage.getItem("Table_Ships")
         const keyOrder = sessionStorage.getItem("Table_order_Ships")
@@ -126,11 +129,6 @@ export default function GetShipsModule({ctx}) {
             column_name: "Launch Year",
             object_name: "launch_year",
             extra_desc: null
-        },
-        {
-            column_name: "Manage",
-            object_name: null,
-            extra_desc: null
         }
     ]
 
@@ -163,7 +161,14 @@ export default function GetShipsModule({ctx}) {
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Ships" text_type="sub_heading"/>
-                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Ships"}/>  
+                    <GetGeneralTable builder={
+                            userToken ?
+                            [...builder,{
+                                column_name: "Manage",
+                                object_name: null,
+                                extra_desc: null
+                            }] : builder
+                        } items={items} maxPage={maxPage} currentPage={currPage} ctx={"Ships"}/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Ships By Country" text_type="sub_heading"/>
