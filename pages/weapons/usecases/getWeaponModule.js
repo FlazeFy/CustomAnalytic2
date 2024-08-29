@@ -19,6 +19,7 @@ export default function GetWeaponModule({ctx}) {
     const [error, setError] = useState(null)
     const [dataStatus, setDataStatus] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
@@ -29,6 +30,8 @@ export default function GetWeaponModule({ctx}) {
 
     useEffect(() => {
         Swal.showLoading()
+        setUserToken(getLocal('token_key'))
+
         //Default config
         const keyPage = sessionStorage.getItem("Table_Weapons")
         const keyOrder = sessionStorage.getItem("Table_order_Weapons")
@@ -122,10 +125,6 @@ export default function GetWeaponModule({ctx}) {
             object_name: "country",
             extra_desc: null
         },
-        {
-            column_name: "Manage",
-            object_name: null
-        }
     ]
 
     if (error) {
@@ -157,7 +156,14 @@ export default function GetWeaponModule({ctx}) {
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Weapons" text_type="sub_heading"/>
-                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Weapons"}/>  
+                    <GetGeneralTable builder={
+                            userToken ?
+                            [...builder,{
+                                column_name: "Manage",
+                                object_name: null,
+                                extra_desc: null
+                            }] : builder
+                        } items={items} maxPage={maxPage} currentPage={currPage} ctx={"Weapons"}/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Weapons By Country" text_type="sub_heading"/>

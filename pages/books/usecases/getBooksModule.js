@@ -18,6 +18,7 @@ export default function GetBooksModule({ctx}) {
     const [error, setError] = useState(null)
     const [dataStatus, setDataStatus] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [userToken, setUserToken] = useState(null)
 
     const [maxPage, setMaxPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
@@ -26,6 +27,8 @@ export default function GetBooksModule({ctx}) {
 
     useEffect(() => {
         Swal.showLoading()
+        setUserToken(getLocal('token_key'))
+
         //Default config
         const keyPage = sessionStorage.getItem("Table_Books")
         const keyOrder = sessionStorage.getItem("Table_order_Books")
@@ -118,11 +121,6 @@ export default function GetBooksModule({ctx}) {
             column_name: "Review Date",
             object_name: "review_date",
             extra_desc: null
-        },
-        {
-            column_name: "Manage",
-            object_name: null,
-            extra_desc: null
         }
     ]
 
@@ -155,7 +153,14 @@ export default function GetBooksModule({ctx}) {
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Books" text_type="sub_heading"/>
-                    <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Books"}/>  
+                    <GetGeneralTable builder={
+                            userToken ?
+                            [...builder,{
+                                column_name: "Manage",
+                                object_name: null,
+                                extra_desc: null
+                            }] : builder
+                        } items={items} maxPage={maxPage} currentPage={currPage} ctx={"Books"}/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Books By Reviewer" text_type="sub_heading"/>

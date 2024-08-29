@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from '../../components/navbar/left_bar'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 // Usecases
 import GetProfileInfo from './usecases/getProfileInfo'
@@ -20,7 +20,7 @@ export default function Profile() {
                     <OrganismsLeftBar active={"my"}/>
                     </div>
                     <div className="col-9">
-                        <GetProfileInfo/>
+                        <GetProfileInfo ctx="My Profile"/>
                     </div>
                 </div>
                 </div>
