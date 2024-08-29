@@ -14,7 +14,7 @@ export default function GetStoryContainer(props) {
                 <AtomsText body={<span dangerouslySetInnerHTML={{ __html: props.data.story_detail }} />} text_type="mini_content"/>
                 <div className="d-flex justify-content-start">
                     <div className="me-2 pt-1 p-0">
-                        <img className={container.story_creator_image} src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
+                        <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
                     </div>
                     <div>
                         <AtomsText body={'@'+props.data.created_by} text_type="mini_sub_heading"/>

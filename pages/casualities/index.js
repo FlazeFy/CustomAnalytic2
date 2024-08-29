@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import CasualitiesSummary from "../../components/summary/casualities"
 import GetTotalDeathBySide from "./usecases/getTotalDeathBySide"
 import GetTotalDeathByCountry from "./usecases/getTotalDeathByCountry"
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Casualities() {
     return (
@@ -18,7 +18,7 @@ export default function Casualities() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"casualities"}/>
+                            <OrganismsLeftBar active={"casualities"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

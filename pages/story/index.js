@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from '../../components/navbar/left_bar'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 import GetAllStories from './usecases/getAllStories'
 
 export default function Story() {
@@ -15,7 +15,7 @@ export default function Story() {
         <div className="content">
           <div className="row">
             <div className="col-3">
-              <Navbar active={"story"}/>
+              <OrganismsLeftBar active={"story"}/>
             </div>
             <div className="col-9">
               <div className="row">

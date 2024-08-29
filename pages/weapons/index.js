@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import WeaponsSummary from "../../components/summary/weapons"
 import GetTotalWeaponByCountry from "./usecases/getTotalWeaponByCountry"
@@ -7,6 +6,7 @@ import GetTotalWeaponByType from "./usecases/getTotalWeaponByType"
 import GetTotalWeaponBySide from "./usecases/getTotalWeaponBySide"
 import GetAllWeapon from "./usecases/getAllWeapon"
 import GetWeaponModule from './usecases/getWeaponModule'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Weapons() {
     return (
@@ -21,7 +21,7 @@ export default function Weapons() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"weapons"}/>
+                            <OrganismsLeftBar active={"weapons"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

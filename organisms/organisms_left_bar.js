@@ -1,15 +1,19 @@
+import { faSignIn } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link'
-import { ucEachWord } from '../../modules/helpers/typography'
+import { useEffect, useState } from 'react';
+import AtomsText from '../atoms/atoms_text';
+import { ucEachWord, ucFirst } from '../modules/helpers/typography'
+import { getLocal } from '../modules/storages/local';
 
-import container from '../containers/containers.module.css'
-import navbar from './navbar.module.css'
+import style from './organisms.module.css'
 
-export default function Navbar(props) {
-    function getActive(val, curr){
+export default function OrganismsLeftBar(props) {
+    const getActive = (val, curr) => {
         if(val == curr){
-            return "nav-item active";
+            return "nav-item active"
         } else {
-            return "nav-item";
+            return "nav-item"
         }
     }
 
@@ -107,17 +111,27 @@ export default function Navbar(props) {
                 <div className="nav-link">
                     <div className='row'>
                         <div className='col-3'>
-                            {/* ... */}
+                            <img className="img-profile" src={`/images/${link != '' ? link : 'intro'}.png`} alt={`${link}.png`}></img>
                         </div>
                         <div className='col-9'>
-                            <h5>{ucEachWord(title)}</h5>
-                            <h6>{desc}</h6>
+                            <AtomsText body={ucEachWord(title)} text_type="mini_sub_heading"/>
+                            <AtomsText body={desc} text_type="mini_sub_heading"/>
                         </div>
                     </div>
                 </div>
             </li>
         </Link>
     }
+
+    const [userToken, setUserToken] = useState(null)
+    const [username, setUsername] = useState(null)
+    const [role, setRole] = useState(null)
+
+    useEffect(() => {
+        setUserToken(getLocal('user_token'))
+        setUsername(getLocal('username'))
+        setRole(getLocal('role'))
+    },[])
 
     return (
         <div className="nav-new-holder">
@@ -126,19 +140,30 @@ export default function Navbar(props) {
                     if(val.section == null && i == 0){
                         dividerBefore = false
                         return <>
-                            <Link href={`profile`}>
-                                <>
-                                <div className={navbar.profile_box}>
-                                    <div className="d-inline-block position-relative me-2">
-                                        <img className={container.story_creator_image} src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
-                                    </div>
-                                    <div className="d-inline-block position-relative">
-                                        <h6 className="event-title">@Flazefy</h6>
-                                        <h6 className="event-subtitle">Admin</h6>
-                                    </div>
-                                </div>
-                                </>
-                            </Link>
+                            {
+                                userToken ?
+                                    <Link href={`profile`}>
+                                        <div className={style.profile_box}>
+                                            <div className='d-flex justify-content-start'>
+                                                <div className="d-inline-block position-relative me-2">
+                                                    <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
+                                                </div>
+                                                <div className="d-inline-block position-relative">
+                                                    <AtomsText body={username} text_type="mini_sub_heading"/>
+                                                    <AtomsText body={ucFirst(role)} text_type="mini_sub_heading"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                :
+                                    <>  
+                                        <div className={style.profile_box}>
+                                            <AtomsText body={<div className='text-white'><FontAwesomeIcon icon={faSignIn}/> Sign In</div>} text_type="sub_heading"/>
+                                            <AtomsText body="To get access of manage data" text_type="mini_sub_heading"/>
+                                        </div>
+                                    </>
+                            }
+                            
                             { getNavButtonTemplate(val.link, val.title, val.desc) }
                         </>
                     } else if (val.section != null) {

@@ -186,28 +186,6 @@ export default function StoryDetail() {
                 is_you: false
             }
         ], 
-        reference: [
-            {
-                type: "website",
-                name: "Battle of the somme",
-                url: "wikipedia.com"
-            },
-            {
-                type: "website",
-                name: "Battle of the somme",
-                url: "wikipedia.com"
-            },
-            {
-                type: "book",
-                name: "Battle of the somme",
-                url: "wikipedia.com"
-            },
-            {
-                type: "journal",
-                name: "Battle of the somme",
-                url: "wikipedia.com"
-            }
-        ], 
     }
 
     if (error) {
@@ -245,7 +223,7 @@ export default function StoryDetail() {
                                 <GetInfo data={items}/>
                                 <AtomsText body={<span dangerouslySetInnerHTML={{ __html: items.story_detail }} />} text_type="mini_content"/>
                                 {/* <GetStats props={dummy.stats}/> */}
-                                <GetReference props={dummy.reference}/>
+                                <GetReference props={items.story_reference}/>
                                 <GetDiscussion props={dummy.discussion}/>
                                 <PostDiscussion/>
                                 <GetFeedback props={dummy.feedback}/>

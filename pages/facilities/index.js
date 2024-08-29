@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import FacilitiesSummary from "../../components/summary/facilities"
 import GetTotalFacilityByCountry from "./usecases/getTotalFacilityByCountry"
 import GetTotalFacilityByType from "./usecases/getTotalFacilityByType"
 import GetTotalFacilityBySide from "./usecases/getTotalFacilityBySide"
 import GetFacilityLocation from "./usecases/getFacilityLocation"
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Facilities() {
     return (
@@ -20,7 +20,7 @@ export default function Facilities() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"facilities"}/>
+                            <OrganismsLeftBar active={"facilities"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

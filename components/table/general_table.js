@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PageBar from '../navbar/page_bar'
+import PageBar from '../../organisms/organisms_page_bar'
 import GetOrdering from '../controls/ordering'
 import GetLimit from '../controls/limit'
 import GetManageModal from '../modals/manage'

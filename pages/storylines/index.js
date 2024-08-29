@@ -14,7 +14,7 @@ export default function Storylines() {
         <div className="content">
           <div className="row">
             <div className="col-3">
-              <Navbar active={"storylines"}/>
+              <OrganismsLeftBar active={"storylines"}/>
             </div>
             <div className="col-9">
 

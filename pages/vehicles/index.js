@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from "../../components/navbar/left_bar"
 
 import VehiclesSummary from "../../components/summary/vehicles"
 import GetTotalVehicleByCountry from "./usecases/getTotalVehicleByCountry"
@@ -7,6 +6,7 @@ import GetTotalVehicleByRole from "./usecases/getTotalVehicleByRole"
 import GetTotalVehicleBySide from "./usecases/getTotalVehicleBySide"
 import GetAllVehicle from "./usecases/getAllVehicle"
 import GetVehiclesModule from './usecases/getVehiclesModule'
+import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 
 export default function Vehicles() {
     return (
@@ -21,7 +21,7 @@ export default function Vehicles() {
                 <div className="content">
                     <div className="row">
                         <div className="col-3">
-                            <Navbar active={"vehicles"}/>
+                            <OrganismsLeftBar active={"vehicles"}/>
                         </div>
                         <div className="col-9">
                             <div className="mb-3">

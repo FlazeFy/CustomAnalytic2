@@ -17,7 +17,7 @@ export default function Profile() {
                 <div className="content">
                 <div className="row">
                     <div className="col-3">
-                    <Navbar active={"my"}/>
+                    <OrganismsLeftBar active={"my"}/>
                     </div>
                     <div className="col-9">
                         <GetProfileInfo/>
