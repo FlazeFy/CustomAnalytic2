@@ -16,21 +16,6 @@ export default function Weapons() {
                             <div className="mb-3">
                                 <GetWeaponModule ctx={"weapons_module"}/>
                             </div>
-                            {/* <div className="mb-3">
-                                <GetAllWeapon ctx="all_weapon"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalWeaponByType ctx="total_weapon_by_type"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalWeaponByCountry ctx="total_weapon_by_country"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalWeaponBySide ctx="total_weapon_by_side"/>
-                            </div>
-                            <div className="mb-3">
-                                <WeaponsSummary/>
-                            </div> */}
                         </div>
                     </div>
                 </div>

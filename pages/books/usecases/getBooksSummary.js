@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 
-export default function VehiclesSummary(props) {
+export default function GetBooksSummary(props) {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -11,7 +12,7 @@ export default function VehiclesSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/vehicles/summary")
+        fetch("http://127.0.0.1:8000/api/books/summary")
         .then(res => res.json())
             .then(
             (result) => {
@@ -26,7 +27,7 @@ export default function VehiclesSummary(props) {
     },[])
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <MoleculesAlertBox message={error.message} type='danger' context={props.ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -38,14 +39,11 @@ export default function VehiclesSummary(props) {
             <div className='container' style={{padding:"6px"}}>
                 <h6>Summary</h6>
                 {
-                    items.map((val, i, index) => {
-                        return (
-                            <div key={i} className='summary-box'>
-                                Overall in this war, The most produced vehicles by role is <b className='text-primary'>{val.most_produced}</b> which have been produced about <b className='text-primary'>{val.total}</b> variant. 
-                                This role of vehicles is mainly produced by <b className='text-primary'>{val.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{val.average_by_country}</b> variant of vehicles.
-                            </div>
-                        );
-                    })
+                    items && <div key={i} className='summary-box'>
+                        Overall in this war, The most of the books are reviewed by <b className='text-primary'>{items.most_reviewed}</b> which have been reviewed about <b className='text-primary'>{items.total_reviewed_most}</b> book. 
+                        Author with the most published book is <b className='text-primary'>{items.most_author}</b> which have been reviewed about <b className='text-primary'>{items.total_published_most}</b> book. 
+                        Most of the book are published in the year of <b className='text-primary'>{items.most_published_year}</b>.
+                    </div>
                 }
             </div>
         );

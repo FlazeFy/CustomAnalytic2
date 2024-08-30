@@ -27,6 +27,7 @@ export default function GetAircraftModule({ctx}) {
     const [itemsStatsRole, setItemsStatsRole] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
     const [itemsStatsManufacturer, setItemsStatsManufacturer] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -76,6 +77,7 @@ export default function GetAircraftModule({ctx}) {
                 setItemsStatsRole(result.stats.total_by_role)
                 setItemsStatsManufacturer(result.stats.total_by_manufacturer)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('aircraft_module',JSON.stringify(result))
             },
@@ -100,6 +102,7 @@ export default function GetAircraftModule({ctx}) {
                     setItemsStatsRole(res_backup.stats.total_by_role)
                     setItemsStatsManufacturer(res_backup.stats.total_by_manufacturer)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -149,6 +152,24 @@ export default function GetAircraftModule({ctx}) {
                 {
                     dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                        Overall in this war, The most produced aircraft by role is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                        This role of aircraft is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of aircraft.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Airplane" text_type="sub_heading"/>
                     <MoleculesTable builder={

@@ -1,10 +1,10 @@
-import FacilitiesSummary from "../../components/summary/facilities"
 import GetTotalFacilityByCountry from "./usecases/getTotalFacilityByCountry"
 import GetTotalFacilityByType from "./usecases/getTotalFacilityByType"
 import GetTotalFacilityBySide from "./usecases/getTotalFacilityBySide"
 import GetFacilityLocation from "./usecases/getFacilityLocation"
 import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 import MoleculesPageHeader from '../../molecules/molecules_page_header'
+import GetFacilitiesSummary from "./usecases/getFacilitiesSummary"
 
 export default function Facilities() {
     return (
@@ -30,7 +30,7 @@ export default function Facilities() {
                                 <GetTotalFacilityBySide ctx="total_facility_by_side"/>
                             </div>
                             <div className="mb-3">
-                                <FacilitiesSummary/>
+                                <GetFacilitiesSummary/>
                             </div>  
                         </div>
                     </div>

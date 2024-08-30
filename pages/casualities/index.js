@@ -1,8 +1,8 @@
-import CasualitiesSummary from "../../components/summary/casualities"
 import GetTotalDeathBySide from "./usecases/getTotalDeathBySide"
 import GetTotalDeathByCountry from "./usecases/getTotalDeathByCountry"
 import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 import MoleculesPageHeader from "../../molecules/molecules_page_header"
+import GetCasualitiesSummary from "./usecases/getCasualitiesSummary"
 
 export default function Casualities() {
     return (
@@ -26,7 +26,7 @@ export default function Casualities() {
                                     <GetTotalDeathBySide ctx="total_death_by_side_civilian" view="Civilian"/>
                                 </div>
                             </div>
-                            <CasualitiesSummary/>    
+                            <GetCasualitiesSummary/>    
                         </div>
                     </div>
                 </div>

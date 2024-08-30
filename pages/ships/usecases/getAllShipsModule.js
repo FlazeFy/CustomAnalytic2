@@ -26,6 +26,7 @@ export default function GetShipsModule({ctx}) {
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
     const [itemsStatsClass, setItemsStatsClass] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -73,6 +74,7 @@ export default function GetShipsModule({ctx}) {
                 setItemsStatsCountry(result.stats.total_by_country)
                 setItemsStatsClass(result.stats.total_by_class)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('ships_module',JSON.stringify(result))
             },
@@ -96,6 +98,7 @@ export default function GetShipsModule({ctx}) {
                     setItemsStatsCountry(res_backup.stats.total_by_country)
                     setItemsStatsClass(res_backup.stats.total_by_class)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -145,6 +148,25 @@ export default function GetShipsModule({ctx}) {
                 {
                     dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                    Overall in this war, The most produced ships by class is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                    This class of ships is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of ships. 
+                                    Most of these ships built on year of <b className='text-primary'>{itemsSummary.most_built_year}</b>.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Ships" text_type="sub_heading"/>
                     <MoleculesTable builder={

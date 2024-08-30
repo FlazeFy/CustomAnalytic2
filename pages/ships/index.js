@@ -16,21 +16,6 @@ export default function Ships() {
                             <div className="mb-3">
                                 <GetShipsModule ctx="ships_module"/>
                             </div>
-                            {/* <div className="mb-3">
-                                <GetAllShip ctx="all_ship"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalShipByCountry ctx="total_ship_by_country"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalShipBySide ctx="total_ship_by_side"/>
-                            </div>
-                            <div className="mb-3">
-                                <TotalShipsByLaunchYear/> 
-                            </div>
-                            <div className="mb-3">
-                                <ShipsSummary/>
-                            </div> */}
                         </div>
                     </div>
                 </div>

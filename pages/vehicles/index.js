@@ -16,21 +16,6 @@ export default function Vehicles() {
                             <div className="mb-3">
                                 <GetVehiclesModule ctx="vehicles_module"/>
                             </div>
-                            {/* <div className="mb-3">
-                                <GetAllVehicle ctx="all_vehicle"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalVehicleByRole ctx="total_vehicle_by_role"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalVehicleByCountry ctx="total_vehicle_by_country"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalVehicleBySide ctx="total_vehicle_by_side"/>
-                            </div>
-                            <div className="mb-3">
-                                <VehiclesSummary/>
-                            </div> */}
                         </div>
                     </div>
                 </div>

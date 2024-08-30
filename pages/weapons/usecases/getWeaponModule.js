@@ -26,6 +26,7 @@ export default function GetWeaponModule({ctx}) {
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
     const [itemsStatsType, setItemsStatsType] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -73,6 +74,7 @@ export default function GetWeaponModule({ctx}) {
                 setItemsStatsCountry(result.stats.total_by_country)
                 setItemsStatsType(result.stats.total_by_type)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('Weapons_module',JSON.stringify(result))
             },
@@ -96,6 +98,7 @@ export default function GetWeaponModule({ctx}) {
                     setItemsStatsCountry(res_backup.stats.total_by_country)
                     setItemsStatsType(res_backup.stats.total_by_type)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -140,6 +143,24 @@ export default function GetWeaponModule({ctx}) {
                 {
                     dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                    Overall in this war, The most produced weapons by type is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                    This weapon is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of weapon.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Weapons" text_type="sub_heading"/>
                     <MoleculesTable builder={

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 
-export default function ShipsSummary(props) {
+export default function GetFacilitiesSummary(props) {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -11,7 +12,7 @@ export default function ShipsSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/ships/summary")
+        fetch("http://127.0.0.1:8000/api/facilities/summary")
         .then(res => res.json())
             .then(
             (result) => {
@@ -26,7 +27,7 @@ export default function ShipsSummary(props) {
     },[])
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <MoleculesAlertBox message={error.message} type='danger' context={props.ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -41,9 +42,8 @@ export default function ShipsSummary(props) {
                     items.map((val, i, index) => {
                         return (
                             <div key={i} className='summary-box'>
-                                Overall in this war, The most produced ships by class is <b className='text-primary'>{val.most_produced}</b> which have been produced about <b className='text-primary'>{val.total}</b> variant. 
-                                This class of ships is mainly produced by <b className='text-primary'>{val.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{val.average_by_country}</b> variant of ships. 
-                                Most of these ships built on year of <b className='text-primary'>{val.most_built_year}</b>.
+                                Overall in this war, The most built facilities by type is <b className='text-primary'>{val.most_built}</b> which have been built about <b className='text-primary'>{val.total}</b> facilities. 
+                                This type of facilities is mainly produced by <b className='text-primary'>{val.most_built_by_country}</b>. Average country has built about <b className='text-primary'>{val.average_by_country}</b> facilities.
                             </div>
                         );
                     })

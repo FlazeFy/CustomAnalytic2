@@ -1,6 +1,7 @@
 import GetBooksModule from "./usecases/getBooksModule"
 import OrganismsLeftBar from "../../organisms/organisms_left_bar"
 import MoleculesPageHeader from "../../molecules/molecules_page_header"
+import GetBooksSummary from "./usecases/getBooksSummary"
 
 export default function Books() {
     return (
@@ -16,18 +17,6 @@ export default function Books() {
                             <div className="mb-3">
                                 <GetBooksModule ctx="books_module"/>
                             </div>
-                            {/* <div className="mb-3">
-                                <GetAllBook ctx="all_book"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalBookByReviewer ctx="total_book_by_reviewer"/>
-                            </div>
-                            <div className="mb-3">
-                                <TotalBooksByYearReview/>
-                            </div>
-                            <div className="mb-3">
-                                <BooksSummary/>
-                            </div> */}
                         </div>
                     </div>
                 </div>

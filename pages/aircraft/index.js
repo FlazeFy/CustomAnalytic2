@@ -16,21 +16,6 @@ export default function Aircraft() {
                             <div className="mb-3">
                                 <GetAircraftModule ctx="aircraft"/>
                             </div>
-                            {/* <div className="mb-3">
-                                <GetTotalAircraftByManufacturer ctx="total_aircraft_by_manufacturer"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalAircraftBySide ctx="total_aircraft_by_side"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalAircraftByCountry ctx="total_aircraft_by_country"/>
-                            </div>
-                            <div className="mb-3">
-                                <GetTotalAircraftByRole ctx="total_aircraft_by_role"/>
-                            </div> */}
-                            {/* <div className="mb-3">
-                                <AircraftSummary/>
-                            </div> */}
                         </div>
                     </div>
                 </div>

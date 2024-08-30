@@ -28,6 +28,7 @@ export default function GetVehiclesModule({ctx}) {
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
     const [itemsStatsRole, setItemsStatsRole] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -75,6 +76,7 @@ export default function GetVehiclesModule({ctx}) {
                 setItemsStatsCountry(result.stats.total_by_country)
                 setItemsStatsRole(result.stats.total_by_role)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('vehicles_module',JSON.stringify(result))
             },
@@ -98,6 +100,7 @@ export default function GetVehiclesModule({ctx}) {
                     setItemsStatsCountry(res_backup.stats.total_by_country)
                     setItemsStatsRole(res_backup.stats.total_by_role)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -147,6 +150,24 @@ export default function GetVehiclesModule({ctx}) {
                 {
                     dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                        Overall in this war, The most produced vehicles by role is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                        This role of vehicles is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of vehicles.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Vehicles" text_type="sub_heading"/>
                     <MoleculesTable builder={

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import AtomsBreakLine from '../../atoms/atoms_breakline';
+import AtomsBreakLine from '../../../atoms/atoms_breakline';
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 
-export default function CasualitiesSummary(props) {
+export default function GetCasualitiesSummary(props) {
     //Initial variable
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -12,7 +13,7 @@ export default function CasualitiesSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/casualities/summary")
+        fetch("http://127.0.0.1:8000/api/casualities/summary")
         .then(res => res.json())
             .then(
             (result) => {
@@ -27,7 +28,7 @@ export default function CasualitiesSummary(props) {
     },[])
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <MoleculesAlertBox message={error.message} type='danger' context={props.ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
