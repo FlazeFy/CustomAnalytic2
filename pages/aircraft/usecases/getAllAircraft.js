@@ -2,7 +2,8 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../components/table/molecules_table'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -87,7 +88,7 @@ export default function GetAllAircraft({ctx}) {
     ]
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -98,7 +99,7 @@ export default function GetAllAircraft({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Aircraft"}/>  
+                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Aircraft"}/>  
             </>
         )
     }

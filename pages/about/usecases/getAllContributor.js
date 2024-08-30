@@ -1,4 +1,5 @@
 import React from 'react'
+import AtomsBreakLine from '../../../atoms/atoms_breakline'
 import GetAboutContainer from '../../../components/containers/about_container'
 
 // Component
@@ -32,7 +33,8 @@ export default function GetAllContributor() {
     
     return (
         <> 
-            <h2>{getCleanTitleFromCtx("about contributor")}</h2><br></br>
+            <h2>{getCleanTitleFromCtx("about contributor")}</h2>
+            <AtomsBreakLine length="1"/>
             <GetAboutContainer items={items} />
         </>
     )

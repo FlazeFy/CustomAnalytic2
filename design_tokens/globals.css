@@ -1,0 +1,133 @@
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif
+}
+:root {
+  /* Typography */
+  --textXJumbo : 32px;
+  --textXL : 26px;
+  --textLG : 22px;
+  --textXMD : 18px;
+  --textMD : 15px;
+  --textSM : 13px;
+  --textXSM : 12.5px;
+
+  /* Margin & Padding */
+  --spaceXLG : 20px;
+  --spaceLG : 16px;
+  --spaceMD : 10px;
+  --spaceSM : 6px;
+  --spaceMini : 3px;
+
+  /* Rounded */
+  --roundedCircle : 100%;
+  --roundedLG : 60px;
+  --roundedMD : 20px;
+  --roundedSM : 10px;
+
+  /* Color Pallete */
+  --primaryBG : #28b374;
+  --secondaryBG : #245ad0;
+  --greyBG : #c0c0c0;
+  --whiteColor: #f4f4f4;
+  --blackBG : #181818;
+  --successBG : #00C363;
+  --warningBG : #f5df54;
+  --dangerBG : #FF6E58;
+  /* #8cd61e */
+}
+.text-title, h2{
+  color:#28b374 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/*All Pages*/
+body {
+  background-color: var(--blackBG) !important;
+}
+.main {
+  display: block;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 1260px !important;
+  margin: auto;
+}
+.content {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+.summary-box{
+  font-size:18px !important;
+  color: whitesmoke;
+}
+.custom-tbody{
+  max-height: 100% !important; 
+  overflow-y: auto;
+  position: relative;
+  padding: 10px;
+  border: 2px solid #555;
+  border-radius: 10px;
+}
+.custom-tbody .dropdown{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.label-max{
+  font-size: 11px !important;
+  font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #808080; 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondaryBG); 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+h6 {
+  color:whitesmoke;
+}
+.section-line {
+  color: var(--primaryBG);
+}
+
+.tag-box {
+  color: var(--whiteColor) !important;
+  background: var(--secondaryBG);
+  padding: var(--spaceSM);
+  font-size: var(--textXMD) !important;
+  border-radius: var(--roundedSM);
+  margin-right: var(--spaceSM);
+  cursor: pointer;
+}
+
+.reference-item {
+  font-size: var(--textXMD);
+}
+
+/* Apexchart */
+tspan {
+  fill: var(--whiteColor);
+  font-size: var(--textSM);
+}

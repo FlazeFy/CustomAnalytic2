@@ -1,18 +1,17 @@
-import { faWarning } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
-import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 
 export default function GetAircraftModule({ctx}) {
     //Initial variable
@@ -28,6 +27,7 @@ export default function GetAircraftModule({ctx}) {
     const [itemsStatsRole, setItemsStatsRole] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
     const [itemsStatsManufacturer, setItemsStatsManufacturer] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -77,6 +77,7 @@ export default function GetAircraftModule({ctx}) {
                 setItemsStatsRole(result.stats.total_by_role)
                 setItemsStatsManufacturer(result.stats.total_by_manufacturer)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('aircraft_module',JSON.stringify(result))
             },
@@ -101,6 +102,7 @@ export default function GetAircraftModule({ctx}) {
                     setItemsStatsRole(res_backup.stats.total_by_role)
                     setItemsStatsManufacturer(res_backup.stats.total_by_manufacturer)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -137,15 +139,7 @@ export default function GetAircraftModule({ctx}) {
     ]
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -156,16 +150,29 @@ export default function GetAircraftModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' role='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                        Overall in this war, The most produced aircraft by role is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                        This role of aircraft is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of aircraft.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Airplane" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",
@@ -176,19 +183,19 @@ export default function GetAircraftModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Country" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsCountry} filter_name="Aircraft_Country"/>  
+                    <MoleculesChartBar items={itemsStatsCountry} filter_name="Aircraft_Country"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Manufacturer" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsManufacturer} filter_name="Aircraft_Manufacturer"/>  
+                    <MoleculesChartBar items={itemsStatsManufacturer} filter_name="Aircraft_Manufacturer"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Sides" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsSide} filter_name="Aircraft_Sides"/>  
+                    <MoleculesChartPie items={itemsStatsSide} filter_name="Aircraft_Sides"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Role" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsRole} filter_name="Aircraft_Role"/>  
+                    <MoleculesChartPie items={itemsStatsRole} filter_name="Aircraft_Role"/>  
                 </div>
             </>
         )

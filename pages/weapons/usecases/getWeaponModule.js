@@ -1,18 +1,17 @@
-import { faWarning } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
-import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 
 export default function GetWeaponModule({ctx}) {
     //Initial variable
@@ -27,6 +26,7 @@ export default function GetWeaponModule({ctx}) {
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
     const [itemsStatsType, setItemsStatsType] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -74,6 +74,7 @@ export default function GetWeaponModule({ctx}) {
                 setItemsStatsCountry(result.stats.total_by_country)
                 setItemsStatsType(result.stats.total_by_type)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('Weapons_module',JSON.stringify(result))
             },
@@ -97,6 +98,7 @@ export default function GetWeaponModule({ctx}) {
                     setItemsStatsCountry(res_backup.stats.total_by_country)
                     setItemsStatsType(res_backup.stats.total_by_type)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -128,15 +130,7 @@ export default function GetWeaponModule({ctx}) {
     ]
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' type='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -147,16 +141,29 @@ export default function GetWeaponModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' type='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                    Overall in this war, The most produced weapons by type is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                    This weapon is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of weapon.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Weapons" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",
@@ -167,15 +174,15 @@ export default function GetWeaponModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Weapons By Country" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsCountry} filter_name="Weapons_Country"/>  
+                    <MoleculesChartBar items={itemsStatsCountry} filter_name="Weapons_Country"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Weapons By Sides" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsSide} filter_name="Weapons_Sides"/>  
+                    <MoleculesChartPie items={itemsStatsSide} filter_name="Weapons_Sides"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Weapons By Type" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsType} filter_name="Weapons_type"/>  
+                    <MoleculesChartPie items={itemsStatsType} filter_name="Weapons_type"/>  
                 </div>
             </>
         )

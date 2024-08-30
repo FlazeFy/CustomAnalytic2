@@ -1,0 +1,24 @@
+button {
+    border: none;
+}
+.btn-icon{
+    width: 45px;
+    height: 45px;
+    margin: 6px;
+    text-align: center;
+    padding: 8px !important;
+    background: transparent;
+    border: 2px solid #414141 !important;
+    color: #414141;
+}
+.btn-icon.social:hover{
+    color: whitesmoke;
+}
+.btn-icon.social:hover{
+    background: #28b374;
+    border: 2px solid #28b374 !important;
+}
+.btn-icon.social{
+    border-radius:100% !important;
+}
+  

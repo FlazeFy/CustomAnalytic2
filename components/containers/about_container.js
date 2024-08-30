@@ -1,12 +1,10 @@
 import React from 'react'
-
 import container from './containers.module.css'
-
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faGlobe } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import AtomsBreakLine from '../../atoms/atoms_breakline'
 
 export default function GetAboutContainer({items}) {
     return (
@@ -17,7 +15,8 @@ export default function GetAboutContainer({items}) {
                     <div className={container.about_box}>
                         <img src={item['profile_pic']}></img>
                         <div className={container.body_box}>
-                            <label className='mb-2'>{item['fullname']}</label><br></br>
+                            <label className='mb-2'>{item['fullname']}</label>
+                            <AtomsBreakLine length="1"/>
                             {
                                 item['role'].map((data, j, idx2) => {
                                     return <>

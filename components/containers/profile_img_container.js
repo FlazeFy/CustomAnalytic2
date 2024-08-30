@@ -1,14 +1,8 @@
 import React from 'react'
-
 import container from './containers.module.css'
-
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
-
-// Components
-import GetButtonIconTitle from '../buttons/button_icon_title'
+import AtomsButtonIconTitle from '../../atoms/atoms_button_icon_title'
 
 export default function GetProfileImgContainer(props) {
     return (
@@ -26,13 +20,13 @@ export default function GetProfileImgContainer(props) {
                         <div className="modal-body">
                             <div className='row'>
                                 <div className='col-4'>
-                                    <GetButtonIconTitle title="Upload Image" type="icon" ctx={<FontAwesomeIcon icon={faUpload}/>}/>
+                                    <AtomsButtonIconTitle title="Upload Image" type="icon" ctx={<FontAwesomeIcon icon={faUpload}/>}/>
                                 </div>
                                 <div className='col-4'>
-                                    <GetButtonIconTitle title="Set Avatar" type="icon" ctx={<FontAwesomeIcon icon={faUser}/>}/>
+                                    <AtomsButtonIconTitle title="Set Avatar" type="icon" ctx={<FontAwesomeIcon icon={faUser}/>}/>
                                 </div>
                                 <div className='col-4'>
-                                    <GetButtonIconTitle title="Remove Image" type="icon" ctx={<FontAwesomeIcon icon={faXmark}/>}/>
+                                    <AtomsButtonIconTitle title="Remove Image" type="icon" ctx={<FontAwesomeIcon icon={faXmark}/>}/>
                                 </div>
                             </div>
                         </div>

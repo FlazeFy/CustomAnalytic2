@@ -127,7 +127,7 @@ export default function OrganismsLeftBar(props) {
         try {
             setUserToken(getLocal('token_key'))
             setUsername(getLocal('username'))
-            setRole(getLocal('role'))
+            setRole(getLocal('role_key'))
 
             if(userToken){
                 const signedUserMenu = {
@@ -149,15 +149,7 @@ export default function OrganismsLeftBar(props) {
     },[userToken])
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -182,7 +174,7 @@ export default function OrganismsLeftBar(props) {
                                                             <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
                                                         </div>
                                                         <div className="d-inline-block position-relative">
-                                                            <AtomsText body={username} text_type="mini_sub_heading"/>
+                                                            <AtomsText body={'@'+username} text_type="mini_sub_heading"/>
                                                             <AtomsText body={ucFirst(role)} text_type="mini_sub_heading"/>
                                                         </div>
                                                     </div>

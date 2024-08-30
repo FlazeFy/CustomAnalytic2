@@ -4,14 +4,15 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 
 export default function GetBooksModule({ctx}) {
     //Initial variable
@@ -125,15 +126,7 @@ export default function GetBooksModule({ctx}) {
     ]
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -144,16 +137,11 @@ export default function GetBooksModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' role='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Books" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",
@@ -164,7 +152,7 @@ export default function GetBooksModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Books By Reviewer" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsReviewer} filter_name="Books_Reviewer"/>  
+                    <MoleculesChartBar items={itemsStatsReviewer} filter_name="Books_Reviewer"/>  
                 </div>
             </>
         )

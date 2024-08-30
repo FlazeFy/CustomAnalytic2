@@ -2,11 +2,12 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllEvent({ctx}) {
     //Initial variable
@@ -86,7 +87,7 @@ export default function GetAllEvent({ctx}) {
     ]
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -97,7 +98,7 @@ export default function GetAllEvent({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Events"}/>  
+                <MoleculesTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Events"}/>  
             </>
         )
     }

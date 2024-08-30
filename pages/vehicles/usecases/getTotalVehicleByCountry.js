@@ -2,11 +2,12 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetBarChart from '../../../components/charts/bar_chart'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetTotalVehicleByCountry({ctx}) {
     //Initial variable
@@ -44,7 +45,7 @@ export default function GetTotalVehicleByCountry({ctx}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -55,7 +56,7 @@ export default function GetTotalVehicleByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetBarChart items={items} filter_name={filter_name}/>  
+                <MoleculesChartBar items={items} filter_name={filter_name}/>  
             </>
         )
     }

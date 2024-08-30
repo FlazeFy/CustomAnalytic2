@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import GetPieChart from '../../../components/charts/pie_chart'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetTotalShipBySide({ctx}) {
     //Initial variable
@@ -37,7 +38,7 @@ export default function GetTotalShipBySide({ctx}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -48,7 +49,7 @@ export default function GetTotalShipBySide({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetPieChart items={items} filter_name={null}/>  
+                <MoleculesChartPie items={items} filter_name={null}/>  
             </>
         )
     }

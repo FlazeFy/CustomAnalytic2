@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import GetColumnChart from '../../../components/charts/column_chart'
+import MoleculesChartColumn from '../../../molecules/molecules_chart_column'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetTotalDeathByCountry({ctx}) {
     //Initial variable
@@ -32,7 +33,7 @@ export default function GetTotalDeathByCountry({ctx}) {
             sessionStorage.setItem("Table_limit_Deaths", 7);
         }
 
-        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/limit/${keyLimit}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/molecules_filter_limit/${keyLimit}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -74,7 +75,7 @@ export default function GetTotalDeathByCountry({ctx}) {
     ]
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -85,7 +86,7 @@ export default function GetTotalDeathByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetColumnChart items={items} builder={builder} ctx={"Deaths"} maxPage={maxPage} currentPage={currPage}/>
+                <MoleculesChartColumn items={items} builder={builder} ctx={"Deaths"} maxPage={maxPage} currentPage={currPage}/>
             </>
         )
     }

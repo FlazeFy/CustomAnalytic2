@@ -4,15 +4,16 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
-import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 
 export default function GetVehiclesModule({ctx}) {
     //Initial variable
@@ -27,6 +28,7 @@ export default function GetVehiclesModule({ctx}) {
     const [itemsStatsCountry, setItemsStatsCountry] = useState([])
     const [itemsStatsRole, setItemsStatsRole] = useState([])
     const [itemsStatsSide, setItemsStatsSide] = useState([])
+    const [itemsSummary, setItemsSummary] = useState([])
 
     useEffect(() => {
         Swal.showLoading()
@@ -74,6 +76,7 @@ export default function GetVehiclesModule({ctx}) {
                 setItemsStatsCountry(result.stats.total_by_country)
                 setItemsStatsRole(result.stats.total_by_role)
                 setItemsStatsSide(result.stats.total_by_sides)
+                setItemsSummary(result.summary)
 
                 storeLocal('vehicles_module',JSON.stringify(result))
             },
@@ -97,6 +100,7 @@ export default function GetVehiclesModule({ctx}) {
                     setItemsStatsCountry(res_backup.stats.total_by_country)
                     setItemsStatsRole(res_backup.stats.total_by_role)
                     setItemsStatsSide(res_backup.stats.total_by_sides)
+                    setItemsSummary(res_backup.summary)
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -133,15 +137,7 @@ export default function GetVehiclesModule({ctx}) {
     ]
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -152,16 +148,29 @@ export default function GetVehiclesModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' role='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
+                <div className='row'>
+                    <div className='col'>
+                        <div className='container' style={{padding:"6px"}}>
+                            <AtomsText text_type="sub_heading" body="Summary"/>
+                            {
+                                itemsSummary && <AtomsText text_type="mini_sub_heading" body={
+                                    <>
+                                        Overall in this war, The most produced vehicles by role is <b className='text-primary'>{itemsSummary.most_produced}</b> which have been produced about <b className='text-primary'>{itemsSummary.total}</b> variant. 
+                                        This role of vehicles is mainly produced by <b className='text-primary'>{itemsSummary.most_produced_by_country}</b>. Average country has produced about <b className='text-primary'>{itemsSummary.average_by_country}</b> variant of vehicles.
+                                    </>   
+                                }/>    
+                            }
+                        </div>
+                    </div>
+                    <div className='col'>
+                        
+                    </div>
+                </div>
                 <div className='mb-3'>
                     <AtomsText body="All Vehicles" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",
@@ -172,15 +181,15 @@ export default function GetVehiclesModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Vehicles By Country" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsCountry} filter_name="Vehicles_Country"/>  
+                    <MoleculesChartBar items={itemsStatsCountry} filter_name="Vehicles_Country"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Vehicles By Sides" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsSide} filter_name="Vehicles_Sides"/>  
+                    <MoleculesChartPie items={itemsStatsSide} filter_name="Vehicles_Sides"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Vehicles By Role" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsRole} filter_name="Vehicles_Role"/>  
+                    <MoleculesChartPie items={itemsStatsRole} filter_name="Vehicles_Role"/>  
                 </div>
             </>
         )

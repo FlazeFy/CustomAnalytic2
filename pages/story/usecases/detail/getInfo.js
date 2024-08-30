@@ -6,11 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faLocationDot, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { ucFirst } from '../../../../modules/helpers/typography'
 import AtomsText from '../../../../atoms/atoms_text'
+import AtomsBreakLine from '../../../../atoms/atoms_breakline'
 
 export default function GetInfo(props) {
     return (
         <div>
-            <h1>{props.data.main_title} <span style={{fontSize:"var(--textXL)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>{ucFirst(props.data.story_type)}</span></h1>
+            <AtomsText text_type="main_heading" body={<>
+                {props.data.main_title} <span style={{fontSize:"var(--textXL)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>{ucFirst(props.data.story_type)}</span>
+            </>}/>
             {
                 props.data.story_location ? 
                     <p><FontAwesomeIcon icon={faLocationDot}/> {props.data.story_location}</p>
@@ -23,18 +26,20 @@ export default function GetInfo(props) {
                 :
                     <p><FontAwesomeIcon icon={faCalendar}/> Start from {props.data.date_start} until {props.data.date_end}</p>
             }
-            <br></br>
+            <hr className="section-line"></hr>
             <div className='row'>
                 <div className='col'>
-                    <h4 className='section-title'>Result <span style={{fontSize:"var(--textXMD)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>
-                    {
-                        props.data.story_result.map((val,index) => {
-                            if (val.result_summary) {
-                                return ucFirst(val.result_summary)
-                            }
-                        })
-                    }   
-                    </span></h4>
+                    <AtomsText body={
+                        <>Result <span style={{fontSize:"var(--textXMD)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>
+                        {
+                            props.data.story_result.map((val,index) => {
+                                if (val.result_summary) {
+                                    return ucFirst(val.result_summary)
+                                }
+                            })
+                        }   
+                        </span></>
+                        } text_type="sub_heading"/>
                     {
                         props.data.story_result.map((val,index) => {
                             if (val.result_content) {
@@ -56,7 +61,9 @@ export default function GetInfo(props) {
                     }
                 </div>
             </div>
-            <br></br><hr className="section-line"></hr><br></br>
+            <AtomsBreakLine length="1"/>
+            <hr className="section-line"></hr>
+            <AtomsBreakLine length="1"/>
         </div>
     )
 }
