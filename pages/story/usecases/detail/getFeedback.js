@@ -1,12 +1,13 @@
 import detail from './detail.module.css'
 
-import container from '../../../../components/containers/containers.module.css'
 import GetFeedbackRate from '../../../../components/others/feedbackRate'
+import MoleculesChatBox from '../../../../molecules/molecules_chat_box'
+import AtomsText from '../../../../atoms/atoms_text'
 
 export default function GetFeedback({props}) {
     return (
         <div>
-            <h4 className='section-title'>Feedback</h4>
+            <AtomsText body="Feedback" text_type="sub_heading"/>
             {
                 props.map((val, i, index) => {
                     return (
@@ -25,7 +26,7 @@ export default function GetFeedback({props}) {
                     )
                 })
             }
-            <br></br><hr className="section-line"></hr><br></br>
+            <MoleculesChatBox is_with_attachment={true} context="feedback"/>
         </div>
     )
 }

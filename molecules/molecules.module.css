@@ -1,0 +1,32 @@
+.msg_text_box {
+    width: 100%;
+    font-size: var(--textXMD);
+    position: relative;
+    min-height: 60px;
+    border-radius: var(--roundedSM);
+    margin-top: var(--spaceMD);
+    padding: var(--spaceSM);
+    padding-right: 110px;
+}
+.msg_text_send_btn, .msg_text_ext_btn{
+    position: absolute;
+    top: 20px;
+    border-radius: var(--roundedCircle);
+    border: none;
+}
+.msg_text_send_btn {
+    background: var(--successBG);
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+}
+.msg_text_ext_btn {
+    width: 41px;
+    height: 41px;
+    background: var(--secondaryBG);
+    right: 70px;
+}
+.msg_text_send_btn:hover {
+    background: var(--primaryBG);
+}

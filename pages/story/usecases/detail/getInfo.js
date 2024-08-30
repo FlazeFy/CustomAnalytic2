@@ -26,15 +26,17 @@ export default function GetInfo(props) {
             <br></br>
             <div className='row'>
                 <div className='col'>
-                    <h4 className='section-title'>Result <span style={{fontSize:"var(--textXMD)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>
-                    {
-                        props.data.story_result.map((val,index) => {
-                            if (val.result_summary) {
-                                return ucFirst(val.result_summary)
-                            }
-                        })
-                    }   
-                    </span></h4>
+                    <AtomsText body={
+                        <>Result <span style={{fontSize:"var(--textXMD)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>
+                        {
+                            props.data.story_result.map((val,index) => {
+                                if (val.result_summary) {
+                                    return ucFirst(val.result_summary)
+                                }
+                            })
+                        }   
+                        </span></>
+                        } text_type="sub_heading"/>
                     {
                         props.data.story_result.map((val,index) => {
                             if (val.result_content) {

@@ -11,6 +11,7 @@ import GetButtonIconTitle from "../../../components/buttons/button_icon_title"
 import Swal from "sweetalert2"
 import { getCleanTitleFromCtx } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"
+import MoleculesAlertBox from "../../../molecules/molecules_alert_box"
 
 export default function GetProfileInfo(props) {
     //Initial variable
@@ -62,15 +63,7 @@ export default function GetProfileInfo(props) {
     }
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(props.ctx)}</h2> 
-                <div className='alert alert-danger' type='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={props.ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

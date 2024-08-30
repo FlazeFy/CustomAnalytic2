@@ -10,6 +10,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAllStories({ctx}) {
     //Initial variable
@@ -85,15 +86,7 @@ export default function GetAllStories({ctx}) {
     },[])
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>

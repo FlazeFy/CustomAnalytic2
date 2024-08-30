@@ -13,6 +13,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 
 export default function GetAircraftModule({ctx}) {
     //Initial variable
@@ -137,15 +138,7 @@ export default function GetAircraftModule({ctx}) {
     ]
 
     if (error) {
-        return (
-            <div>
-                <h2>{getCleanTitleFromCtx(ctx)}</h2> 
-                <div className='alert alert-danger' role='alert'>
-                    <h4><FontAwesomeIcon icon={faWarning}/> Error</h4>
-                    {error.message}
-                </div>
-            </div>
-        )
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -156,12 +149,7 @@ export default function GetAircraftModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' role='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Airplane" text_type="sub_heading"/>
