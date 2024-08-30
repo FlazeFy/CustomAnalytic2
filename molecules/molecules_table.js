@@ -1,10 +1,10 @@
 import React from 'react'
 
 import PageBar from '../organisms/organisms_page_bar'
-import GetOrdering from '../components/controls/ordering'
-import GetLimit from '../components/controls/limit'
-import GetManageModal from '../components/modals/manage'
-import GetSearch from '../components/controls/search'
+import MoleculesFilterOrdering from './molecules_filter_ordering'
+import TemplateManageModal from '../templates/templates_manage_modal'
+import MoleculesFilterSearch from './molecules_filter_search'
+import MoleculesFilterLimit from './molecules_filter_limit'
 
 export default function MoleculesTable({builder, items, maxPage, currentPage, ctx}) {
     function getExtraDesc(ext, val){
@@ -21,9 +21,9 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
 
     return (
         <div className='custom-tbody'>
-            <GetSearch placeholder={"test"} ctx={ctx}/>
-            <GetOrdering ctx={ctx}/>
-            <GetLimit ctx={ctx} type={"table"}/>
+            <MoleculesFilterSearch placeholder={"test"} ctx={ctx}/>
+            <MoleculesFilterOrdering ctx={ctx}/>
+            <MoleculesFilterLimit ctx={ctx} type={"table"}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
@@ -61,7 +61,7 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                                             }
                                         } else {
                                             return (
-                                                <th><GetManageModal builder={builder} items={item} id={i}/></th>
+                                                <th><TemplateManageModal builder={builder} items={item} id={i}/></th>
                                             );
                                         }
                                     })

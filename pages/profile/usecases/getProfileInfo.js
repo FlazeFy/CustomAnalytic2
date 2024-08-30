@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react"
 
 // Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk, faGear, faWarning } from "@fortawesome/free-solid-svg-icons"
 
 // Components
 import GetProfileImgContainer from "../../../components/containers/profile_img_container"
-import GetButtonIconTitle from "../../../components/buttons/button_icon_title"
 import Swal from "sweetalert2"
-import { convertDatetime, getCleanTitleFromCtx } from "../../../modules/helpers/converter"
+import { convertDatetime } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"
 import MoleculesAlertBox from "../../../molecules/molecules_alert_box"
 import AtomsText from "../../../atoms/atoms_text"
 import AtomsBreakLine from "../../../atoms/atoms_breakline"
+import AtomsButtonIconTitle from "../../../atoms/atoms_button_icon_title"
 
 export default function GetProfileInfo(props) {
     //Initial variable
@@ -116,9 +115,9 @@ export default function GetProfileInfo(props) {
                     <div style={{position:"absolute", right:0, top:0}}>
                         {
                             is_edit == true ?
-                                <GetButtonIconTitle title="Save Changes" type="icon" ctx={<FontAwesomeIcon icon={faFloppyDisk}/>} id="editInfoData" action={editProfileDataModal}/>
+                                <AtomsButtonIconTitle title="Save Changes" type="icon" ctx={<FontAwesomeIcon icon={faFloppyDisk}/>} id="editInfoData" action={editProfileDataModal}/>
                             :
-                                <GetButtonIconTitle title="Edit Profile" type="icon" ctx={<FontAwesomeIcon icon={faGear}/>} id="editInfoData" action={editProfileDataModal}/>
+                                <AtomsButtonIconTitle title="Edit Profile" type="icon" ctx={<FontAwesomeIcon icon={faGear}/>} id="editInfoData" action={editProfileDataModal}/>
                         }
                     </div>
                 </div>

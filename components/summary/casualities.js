@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsBreakLine from '../../atoms/atoms_breakline';
 
 export default function CasualitiesSummary(props) {
     //Initial variable
@@ -46,7 +47,8 @@ export default function CasualitiesSummary(props) {
                         return (
                             <div key={i} className='summary-box'>
                                 Overall in this war, average death per country is <b className='text-primary'>{numberWithCommas(val.average_death)}</b>. 
-                                Country with the most death toll is <b className='text-primary'>{numberWithCommas(val.highest_death_country)}</b> with <b className='text-primary'>{numberWithCommas(val.highest_death)}</b> military and civilian death.<br></br>
+                                Country with the most death toll is <b className='text-primary'>{numberWithCommas(val.highest_death_country)}</b> with <b className='text-primary'>{numberWithCommas(val.highest_death)}</b> military and civilian death.
+                                <AtomsBreakLine length="1"/>
                                 This total as much as <b className='text-primary'>{numberWithCommas(val.highest_death_country_percent)}%</b> of all total death combined, which is about <b className='text-primary'>{numberWithCommas(val.total_death_all)}</b> death.
                             </div>
                         );

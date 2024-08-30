@@ -3,6 +3,7 @@ import style from './molecules.module.css'
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faPlus } from "@fortawesome/free-solid-svg-icons"
+import AtomsBreakLine from '../atoms/atoms_breakline'
 
 export default function MoleculesChatBox(props) {
     return (
@@ -16,7 +17,9 @@ export default function MoleculesChatBox(props) {
                     )
                 }
             </div>
-            <br></br><hr className="section-line"></hr><br></br>
+            <AtomsBreakLine length="1"/>
+            <hr className="section-line"></hr>
+            <AtomsBreakLine length="1"/>
         </>
     )
 }

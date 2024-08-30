@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetPieChart from '../../../components/charts/pie_chart'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -49,7 +49,7 @@ export default function GetTotalAircraftBySide({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetPieChart items={items} filter_name={null}/>  
+                <MoleculesChartPie items={items} filter_name={null}/>  
             </>
         )
     }

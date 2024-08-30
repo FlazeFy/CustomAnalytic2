@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
+import AtomsBreakLine from "../../../../atoms/atoms_breakline";
+import AtomsText from "../../../../atoms/atoms_text";
 
 // Component
-import GetBarChart from "../../../../components/charts/bar_chart";
-import GetPieChart from "../../../../components/charts/pie_chart";
+import MoleculesChartBar from "../../../../components/charts/bar_chart";
+import MoleculesChartPie from "../../../../components/charts/molecules_chart_pie";
 import { getCleanTitleFromCtx } from "../../../../modules/helpers/converter";
 
 export default function GetStats({props}) {
@@ -27,14 +29,15 @@ export default function GetStats({props}) {
                                 <h5 style={{color:"var(--whiteColor)"}}>{getCleanTitleFromCtx(val.name)}</h5>
                                 <div className="row">
                                     <div className="col-6">
-                                        <h6>Pie Chart</h6>
-                                        <GetPieChart items={val.data} filter_name={filter_name}/>  
+                                        <AtomsText text_type="mini_sub_heading" body="Pie Chart"/>
+                                        <MoleculesChartPie items={val.data} filter_name={filter_name}/>  
                                     </div>
                                     <div className="col-6">
-                                        <h6>Bar Chart</h6>
-                                        <GetBarChart items={val.data}/>
+                                        <AtomsText text_type="mini_sub_heading" body="Bar Chart"/>
+                                        <MoleculesChartBar items={val.data}/>
                                     </div>
-                                </div><br></br>
+                                </div>
+                                <AtomsBreakLine length="1"/>
                             </>
                         )
                     } else {
@@ -43,7 +46,9 @@ export default function GetStats({props}) {
                     
                 })
             }
-            <br></br><hr className="section-line"></hr><br></br>
+            <AtomsBreakLine length="1"/>
+            <hr className="section-line"></hr>
+            <AtomsBreakLine length="1"/>
         </div>
     )
 }

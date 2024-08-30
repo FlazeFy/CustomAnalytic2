@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import GetColumnChart from '../../../components/charts/column_chart'
+import MoleculesChartColumn from '../../../molecules/molecules_chart_column'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
@@ -33,7 +33,7 @@ export default function GetTotalDeathByCountry({ctx}) {
             sessionStorage.setItem("Table_limit_Deaths", 7);
         }
 
-        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/limit/${keyLimit}?page=${keyPage}`)
+        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bycountry/${keyOrder}/molecules_filter_limit/${keyLimit}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -86,7 +86,7 @@ export default function GetTotalDeathByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetColumnChart items={items} builder={builder} ctx={"Deaths"} maxPage={maxPage} currentPage={currPage}/>
+                <MoleculesChartColumn items={items} builder={builder} ctx={"Deaths"} maxPage={maxPage} currentPage={currPage}/>
             </>
         )
     }

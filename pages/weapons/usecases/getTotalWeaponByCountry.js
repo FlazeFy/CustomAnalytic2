@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import GetBarChart from '../../../components/charts/bar_chart'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -56,7 +56,7 @@ export default function GetTotalWeaponByCountry({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetBarChart items={items} filter_name={filter_name}/>  
+                <MoleculesChartBar items={items} filter_name={filter_name}/>  
             </>
         )
     }

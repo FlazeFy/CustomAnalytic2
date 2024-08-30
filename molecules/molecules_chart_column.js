@@ -3,11 +3,11 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-import PageBar from '../../organisms/organisms_page_bar'
-import GetOrdering from '../controls/ordering'
-import GetLimit from '../controls/limit'
+import PageBar from '../organisms/organisms_page_bar'
+import MoleculesFilterOrdering from './molecules_filter_ordering'
+import MoleculesFilterLimit from './molecules_filter_limit'
 
-export default function GetColumnChart({items, builder, maxPage, currentPage, ctx}) {
+export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx}) {
     //Initial variable
     var chart = [];
 
@@ -112,8 +112,8 @@ export default function GetColumnChart({items, builder, maxPage, currentPage, ct
 
     return (
         <div className='custom-tbody' style={{overflowY:"hidden"}}>
-            <GetOrdering ctx={ctx}/>
-            <GetLimit ctx={ctx} type={"table"}/>
+            <MoleculesFilterOrdering ctx={ctx}/>
+            <MoleculesFilterLimit ctx={ctx} type={"table"}/>
             <div className="mt-4">
                 <Chart
                     options={chart.options}

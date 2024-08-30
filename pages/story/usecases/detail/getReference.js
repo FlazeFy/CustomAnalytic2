@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
 import AtomsText from "../../../../atoms/atoms_text"
+import AtomsBreakLine from '../../../../atoms/atoms_breakline'
 
 export default function GetReference({props}) {
     return (
@@ -14,7 +15,9 @@ export default function GetReference({props}) {
                     )
                 })
             }
-            <br></br><hr className="section-line"></hr><br></br>
+            <AtomsBreakLine length="1"/>
+            <hr className="section-line"></hr>
+            <AtomsBreakLine length="1"/>
         </div>
     )
 }

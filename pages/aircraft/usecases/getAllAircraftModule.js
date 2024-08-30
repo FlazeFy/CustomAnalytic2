@@ -1,11 +1,7 @@
-import { faWarning } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
-import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
 import MoleculesTable from '../../../molecules/molecules_table'
@@ -14,6 +10,8 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
+import MoleculesChartPie from '../../../molecules/molecules_chart_pie'
 
 export default function GetAircraftModule({ctx}) {
     //Initial variable
@@ -164,19 +162,19 @@ export default function GetAircraftModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Country" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsCountry} filter_name="Aircraft_Country"/>  
+                    <MoleculesChartBar items={itemsStatsCountry} filter_name="Aircraft_Country"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Manufacturer" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsManufacturer} filter_name="Aircraft_Manufacturer"/>  
+                    <MoleculesChartBar items={itemsStatsManufacturer} filter_name="Aircraft_Manufacturer"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Sides" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsSide} filter_name="Aircraft_Sides"/>  
+                    <MoleculesChartPie items={itemsStatsSide} filter_name="Aircraft_Sides"/>  
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Aircraft By Role" text_type="sub_heading"/>
-                    <GetPieChart items={itemsStatsRole} filter_name="Aircraft_Role"/>  
+                    <MoleculesChartPie items={itemsStatsRole} filter_name="Aircraft_Role"/>  
                 </div>
             </>
         )

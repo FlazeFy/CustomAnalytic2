@@ -4,7 +4,6 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
 import AtomsText from '../../../atoms/atoms_text'
-import GetBarChart from '../../../components/charts/bar_chart'
 
 // Component
 import MoleculesTable from '../../../molecules/molecules_table'
@@ -13,6 +12,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesChartBar from '../../../molecules/molecules_chart_bar'
 
 export default function GetBooksModule({ctx}) {
     //Initial variable
@@ -152,7 +152,7 @@ export default function GetBooksModule({ctx}) {
                 </div>
                 <div className='mb-3'>
                     <AtomsText body="Total Books By Reviewer" text_type="sub_heading"/>
-                    <GetBarChart items={itemsStatsReviewer} filter_name="Books_Reviewer"/>  
+                    <MoleculesChartBar items={itemsStatsReviewer} filter_name="Books_Reviewer"/>  
                 </div>
             </>
         )

@@ -1,15 +1,14 @@
 import React from 'react'
-import modal from './modals.module.css'
+import style from './templates.module.css'
 
 //Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 
-export default function GetManageModal({builder, items, id}) {
+export default function TemplateManageModal({builder, items, id}) {
     return (
         <>
-            <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
+            <button className={style.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
             <div className="modal fade" id={"manageModal"+id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">

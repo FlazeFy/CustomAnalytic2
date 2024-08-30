@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faLocationDot, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { ucFirst } from '../../../../modules/helpers/typography'
 import AtomsText from '../../../../atoms/atoms_text'
+import AtomsBreakLine from '../../../../atoms/atoms_breakline'
 
 export default function GetInfo(props) {
     return (
@@ -25,7 +26,7 @@ export default function GetInfo(props) {
                 :
                     <p><FontAwesomeIcon icon={faCalendar}/> Start from {props.data.date_start} until {props.data.date_end}</p>
             }
-            <br></br>
+            <hr className="section-line"></hr>
             <div className='row'>
                 <div className='col'>
                     <AtomsText body={
@@ -60,7 +61,9 @@ export default function GetInfo(props) {
                     }
                 </div>
             </div>
-            <br></br><hr className="section-line"></hr><br></br>
+            <AtomsBreakLine length="1"/>
+            <hr className="section-line"></hr>
+            <AtomsBreakLine length="1"/>
         </div>
     )
 }
