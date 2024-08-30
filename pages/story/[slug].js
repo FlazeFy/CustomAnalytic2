@@ -1,6 +1,4 @@
-import Head from 'next/head'
 import { useRouter } from 'next/router'
-import StoryBar from '../../components/navbar/story_bar'
 import GetInfo from './usecases/detail/getInfo'
 import GetReference from './usecases/detail/getReference'
 import GetFeedback from './usecases/detail/getFeedback'
@@ -9,6 +7,7 @@ import Swal from 'sweetalert2'
 import { useEffect, useState } from 'react'
 import AtomsText from '../../atoms/atoms_text'
 import MoleculesPageHeader from '../../molecules/molecules_page_header'
+import OrganismsStoryBar from '../../organisms/organisms_story_bar'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -203,7 +202,7 @@ export default function StoryDetail() {
                     <div className="content">
                         <div className="row">
                             <div className="col-3">
-                                <StoryBar collection={collection}/>
+                                <OrganismsStoryBar collection={collection}/>
                             </div>
                             <div className="col-9">
                                 <GetInfo data={items}/>

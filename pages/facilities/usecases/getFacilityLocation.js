@@ -1,12 +1,16 @@
+import { faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
+import AtomsText from '../../../atoms/atoms_text'
 
 // Component
-import GetMap from '../../../components/maps/map'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesWorldMap from '../../../molecules/molecules_world_map'
 
 export default function GetFacilityLocation({ctx}) {
     //Initial variable
@@ -14,6 +18,24 @@ export default function GetFacilityLocation({ctx}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState([])
     const [items2, setItems2] = useState([])
+
+    //Chart filter and config
+    function setCategory(type){
+        sessionStorage.setItem(`chart_filter_${ctx}_sess`, type);
+        location.reload();
+    }
+
+    function getListCatAll(slct){
+        if(slct != "NULL"){
+            return (
+                <li key={0}><a className="dropdown-item" onClick={(e)=> setCategory("NULL")}>All</a></li>
+            );
+            } else {
+            return (
+                <li key={0}><a className="dropdown-item" onClick={(e)=> setCategory("NULL")}><FontAwesomeIcon icon={faCheck}/> All</a></li>
+            );
+        }
+    }
 
     useEffect(() => {
         //Default config
@@ -59,7 +81,7 @@ export default function GetFacilityLocation({ctx}) {
     },[])
 
     if (error) {
-        return <div><h2>{getCleanTitleFromCtx(ctx)}</h2> Error: {error.message}</div>
+        return <MoleculesAlertBox message={error.message} type='danger' context={ctx}/>
     } else if (!isLoaded) {
         return (
             <div>
@@ -69,8 +91,30 @@ export default function GetFacilityLocation({ctx}) {
     } else {
         return (
             <> 
-                <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetMap items={items} category_filter={items2} filter_name={ctx}/>  
+                <AtomsText text_type="sub_heading" body={getCleanTitleFromCtx(ctx)}/>
+                <AtomsText text_type="main_content" body={<>Show {items.length} facilities</>}/>
+                <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <FontAwesomeIcon icon={faEllipsisVertical}/></button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {getListCatAll(sessionStorage.getItem(`chart_filter_${ctx}_sess`))}
+                    {
+                        //Category type filter
+                        items2.map((val, i, index) => {
+                        if(val.type == sessionStorage.getItem(`chart_filter_${ctx}_sess`)){
+                            return (
+                                <li key={i}><button className="dropdown-item" onClick={(e)=> setCategory(val.type)}><FontAwesomeIcon icon={faCheck}/> {val.type}</button></li>
+                            );
+                        } else {
+                            return (
+                                <li key={i}><button className="dropdown-item" onClick={(e)=> setCategory(val.type)}>{val.type}</button></li>
+                            );
+                        }
+                        })
+                    }
+                    </ul>
+                </div>
+                <MoleculesWorldMap items={items}/>
             </>
         )
     }

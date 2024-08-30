@@ -78,9 +78,10 @@ export default function OrganismsLogin(props) {
             })
             if(response.status == 200){
                 storeLocal('token_key', response.data.token)
+                storeLocal('role_key', response.data.role)
                 storeLocal('username',response.data.result.username)
                 // storeLocal('role')
-                window.location.href = '/'
+                window.location.href = '/profile'
             }
         } catch (error) {
             if (error.response) {

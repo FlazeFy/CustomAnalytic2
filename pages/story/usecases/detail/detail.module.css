@@ -1,6 +1,6 @@
 .story_status {
     font-size: var(--textXMD);
-    color: var(--warningBG);
+    color: var(--dangerBG);
 }
 
 /* getFeedback */

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import PageBar from '../../organisms/organisms_page_bar'
-import GetOrdering from '../controls/ordering'
-import GetLimit from '../controls/limit'
-import GetManageModal from '../modals/manage'
-import GetSearch from '../controls/search'
+import PageBar from '../organisms/organisms_page_bar'
+import GetOrdering from '../components/controls/ordering'
+import GetLimit from '../components/controls/limit'
+import GetManageModal from '../components/modals/manage'
+import GetSearch from '../components/controls/search'
 
-export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
+export default function MoleculesTable({builder, items, maxPage, currentPage, ctx}) {
     function getExtraDesc(ext, val){
         if(ext != null){
             if(ext['pos'] == "start"){

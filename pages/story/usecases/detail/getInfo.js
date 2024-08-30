@@ -10,7 +10,9 @@ import AtomsText from '../../../../atoms/atoms_text'
 export default function GetInfo(props) {
     return (
         <div>
-            <h1>{props.data.main_title} <span style={{fontSize:"var(--textXL)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>{ucFirst(props.data.story_type)}</span></h1>
+            <AtomsText text_type="main_heading" body={<>
+                {props.data.main_title} <span style={{fontSize:"var(--textXL)", position:"relative",top:0, marginLeft:"var(--spaceMD)"}} className={container.story_type}>{ucFirst(props.data.story_type)}</span>
+            </>}/>
             {
                 props.data.story_location ? 
                     <p><FontAwesomeIcon icon={faLocationDot}/> {props.data.story_location}</p>

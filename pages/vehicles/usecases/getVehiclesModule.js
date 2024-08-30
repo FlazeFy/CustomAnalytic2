@@ -8,7 +8,7 @@ import GetBarChart from '../../../components/charts/bar_chart'
 import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -145,16 +145,11 @@ export default function GetVehiclesModule({ctx}) {
         return (
             <> 
                 {
-                    dataStatus && (
-                        <div className='alert alert-warning' role='alert'>
-                            <h4><FontAwesomeIcon icon={faWarning}/> Warning</h4>
-                            {dataStatus}
-                        </div>
-                    )
+                    dataStatus && <MoleculesAlertBox message={dataStatus} type='warning' context={ctx}/>
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Vehicles" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",

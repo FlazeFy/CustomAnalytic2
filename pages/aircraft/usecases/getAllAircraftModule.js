@@ -8,7 +8,7 @@ import GetBarChart from '../../../components/charts/bar_chart'
 import GetPieChart from '../../../components/charts/pie_chart'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
+import MoleculesTable from '../../../molecules/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
@@ -153,7 +153,7 @@ export default function GetAircraftModule({ctx}) {
                 }
                 <div className='mb-3'>
                     <AtomsText body="All Airplane" text_type="sub_heading"/>
-                    <GetGeneralTable builder={
+                    <MoleculesTable builder={
                             userToken ?
                             [...builder,{
                                 column_name: "Manage",

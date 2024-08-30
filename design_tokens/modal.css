@@ -37,7 +37,7 @@
     padding-left: 2.5px !important;
     margin: var(--spaceSM);
     border-radius: var(--roundedSM);
-    background: var(--warningBG) !important;
+    background: var(--dangerBG) !important;
 }
 .Toastify__progress-bar {
     background: var(--primaryBG) !important;

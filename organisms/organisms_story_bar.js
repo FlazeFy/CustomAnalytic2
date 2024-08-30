@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { ucEachWord } from '../../modules/helpers/typography'
+import { ucEachWord } from '../modules/helpers/typography'
 
-export default function StoryBar({collection}) {
+export default function OrganismsStoryBar({collection}) {
     function getNavButtonTemplate(link, title, desc){
         return <Link href={`/${link}`}>
             <li className="nav-item" style={{listStyleType: "none"}}>

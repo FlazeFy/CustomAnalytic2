@@ -9,7 +9,7 @@ export default function GetFeedbackRate({rate, date}) {
     const elmt = [];
 
     for (let i = 0; i < rate; i++) {
-      elmt.push(<FontAwesomeIcon icon={faStar} color="var(--yellowBG)"/>);
+      elmt.push(<FontAwesomeIcon icon={faStar} color="var(--warningBG)"/>);
     }
 
     return (

@@ -6,7 +6,7 @@
     margin-top: var(--spaceSM);
 }
 .btn-close-modal {
-    color: var(--warningBG);
+    color: var(--dangerBG);
     border: none;
     background: none;
     font-size: var(--textXL) !important;

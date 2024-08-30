@@ -9,9 +9,11 @@ import { faFloppyDisk, faGear, faWarning } from "@fortawesome/free-solid-svg-ico
 import GetProfileImgContainer from "../../../components/containers/profile_img_container"
 import GetButtonIconTitle from "../../../components/buttons/button_icon_title"
 import Swal from "sweetalert2"
-import { getCleanTitleFromCtx } from "../../../modules/helpers/converter"
+import { convertDatetime, getCleanTitleFromCtx } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"
 import MoleculesAlertBox from "../../../molecules/molecules_alert_box"
+import AtomsText from "../../../atoms/atoms_text"
+import AtomsBreakLine from "../../../atoms/atoms_breakline"
 
 export default function GetProfileInfo(props) {
     //Initial variable
@@ -78,28 +80,38 @@ export default function GetProfileInfo(props) {
                 </div>
                 <div className="col-7 position-relative">
                     {
-                        is_edit != true ?
-                            <>
-                                <h2 className="text-white">@{items.username}</h2>
-                                <h5 className="text-white">{items.fullname}</h5>
-                                <br></br>
-                                <p>{items.bio}</p>
-                            </>
-                        :
-                            <>
-                                <div class="form-floating mb-3">
-                                    <input type="text" className="form-control text-white" id="floatingInput" style={{width:"80%"}} value={items.username} placeholder="username"/>
-                                    <label for="floatingInput">Username</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" className="form-control text-white" id="floatingInput" style={{width:"80%"}} value={items.fullname} placeholder="fullname"/>
-                                    <label for="floatingInput">Fullname</label>
-                                </div>
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave about you here" id="floatingTextarea" style={{width:"80%", minHeight:"120px"}}>{items.bio}</textarea>
-                                    <label for="floatingTextarea">Bio</label>
-                                </div>
-                            </>
+                        <>
+                            {
+                                is_edit != true ?
+                                    <>
+                                        <AtomsText text_type="main_heading" body={'@'+items.username}/>
+                                        <AtomsText text_type="sub_heading" body={items.fullname}/>
+                                        <AtomsBreakLine length={1}/>
+                                        <AtomsText text_type="sub_heading" body='Biography'/>
+                                        <AtomsText text_type="main_content" body={items.bio}/>
+                                    </>
+                                :
+                                    <>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" className="form-control text-white" id="floatingInput" style={{width:"80%"}} value={items.username} placeholder="username"/>
+                                            <label for="floatingInput">Username</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" className="form-control text-white" id="floatingInput" style={{width:"80%"}} value={items.fullname} placeholder="fullname"/>
+                                            <label for="floatingInput">Fullname</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave about you here" id="floatingTextarea" style={{width:"80%", minHeight:"120px"}}>{items.bio}</textarea>
+                                            <label for="floatingTextarea">Bio</label>
+                                        </div>
+                                    </>
+                            }
+                            <AtomsBreakLine length={1}/>
+                            <div className="fst-italic">
+                                <AtomsText text_type="mini_sub_heading" body={`Joined at : ${convertDatetime(items.created_at,'calendar')}`}/>
+                                <AtomsText text_type="mini_sub_heading" body={items.updated_at ? `Last updated at : ${convertDatetime(items.updated_at,'calendar')}`:'Last updated at : -'}/>
+                            </div>
+                        </>
                     }
                     <div style={{position:"absolute", right:0, top:0}}>
                         {
