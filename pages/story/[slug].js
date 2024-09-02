@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import AtomsText from '../../atoms/atoms_text'
 import MoleculesPageHeader from '../../molecules/molecules_page_header'
 import OrganismsStoryBar from '../../organisms/organisms_story_bar'
+import { getLocal } from '../../modules/storages/local'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -15,9 +16,11 @@ export default function StoryDetail() {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [items, setItems] = useState(null)
+    const [userToken, setUserToken] = useState(null)
 
     useEffect(() => {
         if (!router.query.slug) return
+        setUserToken(getLocal('token_key'))
 
         Swal.showLoading()
         fetch(`http://127.0.0.1:8000/api/stories/detail/${router.query.slug}`)
@@ -209,9 +212,9 @@ export default function StoryDetail() {
                                 <AtomsText body={<span dangerouslySetInnerHTML={{ __html: items.story_detail }} />} text_type="mini_content"/>
                                 {/* <GetStats props={dummy.stats}/> */}
                                 <GetReference props={items.story_reference}/>
-                                <GetDiscussion props={dummy.discussion}/>
+                                <GetDiscussion data={dummy.discussion} id={items.id} is_signed={userToken ? true : false}/>
                                 
-                                <GetFeedback props={dummy.feedback}/>
+                                <GetFeedback data={dummy.feedback} is_signed={userToken ? true : false}/>
                             </div>
                         </div>
                     </div>

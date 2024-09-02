@@ -4,12 +4,12 @@ import GetFeedbackRate from '../../../../components/others/feedbackRate'
 import MoleculesChatBox from '../../../../molecules/molecules_chat_box'
 import AtomsText from '../../../../atoms/atoms_text'
 
-export default function GetFeedback({props}) {
+export default function GetFeedback(props) {
     return (
         <div>
             <AtomsText body="Feedback" text_type="sub_heading"/>
             {
-                props.map((val, i, index) => {
+                props.data.map((val, i, index) => {
                     return (
                         <div className={detail.feedback_box}>
                             <div className="p-0 m-0">
@@ -26,7 +26,9 @@ export default function GetFeedback({props}) {
                     )
                 })
             }
-            <MoleculesChatBox is_with_attachment={true} context="feedback"/>
+            {
+                props.is_signed && <MoleculesChatBox is_with_attachment={true} context="feedback"/>
+            }
         </div>
     )
 }
