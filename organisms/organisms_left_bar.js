@@ -1,9 +1,8 @@
-import { faSignIn, faWarning } from '@fortawesome/free-solid-svg-icons';
+import { faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import AtomsText from '../atoms/atoms_text';
-import { getCleanTitleFromCtx } from '../modules/helpers/converter';
 import { ucEachWord, ucFirst } from '../modules/helpers/typography'
 import { getLocal } from '../modules/storages/local';
 

@@ -1,21 +1,53 @@
-import detail from './detail.module.css'
 import Axios from 'axios'
 import ReactDOM from 'react-dom'
-import GetFeedbackRate from '../../../../components/others/feedbackRate'
 import MoleculesChatBox from '../../../../molecules/molecules_chat_box'
+import MoleculesAlertBox from '../../../../molecules/molecules_alert_box'
 import AtomsText from '../../../../atoms/atoms_text'
 import { getLocal } from '../../../../modules/storages/local'
 import Swal from 'sweetalert2'
 import { getStringValJson } from '../../../../modules/helpers/generator'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactStars from 'react-stars'
+import OrganismsFeedbackBox from '../../../../organisms/organisms_feedback_box'
 
 export default function GetFeedback(props) {
+    //Initial variable
+    const [error, setError] = useState(null)
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [items, setItems] = useState(null)
     const userToken = getLocal('token_key')
     const [body, setBody] = useState(null)
     const [rate, setRate] = useState(null)
     const [msgAll, setResMsgAll] = useState(null)
     const bodyRef = useRef(null)
+    const [currPage, setCurrPage] = useState(1)
+
+    useEffect(() => {
+        fetchData()
+    },[])
+
+    const fetchData = () => {
+        Swal.showLoading()
+        fetch(`http://127.0.0.1:8000/api/feedbacks/limit/14/order/desc/${props.id}?page=${currPage}`)
+        .then(res => res.json())
+            .then(
+            (result) => {
+                Swal.close()
+                setIsLoaded(true)
+                setItems(result.data.data)
+                setCurrPage(result.data.current_page)  
+            },
+            (error) => {
+                Swal.close()
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                })
+                setError(error)
+            }
+        )
+    } 
 
     // Services
     const handleSubmit = async (e) => {
@@ -68,6 +100,10 @@ export default function GetFeedback(props) {
                     title: 'Success!',
                     text: response.data.message,
                     icon: 'success',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetchData()
+                    }
                 });
             }
         } catch (error) {
@@ -102,30 +138,29 @@ export default function GetFeedback(props) {
         }
     }
 
-    return (
-        <div>
-            <AtomsText body="Feedback" text_type="sub_heading"/>
-            {
-                props.data.map((val, i, index) => {
-                    return (
-                        <div className={detail.feedback_box}>
-                            <div className="p-0 m-0">
-                                <div className="d-inline-block position-relative me-2">
-                                    <img className="img-profile" src="/images/default/default_admin.png" alt="username-profile-pic.png"></img>
-                                </div>
-                                <div className="d-inline-block position-relative">
-                                    <h6 className="event-title">@{val.username}</h6>
-                                    <GetFeedbackRate rate={val.rate} date={val.created_at}/>
-                                </div>
-                            </div>
-                            <p>{val.body}</p>
-                        </div>
-                    )
-                })
-            }
-            {
-                props.is_signed && <MoleculesChatBox handleSubmit={handleSubmit} messageRef={bodyRef} setMessage={(e)=>setBody(e.target.value)} is_with_attachment={false} context="feedback"/>
-            }
-        </div>
-    )
+    if (error) {
+        return <MoleculesAlertBox message={error.message} type='danger' context={`Story's feedback : ${router.query.slug}`}/>
+    } else if (!isLoaded) {
+        return (
+            <div>
+                <h5 className='text-center text-white mt-2 fst-italic'>Loading...</h5>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <AtomsText body="Feedback" text_type="sub_heading"/>
+                {
+                    items.map((dt, idx) => {
+                        return (
+                            <OrganismsFeedbackBox body={dt.body} created_at={dt.created_at} created_by={dt.created_by} rate={dt.rate}/>
+                        )
+                    })
+                }
+                {
+                    props.is_signed && <MoleculesChatBox handleSubmit={handleSubmit} messageRef={bodyRef} setMessage={(e)=>setBody(e.target.value)} is_with_attachment={false} context="feedback"/>
+                }
+            </div>
+        )
+    }
 }

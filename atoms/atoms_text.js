@@ -17,7 +17,7 @@ export default function AtomsText(props){
     } else if(props.text_type == 'mini_sub_heading'){
         return <h6 className="mb-1 text-white">{props.body}</h6>
     } else if(props.text_type == 'main_content'){
-        return <p className="my-0 text-secondary" style={defaultStyle.sub_content}>{props.body}</p>
+        return <p className="my-0 text-white" style={{ ...defaultStyle.sub_content, fontSize:'var(--textMD)'}}>{props.body}</p>
     } else if(props.text_type == 'mini_content'){
         return <p className="my-0 text-secondary" style={defaultStyle.mini_content}>{props.body}</p>
     }

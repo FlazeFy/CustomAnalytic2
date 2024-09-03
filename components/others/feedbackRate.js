@@ -3,6 +3,7 @@ import React from 'react'
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from "@fortawesome/free-solid-svg-icons"
+import { convertDatetime } from '../../modules/helpers/converter';
 
 export default function GetFeedbackRate({rate, date}) {
     const elmt = [];
@@ -18,7 +19,7 @@ export default function GetFeedbackRate({rate, date}) {
                     return val
                 })
             }    
-        <span className='ms-2'>Posted at {date}</span></h6>
+        <span className='ms-2'>Posted at {convertDatetime(date,'calendar')}</span></h6>
     );
 }
   
