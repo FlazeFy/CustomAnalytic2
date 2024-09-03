@@ -1,4 +1,4 @@
-import container from '../../../../components/containers/containers.module.css'
+import container from '../../../../organisms/organisms.module.css'
 import detail from './detail.module.css'
 
 //Font awesome classicon
@@ -41,11 +41,9 @@ export default function GetInfo(props) {
                         </span></>
                         } text_type="sub_heading"/>
                     {
-                        props.data.story_result.map((val,index) => {
+                        props.data.story_result.map((val,idx) => {
                             if (val.result_content) {
-                                return (
-                                    <li key={index}>{val.result_content}</li>
-                                )
+                                return <li key={`content_${idx}`}>{val.result_content}</li>
                             }
                         })
                     }
@@ -53,10 +51,8 @@ export default function GetInfo(props) {
                 <div className='col'>
                     <AtomsText body={'Tags'} text_type="sub_heading"/>
                     {
-                        props.data.story_tag.map((val,index) => {
-                            return (
-                                <a className='tag-box'>#{val.tag_name}</a>
-                            )
+                        props.data.story_tag.map((val,idx) => {
+                            return  <a className='tag-box' key={`tag_${idx}`}>#{val.tag_name}</a>
                         })
                     }
                 </div>

@@ -20,12 +20,12 @@ export default function GetFacilityLocation({ctx}) {
     const [items2, setItems2] = useState([])
 
     //Chart filter and config
-    function setCategory(type){
+    const setCategory = (type) => {
         sessionStorage.setItem(`chart_filter_${ctx}_sess`, type);
         location.reload();
     }
 
-    function getListCatAll(slct){
+    const getListCatAll = (slct) => {
         if(slct != "NULL"){
             return (
                 <li key={0}><a className="dropdown-item" onClick={(e)=> setCategory("NULL")}>All</a></li>

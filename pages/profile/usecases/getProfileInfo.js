@@ -2,10 +2,10 @@ import { useState, useEffect } from "react"
 
 // Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFloppyDisk, faGear, faWarning } from "@fortawesome/free-solid-svg-icons"
+import { faFloppyDisk, faGear} from "@fortawesome/free-solid-svg-icons"
 
 // Components
-import GetProfileImgContainer from "../../../components/containers/profile_img_container"
+import MoleculesProfileImgBox from "../../../components/containers/profile_img_container"
 import Swal from "sweetalert2"
 import { convertDatetime } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"
@@ -55,7 +55,7 @@ export default function GetProfileInfo(props) {
         )
     },[userToken])
 
-    function editProfileDataModal(){
+    const editProfileDataModal = () => {
         if (is_edit == true) {
             setEditData(false)
         } else {
@@ -75,7 +75,7 @@ export default function GetProfileInfo(props) {
         return (
             <div className="row">
                 <div className="col-5">
-                    <GetProfileImgContainer image_url={items.image_url}/>
+                    <MoleculesProfileImgBox image_url={items.image_url}/>
                 </div>
                 <div className="col-7 position-relative">
                     {

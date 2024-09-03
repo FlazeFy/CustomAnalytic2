@@ -5,12 +5,12 @@ import AtomsToast from "../atoms/atoms_toast"
 import { toast } from 'react-toastify'
 
 export default function MoleculesFilterLimit({ctx, type}) {
-    function navigate(ctx, ord){
+    const navigate = (ctx, ord) => {
         sessionStorage.setItem(`${ucFirst(type)}_limit_${ctx}`, ord)
         toast.success(<AtomsToast msg={ctx + " filtered"} />)
     }
 
-    function getCollection(type){ 
+    const getCollection = (type) => { 
         if(type == "table"){
             return [
                 {
@@ -86,9 +86,11 @@ export default function MoleculesFilterLimit({ctx, type}) {
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">       
             {
-                getCollection(type).map((item, i, idx) => {
+                getCollection(type).map((item, idx) => {
                     return (
-                        <li><button className="dropdown-item" onClick={(e) => navigate(ctx, item['value'])}>{ item['context'] }</button></li>
+                        <li key={idx}>
+                            <button className="dropdown-item" onClick={(e) => navigate(ctx, item['value'])}>{ item['context'] }</button>
+                        </li>
                     )
                 })
             }

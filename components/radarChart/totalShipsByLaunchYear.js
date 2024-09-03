@@ -34,7 +34,7 @@ export default function TotalShipsByLaunchYear() {
         )
     },[])
 
-    function getSeries(val, diff){
+    const getSeries = (val, diff) => {
         let catSeries = [];
         let start = 1892
 
@@ -52,7 +52,7 @@ export default function TotalShipsByLaunchYear() {
         return catSeries;
     }
 
-    function getCategory(diff){
+    const getCategory = (diff) => {
         let catData = []
         let start = 1892
 
@@ -113,14 +113,6 @@ export default function TotalShipsByLaunchYear() {
     } else if (!isLoaded) {
         return (
             <div>
-                {/* <Image
-                    src="/loading.gif"
-                    alt="Vercel Logo"
-                    className='loading-logo'
-                    width={100}
-                    height={100}
-                    priority
-                /> */}
                 <h5 className='text-center text-white mt-2 fst-italic'>Loading...</h5>
             </div>
         );

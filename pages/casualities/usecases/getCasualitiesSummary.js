@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import AtomsBreakLine from '../../../atoms/atoms_breakline';
+import { numberWithCommas } from '../../../modules/helpers/math';
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box';
 
 export default function GetCasualitiesSummary(props) {
@@ -36,10 +37,6 @@ export default function GetCasualitiesSummary(props) {
             </div>
         );
     } else {
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
         return (
             <div className='container' style={{padding:"6px"}}>
                 <h6>Summary</h6>

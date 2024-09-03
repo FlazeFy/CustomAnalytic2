@@ -23,14 +23,14 @@ export default function OrganismsStoryBar({collection}) {
     return (
         <div className="nav-new-holder">
             {
-                collection.map((val, i, index) => {
-                    if(val.section != null || i == 0){
-                        return getNavButtonTemplate(val.link, val.title, val.desc)
+                collection.map((val, idx) => {
+                    if(val.section != null || idx == 0){
+                        return <div key={idx}>{getNavButtonTemplate(val.link, val.title, val.desc)}</div>
                     } else {
-                        return <>
+                        return <div key={idx}>
                             <hr className='navbar-divider-line'></hr>
                             { getNavButtonTemplate(val.link, val.title, val.desc) }
-                        </>
+                        </div>
                     }
                 })
             }

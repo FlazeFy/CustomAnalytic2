@@ -13,7 +13,7 @@ export default function MoleculesChartBar({items, filter_name}) {
     //Converter
     const data = Object.values(items);
 
-    function getSeries(val){
+    const getSeries = (val) => {
         let catSeries = [];
         val.forEach(e => { 
             catSeries.push({

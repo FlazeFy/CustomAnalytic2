@@ -6,6 +6,7 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 import PageBar from '../organisms/organisms_page_bar'
 import MoleculesFilterOrdering from './molecules_filter_ordering'
 import MoleculesFilterLimit from './molecules_filter_limit'
+import { numberWithCommas } from '../modules/helpers/math';
 
 export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx}) {
     //Initial variable
@@ -14,7 +15,7 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
     //Converter
     const data = Object.values(items).reverse()
 
-    function getSeries(val, type){
+    const getSeries = (val, type) => {
         let catSeries = [];
         val.forEach(e => { 
             catSeries.push(parseInt(e[type]))
@@ -22,7 +23,7 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
         return catSeries
     }
 
-    function buildSeries(builder){
+    const buildSeries = (builder) => {
         let series = []
         builder.forEach(e => {
             series.push(
@@ -36,16 +37,12 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
         return series
     }
 
-    function getCategory(val){
+    const getCategory = (val) => {
         let catData = []
         val.forEach(e => { 
             catData.push(e.context)
         })
         return catData
-    }
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
 
     chart = {
@@ -102,7 +99,7 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
             labels: {
                 show: false,
                 formatter: function (val) {
-                return numberWithCommas(val);
+                    return numberWithCommas(val)
                 }
             }
             

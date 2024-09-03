@@ -11,12 +11,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 export default function MoleculesFilterSearch({placeholder, ctx}) {
-    function setSessionSearch(key, val){
+    const setSessionSearch = (key, val) => {
         sessionStorage.setItem(`Table_search_${key}`,val)  
         toast.success(<AtomsToast msg={ctx + " filtered"} />)
     }
 
-    function getValue(val){
+    const getValue = (val) => {
         if(val == "%20"){
             return ""
         } else {

@@ -6,8 +6,8 @@ export default function AtomsBreakLine(props) {
     return (
         <>
             {
-                builder.map((_) => {
-                    return <br></br>
+                builder.map((_, idx) => {
+                    return <br key={idx}></br>
                 })
             }
         </>

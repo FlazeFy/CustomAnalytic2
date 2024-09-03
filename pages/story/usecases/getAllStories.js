@@ -1,9 +1,6 @@
-import { faWarning } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState, useEffect } from "react"
 import Swal from 'sweetalert2'
-import GetStoryContainer from '../../../components/containers/story_container'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
@@ -11,6 +8,7 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import OrganismsStoryBox from '../../../organisms/organisms_story_box'
 
 export default function GetAllStories({ctx}) {
     //Initial variable
@@ -99,8 +97,8 @@ export default function GetAllStories({ctx}) {
                 {
                     items.map((dt,idx)=>{
                         return (
-                            <div className='col-lg-4 col-md-6 col-sm-12 col-12'>
-                                <GetStoryContainer data={dt}/>
+                            <div className='col-lg-4 col-md-6 col-sm-12 col-12' key={idx}>
+                                <OrganismsStoryBox data={dt}/>
                             </div>
                         )
                     })

@@ -1,9 +1,9 @@
 import React from 'react'
 import AtomsBreakLine from '../../../atoms/atoms_breakline'
-import GetAboutContainer from '../../../components/containers/about_container'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
+import OrganismsAboutBox from '../../../organisms/organisms_about_box'
 
 export default function GetAllContributor() {
     const items = [
@@ -35,7 +35,7 @@ export default function GetAllContributor() {
         <> 
             <h2>{getCleanTitleFromCtx("about contributor")}</h2>
             <AtomsBreakLine length="1"/>
-            <GetAboutContainer items={items} />
+            <OrganismsAboutBox items={items} />
         </>
     )
 }

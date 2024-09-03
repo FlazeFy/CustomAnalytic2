@@ -5,7 +5,7 @@ import AtomsToast from "../atoms/atoms_toast"
 import { toast } from 'react-toastify'
 
 export default function MoleculesFilterOrdering({ctx}) {
-    function navigate(ctx, ord){
+    const navigate = (ctx, ord) => {
         sessionStorage.setItem(`Table_order_${ctx}`, ord)
         toast.success(<AtomsToast msg={ctx + " filtered"} />)
     }
