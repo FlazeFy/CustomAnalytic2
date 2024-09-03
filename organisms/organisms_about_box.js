@@ -10,18 +10,16 @@ export default function OrganismsAboutBox({items}) {
     return (
         <>
         {
-            items.map((item, i, idx) => {
+            items.map((item, idx) => {
                 return (
-                    <div className={style.about_box}>
+                    <div className={style.about_box} key={idx}>
                         <img src={item['profile_pic']}></img>
                         <div className={style.body_box}>
                             <label className='mb-2'>{item['fullname']}</label>
                             <AtomsBreakLine length="1"/>
                             {
-                                item['role'].map((data, j, idx2) => {
-                                    return <>
-                                        <span className={style.body_role}><FontAwesomeIcon icon={faCircle} size={'1x'} style={{color:"var(--primaryBG)", fontWeight:600}}/> {data} </span>
-                                    </>
+                                item['role'].map((data, jdx) => {
+                                    return <span key={jdx} className={style.body_role}><FontAwesomeIcon icon={faCircle} size={'1x'} style={{color:"var(--primaryBG)", fontWeight:600}}/> {data} </span>
                                 })
                             }
                             <p className='mt-3'>{item['mini_bio']}</p>

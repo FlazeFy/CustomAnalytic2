@@ -26,16 +26,16 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
             <MoleculesFilterLimit ctx={ctx} type={"table"}/>
             <table className="table">
                 <thead>
-                    <tr key={"a"}>
+                    <tr>
                     {
-                        builder.map((val, i, index) => {
-                            if(i == 0){
+                        builder.map((val, idx) => {
+                            if(idx == 0){
                                 return (
-                                    <th scope="col">{val['column_name']}</th>
+                                    <th scope="col" key={`thead_${idx}`}>{val['column_name']}</th>
                                 );
                             } else {
                                 return (
-                                    <td>{val['column_name']}</td>
+                                    <td key={`thead_${idx}`}>{val['column_name']}</td>
                                 );
                             }
                         })
@@ -44,24 +44,24 @@ export default function MoleculesTable({builder, items, maxPage, currentPage, ct
                 </thead>
                 <tbody>
                     {
-                        items.map((item, i, idx) => {
+                        items.map((item, idx) => {
                             return (
-                                <tr key={i}>
+                                <tr key={`tbody_${idx}`}>
                                 {
-                                    builder.map((build, j, ins) => {
+                                    builder.map((build, jdx) => {
                                         if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
-                                            if(i == 0){
+                                            if(idx == 0){
                                                 return (
-                                                    <th scope="row">{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                    <th scope="row" key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
                                                 );
                                             } else {
                                                 return (
-                                                    <th>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                    <th key={`tbody_${idx}_${jdx}`}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
                                                 );
                                             }
                                         } else {
                                             return (
-                                                <th><TemplateManageModal builder={builder} items={item} id={i}/></th>
+                                                <th key={`tbody_${idx}_${jdx}`}><TemplateManageModal builder={builder} items={item} id={idx}/></th>
                                             );
                                         }
                                     })

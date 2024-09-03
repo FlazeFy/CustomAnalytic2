@@ -13,11 +13,11 @@ export default function OrganismsPageBar({curr, max, ctx}) {
             {
                 Array.from({ length: max }).map((_, index) => (
                     curr !== index && index != 0 && isNumInRange(curr, index, 20) ?
-                        <button className={style.page_bar} onClick={(e) => navigate(index, ctx)}>{ index }</button>
+                        <button key={index} className={style.page_bar} onClick={(e) => navigate(index, ctx)}>{ index }</button>
                     : curr === index && index != 0 && isNumInRange(curr, index, 20) ?
-                        <button className={style.page_bar_active} onClick={(e) => navigate(index, ctx)}>{ index }</button>
+                        <button key={index} className={style.page_bar_active} onClick={(e) => navigate(index, ctx)}>{ index }</button>
                     :
-                    <></>
+                    <div key={index}></div>
                 ))
             }
         </>

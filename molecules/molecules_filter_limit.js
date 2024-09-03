@@ -86,9 +86,11 @@ export default function MoleculesFilterLimit({ctx, type}) {
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">       
             {
-                getCollection(type).map((item, i, idx) => {
+                getCollection(type).map((item, idx) => {
                     return (
-                        <li><button className="dropdown-item" onClick={(e) => navigate(ctx, item['value'])}>{ item['context'] }</button></li>
+                        <li key={idx}>
+                            <button className="dropdown-item" onClick={(e) => navigate(ctx, item['value'])}>{ item['context'] }</button>
+                        </li>
                     )
                 })
             }

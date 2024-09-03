@@ -153,7 +153,7 @@ export default function GetFeedback(props) {
                 {
                     items.map((dt, idx) => {
                         return (
-                            <OrganismsFeedbackBox body={dt.body} created_at={dt.created_at} created_by={dt.created_by} rate={dt.rate}/>
+                            <OrganismsFeedbackBox key={idx} body={dt.body} created_at={dt.created_at} created_by={dt.created_by} rate={dt.rate}/>
                         )
                     })
                 }

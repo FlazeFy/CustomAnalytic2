@@ -9,7 +9,7 @@ export default function MoleculesFeedbackRate({rate, date}) {
     const elmt = [];
 
     for (let i = 0; i < rate; i++) {
-      elmt.push(<FontAwesomeIcon icon={faStar} color="var(--warningBG)"/>);
+        elmt.push(<FontAwesomeIcon icon={faStar} key={`star_${i}`} color="var(--warningBG)"/>);
     }
 
     return (

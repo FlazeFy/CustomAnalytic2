@@ -97,7 +97,7 @@ export default function GetAllStories({ctx}) {
                 {
                     items.map((dt,idx)=>{
                         return (
-                            <div className='col-lg-4 col-md-6 col-sm-12 col-12'>
+                            <div className='col-lg-4 col-md-6 col-sm-12 col-12' key={idx}>
                                 <OrganismsStoryBox data={dt}/>
                             </div>
                         )

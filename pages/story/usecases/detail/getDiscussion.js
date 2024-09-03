@@ -127,7 +127,7 @@ export default function GetDiscussion(props) {
                 {
                     items.map((dt, idx) => {
                         return (
-                            <OrganismsDiscussionBox body={dt.body} role={dt.role} created_at={dt.created_at} created_by={dt.created_by}/>
+                            <OrganismsDiscussionBox key={idx} body={dt.body} role={dt.role} created_at={dt.created_at} created_by={dt.created_by}/>
                         )
                     })
                 }

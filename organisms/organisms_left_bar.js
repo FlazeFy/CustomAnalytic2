@@ -160,10 +160,10 @@ export default function OrganismsLeftBar(props) {
             <>
                 <div className="nav-new-holder">
                     {
-                        menu.map((val, i, index) => {
-                            if(val.section == null && i == 0){
+                        menu.map((val, idx) => {
+                            if(val.section == null && idx == 0){
                                 dividerBefore = false
-                                return <>
+                                return <div key={idx}>
                                     {
                                         userToken ?
                                             <Link href={`profile`}>
@@ -187,23 +187,23 @@ export default function OrganismsLeftBar(props) {
                                     }
                                     
                                     { getNavButtonTemplate(val.link, val.title, val.desc) }
-                                </>
+                                </div>
                             } else if (val.section != null) {
                                 dividerBefore = false
-                                return <>
+                                return <div key={idx}>
                                     { getNavButtonTemplate(val.link, val.title, val.desc) }
-                                </>
+                                </div>
                             } else if (val.section == null && dividerBefore) {
                                 dividerBefore = false
-                                return <>
+                                return <div key={idx}>
                                     { getNavButtonTemplate(val.link, val.title, val.desc) }
-                                </>
+                                </div>
                             } else {
                                 dividerBefore = true
-                                return <>
+                                return <div key={idx}>
                                     <hr className='navbar-divider-line'></hr>
                                     { getNavButtonTemplate(val.link, val.title, val.desc) }
-                                </>
+                                </div>
                             }
                         })
                     }

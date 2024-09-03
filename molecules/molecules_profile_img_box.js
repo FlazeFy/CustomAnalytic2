@@ -10,7 +10,7 @@ export default function MoleculesProfileImgBox(props) {
             <button className={style.profile_img_box} data-bs-toggle="modal" data-bs-target={"#editProfileImageModal"} title="Manage Profile Image">
                 <img src={props.image_url}></img>
             </button>
-            <div className="modal fade" id={"editProfileImageModal"} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id={"editProfileImageModal"} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
