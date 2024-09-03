@@ -52,11 +52,6 @@
     margin-bottom: var(--spaceSM);
 }
 
-/* Discussion Container */
-.discussion_box {
-    width: 75%;
-    min-width: 480px;
-}
 
 /* About Container */
 .about_box {

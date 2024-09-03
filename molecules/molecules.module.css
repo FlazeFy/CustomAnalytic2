@@ -56,3 +56,9 @@
     top: 17.5px;
     right: 17.5px;
 }
+
+.role_box {
+    border-radius: var(--roundedSM);
+    padding: var(--spaceSM);
+    margin-right: var(--spaceSM);
+}
