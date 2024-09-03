@@ -214,7 +214,7 @@ export default function StoryDetail() {
                                 <GetReference props={items.story_reference}/>
                                 <GetDiscussion data={dummy.discussion} id={items.id} is_signed={userToken ? true : false}/>
                                 
-                                <GetFeedback data={dummy.feedback} is_signed={userToken ? true : false}/>
+                                <GetFeedback data={dummy.feedback} id={items.id} is_signed={userToken ? true : false}/>
                             </div>
                         </div>
                     </div>
