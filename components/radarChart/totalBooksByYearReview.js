@@ -4,11 +4,6 @@ import { useState, useEffect } from "react"
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { } from "@fortawesome/free-solid-svg-icons"
-
 export default function TotalBooksByYearReview() {
     //Initial variable
     const [error, setError] = useState(null);
@@ -34,7 +29,7 @@ export default function TotalBooksByYearReview() {
         )
     },[])
 
-    function getSeries(val, diff){
+    const getSeries = (val, diff) => {
         let catSeries = [];
         let start = 2000
 
@@ -52,7 +47,7 @@ export default function TotalBooksByYearReview() {
         return catSeries;
     }
 
-    function getCategory(diff){
+    const getCategory = (diff) => {
         let catData = []
         let start = 2000
 
@@ -113,14 +108,6 @@ export default function TotalBooksByYearReview() {
     } else if (!isLoaded) {
         return (
             <div>
-                {/* <Image
-                    src="/loading.gif"
-                    alt="Vercel Logo"
-                    className='loading-logo'
-                    width={100}
-                    height={100}
-                    priority
-                /> */}
                 <h5 className='text-center text-white mt-2 fst-italic'>Loading...</h5>
             </div>
         );

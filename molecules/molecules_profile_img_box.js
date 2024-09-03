@@ -1,13 +1,13 @@
 import React from 'react'
-import container from './containers.module.css'
+import style from './style.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
-import AtomsButtonIconTitle from '../../atoms/atoms_button_icon_title'
+import AtomsButtonIconTitle from '../atoms/atoms_button_icon_title'
 
-export default function GetProfileImgContainer(props) {
+export default function MoleculesProfileImgBox(props) {
     return (
         <>
-            <button className={container.profile_img_box} data-bs-toggle="modal" data-bs-target={"#editProfileImageModal"} title="Manage Profile Image">
+            <button className={style.profile_img_box} data-bs-toggle="modal" data-bs-target={"#editProfileImageModal"} title="Manage Profile Image">
                 <img src={props.image_url}></img>
             </button>
             <div className="modal fade" id={"editProfileImageModal"} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

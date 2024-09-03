@@ -5,12 +5,12 @@ import AtomsToast from "../atoms/atoms_toast"
 import { toast } from 'react-toastify'
 
 export default function MoleculesFilterLimit({ctx, type}) {
-    function navigate(ctx, ord){
+    const navigate = (ctx, ord) => {
         sessionStorage.setItem(`${ucFirst(type)}_limit_${ctx}`, ord)
         toast.success(<AtomsToast msg={ctx + " filtered"} />)
     }
 
-    function getCollection(type){ 
+    const getCollection = (type) => { 
         if(type == "table"){
             return [
                 {

@@ -1,5 +1,5 @@
 import AtomsText from '../atoms/atoms_text'
-import GetFeedbackRate from '../components/others/feedbackRate'
+import MoleculesFeedbackRate from '../molecules/molecules_feedback_rate'
 import style from './organisms.module.css'
 
 export default function OrganismsFeedbackBox(props) {
@@ -11,7 +11,7 @@ export default function OrganismsFeedbackBox(props) {
                 </div>
                 <div className="d-inline-block position-relative">
                     <AtomsText body={props.created_by ? <>@{props.created_by}</> : 'Unknown User'} text_type="mini_sub_heading"/>
-                    <GetFeedbackRate rate={props.rate} date={props.created_at}/>
+                    <MoleculesFeedbackRate rate={props.rate} date={props.created_at}/>
                 </div>
             </div>
             <AtomsText body={props.body} text_type="main_content"/>

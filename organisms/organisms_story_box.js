@@ -1,15 +1,15 @@
 import React from 'react'
 
-import container from './containers.module.css'
-import AtomsText from '../../atoms/atoms_text'
-import { ucFirst } from '../../modules/helpers/typography';
+import organisms from './organisms.module.css'
+import AtomsText from '../atoms/atoms_text'
+import { ucFirst } from '../modules/helpers/typography';
 
-export default function GetStoryContainer(props) {
+export default function OrganismsStoryBox(props) {
     return (
-        <div className={container.story_box} onClick={(e)=>window.location.href='/story/'+props.data.slug_name}>
-            <span className={container.story_type}>{ucFirst(props.data.story_type)}</span>
+        <div className={organisms.story_box} onClick={(e)=>window.location.href='/story/'+props.data.slug_name}>
+            <span className={organisms.story_type}>{ucFirst(props.data.story_type)}</span>
             <img src="/images/default/default_content.jpg"></img>
-            <div className={container.box_body}>
+            <div className={organisms.box_body}>
                 <AtomsText body={props.data.main_title} text_type="sub_heading"/>
                 <AtomsText body={<span dangerouslySetInnerHTML={{ __html: props.data.story_detail }} />} text_type="mini_content"/>
                 <div className="d-flex justify-content-start">

@@ -7,7 +7,7 @@ import MoleculesFilterSearch from './molecules_filter_search'
 import MoleculesFilterLimit from './molecules_filter_limit'
 
 export default function MoleculesTable({builder, items, maxPage, currentPage, ctx}) {
-    function getExtraDesc(ext, val){
+    const getExtraDesc = (ext, val) => {
         if(ext != null){
             if(ext['pos'] == "start"){
                 return `${ext['desc']} ${val}`

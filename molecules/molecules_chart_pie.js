@@ -12,18 +12,18 @@ export default function MoleculesChartPie({items, filter_name}) {
     //Converter
     const data = Object.values(items);
 
-    function getSeries(val){
+    const getSeries = (val) => {
         let catSeries = [];
         val.forEach(e => { 
-            catSeries.push(parseInt(e.total));
+            catSeries.push(parseInt(e.total))
         });
         return catSeries;
     }
 
-    function getCategory(val){
+    const getCategory = (val) => {
         let catData = [];
         val.forEach(e => { 
-            catData.push(e.context);
+            catData.push(e.context)
         });
         return catData;
     }

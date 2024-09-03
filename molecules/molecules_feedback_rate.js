@@ -3,9 +3,9 @@ import React from 'react'
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from "@fortawesome/free-solid-svg-icons"
-import { convertDatetime } from '../../modules/helpers/converter';
+import { convertDatetime } from '../modules/helpers/converter';
 
-export default function GetFeedbackRate({rate, date}) {
+export default function MoleculesFeedbackRate({rate, date}) {
     const elmt = [];
 
     for (let i = 0; i < rate; i++) {

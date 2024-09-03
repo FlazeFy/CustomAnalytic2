@@ -1,4 +1,4 @@
-import container from '../../../../components/containers/containers.module.css'
+import container from '../../../../organisms/organisms.module.css'
 import detail from './detail.module.css'
 
 //Font awesome classicon
