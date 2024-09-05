@@ -54,7 +54,7 @@ export default function GetBooksModule({ctx}) {
             limit_stats_by_reviewer: 7,
         })
         
-        fetch(`http://127.0.0.1:8000/api/books?${params}`)
+        fetch(`https://ww2-test.leonardhors.com/api/books?${params}`)
         .then(res => res.json())
             .then(
             (result) => {

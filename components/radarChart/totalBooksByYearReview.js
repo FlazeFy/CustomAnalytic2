@@ -15,7 +15,7 @@ export default function TotalBooksByYearReview() {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/books/total/byyearreview")
+        fetch("https://ww2-test.leonardhors.com/api/v1/books/total/byyearreview")
         .then(res => res.json())
             .then(
             (result) => {

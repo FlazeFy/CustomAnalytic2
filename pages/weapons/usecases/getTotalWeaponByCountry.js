@@ -23,7 +23,7 @@ export default function GetTotalWeaponByCountry({ctx}) {
             sessionStorage.setItem(`Bar_limit_${filter_name}`, 10);
         }
 
-        fetch(`http://127.0.0.1:8000/api/weapons/total/bycountry/${keyLimit}`)
+        fetch(`https://ww2-test.leonardhors.com/api/weapons/total/bycountry/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {

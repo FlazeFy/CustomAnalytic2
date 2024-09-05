@@ -59,7 +59,7 @@ export default function GetWeaponModule({ctx}) {
             limit_stats_by_country: 7
         })
         
-        fetch(`http://127.0.0.1:8000/api/weapons?${params}`)
+        fetch(`https://ww2-test.leonardhors.com/api/weapons?${params}`)
         .then(res => res.json())
             .then(
             (result) => {

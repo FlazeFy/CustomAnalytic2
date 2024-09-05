@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk, faGear} from "@fortawesome/free-solid-svg-icons"
 
 // Components
-import MoleculesProfileImgBox from "../../../components/containers/profile_img_container"
 import Swal from "sweetalert2"
 import { convertDatetime } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"
 import MoleculesAlertBox from "../../../molecules/molecules_alert_box"
+import MoleculesProfileImgBox from "../../../molecules/molecules_profile_img_box"
 import AtomsText from "../../../atoms/atoms_text"
 import AtomsBreakLine from "../../../atoms/atoms_breakline"
 import AtomsButtonIconTitle from "../../../atoms/atoms_button_icon_title"
@@ -28,7 +28,7 @@ export default function GetProfileInfo(props) {
         Swal.showLoading()
         setUserToken(getLocal('token_key'))
         
-        fetch(`http://127.0.0.1:8000/api/user/my`, {
+        fetch(`https://ww2-test.leonardhors.com/api/user/my`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${userToken}`

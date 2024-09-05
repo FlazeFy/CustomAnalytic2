@@ -59,7 +59,7 @@ export default function GetVehiclesModule({ctx}) {
             limit_stats_by_country: 7
         })
         
-        fetch(`http://127.0.0.1:8000/api/vehicles?${params}`)
+        fetch(`https://ww2-test.leonardhors.com/api/vehicles?${params}`)
         .then(res => res.json())
             .then(
             (result) => {

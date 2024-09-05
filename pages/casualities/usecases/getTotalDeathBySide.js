@@ -16,7 +16,7 @@ export default function GetTotalDeathBySide({ctx, view}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/casualities/totaldeath/bysides/${view.toLowerCase()}`)
+        fetch(`https://ww2-test.leonardhors.com/api/casualities/totaldeath/bysides/${view.toLowerCase()}`)
         .then(res => res.json())
             .then(
             (result) => {

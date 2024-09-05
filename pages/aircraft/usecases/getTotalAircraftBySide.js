@@ -16,7 +16,7 @@ export default function GetTotalAircraftBySide({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/aircraft/total/bysides`)
+        fetch(`https://ww2-test.leonardhors.com/api/aircraft/total/bysides`)
         .then(res => res.json())
             .then(
             (result) => {

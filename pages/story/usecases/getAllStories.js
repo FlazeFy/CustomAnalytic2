@@ -41,7 +41,7 @@ export default function GetAllStories({ctx}) {
             sessionStorage.setItem("Table_search_Stories", "%20");
         }
 
-        fetch(`http://127.0.0.1:8000/api/stories/limit/${keyLimit}/order/${keyOrder}`)
+        fetch(`https://ww2-test.leonardhors.com/api/stories/limit/${keyLimit}/order/${keyOrder}`)
         .then(res => res.json())
             .then(
             (result) => {

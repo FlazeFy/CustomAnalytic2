@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './style.module.css'
+import style from './molecules.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 import AtomsButtonIconTitle from '../atoms/atoms_button_icon_title'

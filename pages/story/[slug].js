@@ -23,7 +23,7 @@ export default function StoryDetail() {
         setUserToken(getLocal('token_key'))
 
         Swal.showLoading()
-        fetch(`http://127.0.0.1:8000/api/stories/detail/${router.query.slug}`)
+        fetch(`https://ww2-test.leonardhors.com/api/stories/detail/${router.query.slug}`)
         .then(res => res.json())
             .then(
             (result) => {

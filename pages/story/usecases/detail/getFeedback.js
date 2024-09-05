@@ -28,7 +28,7 @@ export default function GetFeedback(props) {
 
     const fetchData = () => {
         Swal.showLoading()
-        fetch(`http://127.0.0.1:8000/api/feedbacks/limit/14/order/desc/${props.id}?page=${currPage}`)
+        fetch(`https://ww2-test.leonardhors.com/api/feedbacks/limit/14/order/desc/${props.id}?page=${currPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -88,7 +88,7 @@ export default function GetFeedback(props) {
             data.append('body',body)
             data.append('rate',rate)
             
-            const response = await Axios.post("http://127.0.0.1:8000/api/feedbacks", data, {
+            const response = await Axios.post("https://ww2-test.leonardhors.com/api/feedbacks", data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${userToken}`

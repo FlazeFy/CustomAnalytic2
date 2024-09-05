@@ -61,7 +61,7 @@ export default function GetAircraftModule({ctx}) {
             limit_stats_aircraft_by_manufacturer: 7
         })
         
-        fetch(`http://127.0.0.1:8000/api/aircraft?${params}`)
+        fetch(`https://ww2-test.leonardhors.com/api/aircraft?${params}`)
         .then(res => res.json())
             .then(
             (result) => {

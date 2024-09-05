@@ -12,7 +12,7 @@ export default function GetFacilitiesSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/facilities/summary")
+        fetch("https://ww2-test.leonardhors.com/api/facilities/summary")
         .then(res => res.json())
             .then(
             (result) => {

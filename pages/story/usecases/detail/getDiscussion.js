@@ -24,7 +24,7 @@ export default function GetDiscussion(props) {
 
     const fetchData = () => {
         Swal.showLoading()
-        fetch(`http://127.0.0.1:8000/api/discussions/limit/14/order/desc/${props.id}?page=${currPage}`)
+        fetch(`https://ww2-test.leonardhors.com/api/discussions/limit/14/order/desc/${props.id}?page=${currPage}`)
         .then(res => res.json())
             .then(
             (result) => {
@@ -55,7 +55,7 @@ export default function GetDiscussion(props) {
                 data.append('body', body)
                 data.append('attachment',null)
                 
-                const response = await Axios.post("http://127.0.0.1:8000/api/discussions", data, {
+                const response = await Axios.post("https://ww2-test.leonardhors.com/api/discussions", data, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${userToken}`

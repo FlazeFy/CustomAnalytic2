@@ -12,7 +12,7 @@ export default function GetBooksSummary(props) {
     const data = Object.values(items);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/books/summary")
+        fetch("https://ww2-test.leonardhors.com/api/books/summary")
         .then(res => res.json())
             .then(
             (result) => {

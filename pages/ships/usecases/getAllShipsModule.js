@@ -59,7 +59,7 @@ export default function GetShipsModule({ctx}) {
             limit_stats_by_country: 7
         })
         
-        fetch(`http://127.0.0.1:8000/api/ships?${params}`)
+        fetch(`https://ww2-test.leonardhors.com/api/ships?${params}`)
         .then(res => res.json())
             .then(
             (result) => {

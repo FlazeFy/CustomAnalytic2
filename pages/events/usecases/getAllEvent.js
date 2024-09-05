@@ -33,7 +33,7 @@ export default function GetAllEvent({ctx}) {
             sessionStorage.setItem("Table_limit_Events", 15);
         }
 
-        fetch(`http://127.0.0.1:8000/api/events/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
+        fetch(`https://ww2-test.leonardhors.com/api/events/limit/${keyLimit}/order/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

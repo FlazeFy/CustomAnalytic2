@@ -3,8 +3,8 @@ import AtomsBreakLine from "../../../../atoms/atoms_breakline";
 import AtomsText from "../../../../atoms/atoms_text";
 
 // Component
-import MoleculesChartBar from "../../../../components/charts/bar_chart";
-import MoleculesChartPie from "../../../../components/charts/molecules_chart_pie";
+import MoleculesChartBar from "../../../../molecules/molecules_chart_bar";
+import MoleculesChartPie from "../../../../molecules/molecules_chart_pie";
 import { getCleanTitleFromCtx } from "../../../../modules/helpers/converter";
 
 export default function GetStats({props}) {

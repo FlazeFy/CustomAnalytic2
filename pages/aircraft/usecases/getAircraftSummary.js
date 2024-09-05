@@ -10,7 +10,7 @@ export default function GetAircraftSummary(props) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/aircraft/summary")
+        fetch("https://ww2-test.leonardhors.com/api/aircraft/summary")
         .then(res => res.json())
             .then(
             (result) => {

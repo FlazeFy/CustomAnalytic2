@@ -23,7 +23,7 @@ export default function GetTotalAircraftByManufacturer({ctx}) {
             sessionStorage.setItem(`Pie_limit_${filter_name}`, 5);
         }
 
-        fetch(`http://127.0.0.1:8000/api/aircraft/total/bymanufacturer/${keyLimit}`)
+        fetch(`https://ww2-test.leonardhors.com/api/aircraft/total/bymanufacturer/${keyLimit}`)
         .then(res => res.json())
             .then(
             (result) => {

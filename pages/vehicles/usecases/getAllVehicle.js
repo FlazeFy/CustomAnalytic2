@@ -2,12 +2,12 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import MoleculesTable from '../../../components/table/molecules_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
+import MoleculesTable from '../../../molecules/molecules_table'
 
 export default function GetAllVehicle({ctx}) {
     //Initial variable
@@ -37,7 +37,7 @@ export default function GetAllVehicle({ctx}) {
             sessionStorage.setItem("Table_search_Vehicle", "%20");
         }
 
-        fetch(`http://127.0.0.1:8000/api/vehicles/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
+        fetch(`https://ww2-test.leonardhors.com/api/vehicles/limit/${keyLimit}/order/${keyOrder}/find/${keySearch}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {
