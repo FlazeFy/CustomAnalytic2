@@ -2,12 +2,12 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import MoleculesTable from '../../../components/table/molecules_table'
 import MoleculesAlertBox from '../../../molecules/molecules_alert_box'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
+import MoleculesTable from '../../../molecules/molecules_table'
 
 export default function GetAllAircraft({ctx}) {
     //Initial variable

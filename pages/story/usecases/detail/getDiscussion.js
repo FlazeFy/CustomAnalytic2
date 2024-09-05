@@ -125,11 +125,14 @@ export default function GetDiscussion(props) {
             <div>
                 <AtomsText body="Discussion" text_type="sub_heading"/>
                 {
-                    items.map((dt, idx) => {
-                        return (
-                            <OrganismsDiscussionBox key={idx} body={dt.body} role={dt.role} created_at={dt.created_at} created_by={dt.created_by}/>
-                        )
-                    })
+                    items ?
+                        items.map((dt, idx) => {
+                            return (
+                                <OrganismsDiscussionBox key={idx} body={dt.body} role={dt.role} created_at={dt.created_at} created_by={dt.created_by}/>
+                            )
+                        })
+                    :
+                        <></>
                 }
                 {
                     props.is_signed &&  <MoleculesChatBox handleSubmit={handleSubmit} messageRef={bodyRef} setMessage={(e)=>setBody(e.target.value)} is_with_attachment={true} context="discussion"/>

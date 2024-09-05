@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import AtomsText from '../atoms/atoms_text';
 import { ucEachWord, ucFirst } from '../modules/helpers/typography'
 import { getLocal } from '../modules/storages/local';
+import MoleculesAlertBox from '../molecules/molecules_alert_box';
 
 import style from './organisms.module.css'
 import OrganismsLogin from './organisms_login';

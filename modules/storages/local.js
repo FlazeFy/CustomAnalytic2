@@ -17,8 +17,11 @@ export const storeLocal = (name,val) => {
 
 export const getLocal = (name) => {
     try {
-        return localStorage.getItem(name)
+        if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+            return localStorage.getItem(name)
+        }
+        return null
     } catch (error) {
         throw error
     }
-}
+};

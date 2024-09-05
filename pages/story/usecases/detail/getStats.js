@@ -21,30 +21,33 @@ export default function GetStats({props}) {
         <div>
             <h4 className='section-title'>Stats</h4>
             {
-                props.map((val, i, index) => {
-                    const len = val.data.length
-                    if(len >= 2 && len <= 8){
-                        return (
-                            <>
-                                <h5 style={{color:"var(--whiteColor)"}}>{getCleanTitleFromCtx(val.name)}</h5>
-                                <div className="row">
-                                    <div className="col-6">
-                                        <AtomsText text_type="mini_sub_heading" body="Pie Chart"/>
-                                        <MoleculesChartPie items={val.data} filter_name={filter_name}/>  
+                props ? 
+                    props.map((val, idx) => {
+                        const len = val.data.length
+                        if(len >= 2 && len <= 8){
+                            return (
+                                <div key={idx}>
+                                    <h5 style={{color:"var(--whiteColor)"}}>{getCleanTitleFromCtx(val.name)}</h5>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <AtomsText text_type="mini_sub_heading" body="Pie Chart"/>
+                                            <MoleculesChartPie items={val.data} filter_name={filter_name}/>  
+                                        </div>
+                                        <div className="col-6">
+                                            <AtomsText text_type="mini_sub_heading" body="Bar Chart"/>
+                                            <MoleculesChartBar items={val.data}/>
+                                        </div>
                                     </div>
-                                    <div className="col-6">
-                                        <AtomsText text_type="mini_sub_heading" body="Bar Chart"/>
-                                        <MoleculesChartBar items={val.data}/>
-                                    </div>
+                                    <AtomsBreakLine length="1"/>
                                 </div>
-                                <AtomsBreakLine length="1"/>
-                            </>
-                        )
-                    } else {
-                        return <p>No chart available</p>
-                    }
-                    
-                })
+                            )
+                        } else {
+                            return <p key={idx}>No chart available</p>
+                        }
+                        
+                    })
+                :
+                    <></>
             }
             <AtomsBreakLine length="1"/>
             <hr className="section-line"></hr>

@@ -9,6 +9,7 @@ import AtomsText from '../../atoms/atoms_text'
 import MoleculesPageHeader from '../../molecules/molecules_page_header'
 import OrganismsStoryBar from '../../organisms/organisms_story_bar'
 import { getLocal } from '../../modules/storages/local'
+import MoleculesAlertBox from '../../molecules/molecules_alert_box'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -208,7 +209,10 @@ export default function StoryDetail() {
                                 <OrganismsStoryBar collection={collection}/>
                             </div>
                             <div className="col-9">
-                                <GetInfo data={items}/>
+                                <GetInfo data={items} 
+                                    main_title={items.main_title} story_type={items.story_type} story_location={items.story_location}
+                                    date_start={items.date_start} date_end={items.date_end} story_tag={items.story_tag} story_result={items.story_result}
+                                />
                                 <AtomsText body={<span dangerouslySetInnerHTML={{ __html: items.story_detail }} />} text_type="mini_content"/>
                                 {/* <GetStats props={dummy.stats}/> */}
                                 <GetReference props={items.story_reference}/>
