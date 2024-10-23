@@ -9,6 +9,7 @@ import AtomsText from '../../atoms/atoms_text'
 import MoleculesPageHeader from '../../molecules/molecules_page_header'
 import OrganismsStoryBar from '../../organisms/organisms_story_bar'
 import { getLocal } from '../../modules/storages/local'
+import GetSummaryFeedback from './usecases/detail/getSummaryFeedback'
 
 export default function StoryDetail() {
     const router = useRouter()
@@ -214,6 +215,7 @@ export default function StoryDetail() {
                                 <GetReference props={items.story_reference}/>
                                 <GetDiscussion data={dummy.discussion} id={items.id} is_signed={userToken ? true : false}/>
                                 
+                                <GetSummaryFeedback id={items.id}/>
                                 <GetFeedback data={dummy.feedback} id={items.id} is_signed={userToken ? true : false}/>
                             </div>
                         </div>

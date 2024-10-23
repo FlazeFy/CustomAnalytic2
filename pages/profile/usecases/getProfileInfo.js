@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk, faGear} from "@fortawesome/free-solid-svg-icons"
 
 // Components
-import MoleculesProfileImgBox from "../../../components/containers/profile_img_container"
+import MoleculesProfileImgBox from "../../../molecules/molecules_profile_img_box"
 import Swal from "sweetalert2"
 import { convertDatetime } from "../../../modules/helpers/converter"
 import { getLocal } from "../../../modules/storages/local"

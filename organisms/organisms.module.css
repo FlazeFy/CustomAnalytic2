@@ -175,3 +175,18 @@
     -webkit-box-orient: vertical;
     margin-bottom: var(--spaceSM);
 }
+
+
+.user_box {
+    text-align: center;
+    padding: var(--spaceXLG);
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    border-radius: var(--roundedMD);
+    border: 1.5px solid var(--greyBG);
+}
+.user_box:hover {
+    border: 1.5px solid var(--warningBG);
+}

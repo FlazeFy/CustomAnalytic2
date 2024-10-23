@@ -56,7 +56,7 @@ export default function GetFeedback(props) {
 
             Swal.fire({
                 title: 'Also give us rating!',
-                html: `<div id="react-stars-container" class="d-flex justify-content-center"></div>`,
+                html: `<div id="react-stars-container" className="d-flex justify-content-center"></div>`,
                 showCancelButton: true,
                 preConfirm: () => {
                     return ratingValue || Swal.showValidationMessage('Please select a rating')
@@ -149,14 +149,49 @@ export default function GetFeedback(props) {
     } else {
         return (
             <div>
-                <AtomsText body="Feedback" text_type="sub_heading"/>
-                {
-                    items.map((dt, idx) => {
-                        return (
-                            <OrganismsFeedbackBox key={idx} body={dt.body} created_at={dt.created_at} created_by={dt.created_by} rate={dt.rate}/>
-                        )
-                    })
-                }
+                <div id="carouselFeedback" className="carousel slide mt-4 position-relative" data-bs-ride="carousel">
+                    <div className="carousel-indicators position-absolute mb-2" style={{top:"-10px"}}>
+                        {
+                            items.map((dt, idx) => {
+                                if (idx % 2 === 0) {
+                                    return <button type="button" data-bs-target="#carouselFeedback" data-bs-slide-to={Math.floor(idx / 2)} className={idx === 0 ? 'active' : ''} aria-label={`Slide ${Math.floor(idx / 2) + 1}`} key={idx}></button>
+                                }
+                                return null;
+                            })
+                        }
+                    </div>
+                    <div className="carousel-inner mt-4">
+                        {
+                            items.map((dt, idx) => {
+                                if (idx % 2 === 0) {
+                                    return (
+                                        <div className={`carousel-item pe-3 ${idx === 0 ? 'active' : ''}`} key={idx}>
+                                            <div className="row">
+                                                <div className="col">
+                                                    <OrganismsFeedbackBox key={idx} body={dt.body} created_at={dt.created_at} created_by={dt.created_by} rate={dt.rate}/>
+                                                </div>
+                                                {
+                                                    items[idx + 1] && (
+                                                        <div className="col">
+                                                            <OrganismsFeedbackBox key={idx + 1} body={items[idx + 1].body} created_at={items[idx + 1].created_at} created_by={items[idx + 1].created_by} rate={items[idx + 1].rate}/>
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                                return null
+                            })
+                        }
+                    </div>
+                    <div className='position-absolute mb-2' style={{top:"-10px",right:"0"}}>
+                        <div className='position-relative'>
+                            <button className="carousel-control-prev position-absolute" style={{left:'-90px'}} type="button" data-bs-target="#carouselFeedback" data-bs-slide="prev">Previous</button>
+                            <button className="carousel-control-next position-absolute" style={{left:'-30px'}} type="button" data-bs-target="#carouselFeedback" data-bs-slide="next">Next</button>
+                        </div>
+                    </div>
+                </div>
                 {
                     props.is_signed && <MoleculesChatBox handleSubmit={handleSubmit} messageRef={bodyRef} setMessage={(e)=>setBody(e.target.value)} is_with_attachment={false} context="feedback"/>
                 }

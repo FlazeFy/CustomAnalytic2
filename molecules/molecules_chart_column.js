@@ -8,7 +8,7 @@ import MoleculesFilterOrdering from './molecules_filter_ordering'
 import MoleculesFilterLimit from './molecules_filter_limit'
 import { numberWithCommas } from '../modules/helpers/math';
 
-export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx}) {
+export default function MoleculesChartColumn({items, builder, maxPage, currentPage, ctx, height}) {
     //Initial variable
     var chart = [];
 
@@ -115,8 +115,8 @@ export default function MoleculesChartColumn({items, builder, maxPage, currentPa
                 <Chart
                     options={chart.options}
                     series={chart.series}
+                    height={height ?? '550'}
                     type="bar"
-                    height="550"
                 />
             </div>
             <PageBar curr={currentPage} max={maxPage} ctx={ctx}/>
