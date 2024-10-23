@@ -5,7 +5,7 @@ import MoleculesFilterLimit from './molecules_filter_limit';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 
-export default function MoleculesChartPie({items, filter_name}) {
+export default function MoleculesChartPie({items, filter_name, height}) {
     //Initial variable
     var chart = [];
 
@@ -47,6 +47,7 @@ export default function MoleculesChartPie({items, filter_name}) {
                 <Chart
                     options={chart.options}
                     series={chart.series}
+                    height={height ?? 'auto'}
                     type="pie"
                 />
             </div>

@@ -43,7 +43,7 @@ export default function GetFacilitiesSummary(props) {
                         return (
                             <div key={i} className='summary-box'>
                                 Overall in this war, The most built facilities by type is <b className='text-primary'>{val.most_built}</b> which have been built about <b className='text-primary'>{val.total}</b> facilities. 
-                                This type of facilities is mainly produced by <b className='text-primary'>{val.most_built_by_country}</b>. Average country has built about <b className='text-primary'>{val.average_by_country}</b> facilities.
+                                This type of facilities is mainly build by <b className='text-primary'>{val.most_built_by_country}</b>. Average country has built about <b className='text-primary'>{val.average_by_country}</b> facilities.
                             </div>
                         );
                     })

@@ -6,7 +6,7 @@ import AtomsBreakLine from '../atoms/atoms_breakline';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 
-export default function MoleculesChartBar({items, filter_name}) {
+export default function MoleculesChartBar({items, filter_name, height, cls, with_toolbar, with_grid, max_xaxis}) {
     //Initial variable
     var chart = [];
 
@@ -29,17 +29,31 @@ export default function MoleculesChartBar({items, filter_name}) {
         series: [{
             data: getSeries(data)}],
         options: {
+            chart: {
+                toolbar: {
+                    show: with_toolbar ?? true
+                }
+            },
             plotOptions: {
                 bar: {
-                  horizontal: true,
-                  borderRadius: 8,
+                    horizontal: true,
+                    borderRadius: 8,
                 },
             },
+            grid : {
+                show:with_grid ?? true
+            },
+            xaxis: {
+                // max: max_xaxis ?? null,
+                axisTicks: {
+                    show: false 
+                }
+            }
         }
     };
 
     return (
-        <div className='custom-tbody' style={{padding:"6px"}}>
+        <div className={cls ?? 'custom-tbody'} style={{padding:"6px"}}>
             <div className="me-4">
                 {
                     filter_name && 
@@ -51,8 +65,8 @@ export default function MoleculesChartBar({items, filter_name}) {
                 <Chart
                     options={chart.options}
                     series={chart.series}
+                    height={height ?? 'auto'}
                     type="bar"
-                    // height="800"
                 />
             </div>
         </div>

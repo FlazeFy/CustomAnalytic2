@@ -149,7 +149,6 @@ export default function GetFeedback(props) {
     } else {
         return (
             <div>
-                <AtomsText body="Feedback" text_type="sub_heading"/>
                 {
                     items.map((dt, idx) => {
                         return (
