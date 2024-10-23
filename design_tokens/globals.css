@@ -126,6 +126,12 @@ h6 {
   font-size: var(--textXMD);
 }
 
+.carousel-indicators button {
+  width: var(--spaceMD) !important;
+  height: var(--spaceMD) !important;
+  border-radius: 100%;
+}
+
 /* Apexchart */
 tspan {
   fill: var(--whiteColor);
