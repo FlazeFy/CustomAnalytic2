@@ -160,7 +160,7 @@ export default function GetFeedback(props) {
                             })
                         }
                     </div>
-                    <div className="carousel-inner mt-4">
+                    <div className="carousel-inner mt-4 pt-2">
                         {
                             items.map((dt, idx) => {
                                 if (idx % 2 === 0) {

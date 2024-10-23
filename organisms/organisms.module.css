@@ -185,8 +185,6 @@
     -o-transition: all 0.2s;
     transition: all 0.2s;
     border-radius: var(--roundedMD);
-    border: 1.5px solid var(--greyBG);
-}
-.user_box:hover {
-    border: 1.5px solid var(--warningBG);
+    border: 2px solid var(--warningBG);
+    position: relative;
 }

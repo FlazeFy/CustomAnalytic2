@@ -4,6 +4,7 @@ import MoleculesPageHeader from '../../molecules/molecules_page_header'
 import OrganismsLeftBar from '../../organisms/organisms_left_bar'
 import GetAllStories from './usecases/getAllStories'
 import GetTopCreator from './usecases/getTopCreator'
+import GetTopStories from './usecases/getTopStories'
 
 export default function Story() {
   return (
@@ -22,6 +23,9 @@ export default function Story() {
                 <hr className='section-line'></hr>
                 <AtomsText text_type="main_heading" body="Top Creator"/>
                 <GetTopCreator ctx={"Top_Creator"}/>
+                <hr className='section-line'></hr>
+                <AtomsText text_type="main_heading" body="Top Stories"/>
+                <GetTopStories ctx={"Top_Stories"}/>
               </div>
             </div>
           </div>
